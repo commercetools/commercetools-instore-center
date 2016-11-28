@@ -74,5 +74,30 @@ module.exports = (app) => {
     });
   };
 
+  service.getCustomerProductReservations = (params) => {
+    const customerId = params.customerId;
+    const ordersQuery = client.orders;
+    ordersQuery.where('custom(fields(isReservation=true))');
+    if (customerId) {
+      ordersQuery.where(`customerId="${customerId}"`);
+    }
+    return ordersQuery
+    .fetch()
+    .then((res) => {
+      return res.body.results.map((order) => {
+        return order.lineItems.map((lineItem) => {
+          return {
+            ...lineItem.variant,
+            placedOn: order.createdAt,
+          };
+        });
+      });
+    })
+    .catch((err) => {
+      logger.error(`Error getting the products from the customer: ${params}, Error: ${err}`);
+    });
+  };
+
+
   return service;
 };
