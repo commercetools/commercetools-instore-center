@@ -22,25 +22,15 @@ module.exports = (app) => {
     const selectedChannel = params.selectedChannel;
     const ordersQuery = client.orders;
 
-    ordersQuery.where('custom(fields(isReservation="true"))');
-
-    if (page) {
-      ordersQuery.page(page);
-    }
-
-    if (perPage) {
-      ordersQuery.page(perPage);
-    }
-
-    if (getAll) {
-      ordersQuery.all();
-    }
+    ordersQuery.where('custom(fields(isReservation=true))');
 
     if (selectedChannel) {
       ordersQuery.where(`lineItems(supplyChannel(id="${selectedChannel}"))`);
     }
 
     return ordersQuery
+      .page(page)
+      .perPage(perPage)
       .fetch()
       .then((res) => {
         return res.body;
