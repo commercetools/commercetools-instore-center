@@ -2,7 +2,7 @@ angular.module('core')
   .controller('MainCtrl', function ($scope, $http, $translate) {
 
     $scope.main = {
-      title: 'Devgurus',
+      title: 'Commercetools',
       settings: {
         navbarHeaderColor: 'scheme-default',
         sidebarColor: 'scheme-default',

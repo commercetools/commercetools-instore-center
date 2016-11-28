@@ -1,15 +1,8 @@
 <div id="sidebar-wrap" ng-controller="SidebarCtrl">
-  <uib-accordion close-others="false" slimscroll="{height: '100%'}">
-    <uib-accordion-group is-open="status.isFirstOpen">
-      <uib-accordion-heading>
-        Navigation <i class="pull-right fa" ng-class="{'fa-angle-up': status.isFirstOpen, 'fa-angle-down': !status.isFirstOpen}"></i>
-      </uib-accordion-heading>
-      <ul id="navigation" nav-collapse ripple>
-        <li ui-sref-active="active"><a ui-sref="dashboard"><fa name="dashboard"></fa> <span>Dashboard</span></a></li>
-        <li ui-sref-active="active"><a ui-sref="entity"><fa name="users"></fa> <span>Customers</span></a></li>
-        <li><a href='/inventories'><fa name="table"></fa> <span>Inventory</span></a></li>
-        <li><a href='/orders'><fa name="shopping-cart"></fa> <span>Orders</span></a></li>
-      </ul>
-    </uib-accordion-group>
-  </uib-accordion>
+  <ul id="navigation" class="list-unstyled" ripple>
+    <li ui-sref-active="active"><a ui-sref="dashboard" href="/dashboard"><fa name="dashboard"></fa></a></li>
+    <li ui-sref-active="active"><a ui-sref="entity" href="/inventories"><fa name="table"></fa></a></li>
+    <li ui-sref-active="active"><a ui-sref="entity" href="/orders"><fa name="shopping-cart"></fa></a></li>
+    <li ui-sref-active="active"><a ui-sref="entity" href="/customers"><fa name="users"></fa></a></li>
+  </ul>
 </div>

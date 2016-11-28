@@ -17,20 +17,25 @@
   {% for applicationCssFile in applicationCssFiles %}<link rel="stylesheet" href="{{applicationCssFile}}">{% endfor %}
 </head>
 
-<body class="{{main.settings.navbarHeaderColor}} {{main.settings.activeColor}} {{containerClass}} header-fixed aside-fixed rightbar-hidden appWrapper"
-      ng-class="{'header-fixed': main.settings.headerFixed, 'header-static': !main.settings.headerFixed, 'aside-fixed': main.settings.asideFixed, 'aside-static': !main.settings.asideFixed, 'rightbar-show': main.settings.rightbarShow, 'rightbar-hidden': !main.settings.rightbarShow}">
+<body class="header-fixed">
 
-  <div id="wrap" autoscroll="false">
-    <section id="header" ng-include="'views/header.client.view.html'" class="{{main.settings.navbarHeaderColor}}"></section>
-
-    <div id="controls">
-      <aside ng-include="'views/sidebar.client.view.html'" id="sidebar" class="{{main.settings.sidebarColor}}" ng-class="{'aside-fixed':main.settings.asideFixed}"></aside>
+  <div class="container-fluid" autoscroll="false">
+    <div class="row header-container">
+      <section id="header" class="main-header" ng-include="'views/header.client.view.html'"></section>
     </div>
-
-    <div class="view-container" ui-view-container>
-      <section id="content" autoscroll="false">
-        {% block content %}{% endblock %}
-      </section>
+    <div class="row">
+      <div class="col-sm-1 siderbar-container">
+        <nav class="navbar navbar-default navbar-fixed-side">
+          <aside id="sidebar" class="main-sidebar" ng-include="'views/sidebar.client.view.html'"></aside>
+        </nav>
+      </div>
+      <div class="col-sm-11 col-sm-offset-1 content-container">
+        <div class="view-container" ui-view-container>
+          <section id="content" autoscroll="false">
+            {% block content %}{% endblock %}
+          </section>
+        </div>
+      </div>
     </div>
   </div>
 

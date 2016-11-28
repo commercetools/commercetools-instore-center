@@ -1,2 +1,55 @@
 @charset "UTF-8";
-@import url(http://fonts.googleapis.com/css?family=Dosis:300,700|Ubuntu+Mono|Lato:300,400,700,300italic,400italic&subset=latin,latin-ext);
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,300,700,800);
+
+/* Global */
+body, html {
+  color: #213e48;
+  font-family: Open Sans,sans-serif;
+  font-size: 14px;
+}
+
+
+/*  Header  */
+.header-container {
+  background: #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,.16);
+  min-height: 56px;
+  position: fixed;
+  width: 100%;
+  z-index: 20000;
+}
+.header-container #header .row > div{padding-top: 12px;}
+
+/*  Sidebar  */
+.siderbar-container {
+  position: fixed;
+  /*width: 64px;*/
+  height: 100vh;
+  top: 56px;
+  z-index: 19999;
+  background: #213e48;
+}
+
+.siderbar-container .navbar {
+  position: relative;
+  top: 0;
+  height: 100vh;
+
+  background-color: transparent;
+  border: none;
+  text-align: center;
+  color: white;
+  font-size: 28px;
+}
+
+.siderbar-container #sidebar #navigation {margin: 10px 0px;}
+.siderbar-container #sidebar #navigation li {margin-bottom: 20px;}
+.siderbar-container #sidebar #navigation li a {color: white;}
+.siderbar-container #sidebar #navigation li a:hover,
+.siderbar-container #sidebar #navigation li.active a {color: #87d8c8;}
+
+
+/*  Container */
+.content-container {
+  top: 56px;
+}

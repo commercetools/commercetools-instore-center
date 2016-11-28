@@ -1,7 +1,7 @@
 {
-  "name": "Devgurus.io Project",
-  "description": "Fullstack JavaScript with Express, AngularJS, and Node.js.",
-  "homepage": "http://www.devgurus.io/",
+  "name": "Commercetools POS",
+  "description": "Commercetools Point of Sale",
+  "homepage": "https://www.commercetools.com",
   "license": "MIT",
   "dependencies": {
     "angular": "~1.5.0",
