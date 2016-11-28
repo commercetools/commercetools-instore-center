@@ -1,7 +1,7 @@
 {
   "name": "project_template",
   "version": "1.0.0",
-  "description": "Devgurus project template for CEAN stack",
+  "description": "Commercetools POS",
   "main": "index.js",
   "scripts": {
     "test": "gulp test",
@@ -73,6 +73,6 @@
     "type": "git",
     "url": "test"
   },
-  "author": "javi@devgurus.io",
+  "author": "dani@devgurus.io, ruben@devgurus.io",
   "license": "MIT"
 }
