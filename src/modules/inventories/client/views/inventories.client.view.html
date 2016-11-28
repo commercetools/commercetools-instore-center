@@ -1,1 +1,15 @@
-<div data-ng-controller="InventoriesController" data-ng-init="loadInventories();">Inventories</div>
+<div data-ng-controller="InventoriesController" data-ng-init="loadInventories();">
+  <h1>INVENTORIES</h1>
+  <table>
+    <thead>
+      <th>SKU</th>
+      <th>Quantity</th>
+    </thead>
+    <tbody>
+      <tr ng-repeat="inventory in inventories">
+        <td>{{inventory.sku}}</td>
+        <td>{{inventory.availableQuantity}}</td>
+      <tr>
+    </tbody>
+  </table>
+</div>

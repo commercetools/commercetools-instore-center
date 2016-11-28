@@ -1,1 +1,23 @@
-<div data-ng-controller="OrdersController" data-ng-init="loadOrders();">Orders</div>
+<div data-ng-controller="OrdersController" data-ng-init="loadOrders();">
+  <h1>ORDERS</h1>
+  <table>
+    <thead>
+      <th>Order Number</th>
+      <th>Order State</th>
+      <th>Customer</th>
+      <th>Shipping Address</th>
+      <th>Number of Items</th>
+      <th>Total Price</th>
+    </thead>
+    <tbody>
+      <tr ng-repeat="order in orders">
+        <td>{{order.orderNumber}}</td>
+        <td>{{order.orderState}}</td>
+        <td>{{order.customerEmail}}</td>
+        <td>{{order.shippingAddress.firstName}} {{order.shippingAddress.lastName}} {{order.shippingAddress.streetName}}</td>
+        <td>{{order.lineItems.length}}</td>
+        <td>{{order.totalPrice.centAmount}}</td>
+      <tr>
+    </tbody>
+  </table>
+</div>

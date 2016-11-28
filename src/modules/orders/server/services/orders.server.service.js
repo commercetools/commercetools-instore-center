@@ -18,7 +18,6 @@ module.exports = (app) => {
   service.query = (params) => {
     const page = params.page;
     const perPage = params.perPage;
-    const getAll = params.getAll;
     const selectedChannel = params.selectedChannel;
     const ordersQuery = client.orders;
 
@@ -31,6 +30,7 @@ module.exports = (app) => {
     return ordersQuery
       .page(page)
       .perPage(perPage)
+      .sort('createdAt', false)
       .fetch()
       .then((res) => {
         return res.body;
