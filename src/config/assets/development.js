@@ -24,7 +24,7 @@ export default {
         'public/lib/magnific-popup/dist/magnific-popup.css',
       ],
       js: [
-        'public/lib/jquery/dist/jquery.min.js',
+        'public/lib/jquery/dist/jquery.js',
         'public/lib/angular/angular.js',
         'public/lib/angular-animate/angular-animate.js',
         'public/lib/angular-bootstrap/ui-bootstrap-tpls.js',

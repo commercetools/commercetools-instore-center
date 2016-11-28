@@ -41,7 +41,6 @@ const ApplicationConfiguration = (function applicationConfiguration() {
     'ngTagsInput',
     'pascalprecht.translate',
     'ngMaterial',
-    'localytics.directives',
     'ipsum',
     'angular-intro',
   ];
