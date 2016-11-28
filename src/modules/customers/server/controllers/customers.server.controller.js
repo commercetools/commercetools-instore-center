@@ -27,8 +27,8 @@ module.exports = (app) => {
   controller.query = (req, res) => {
     const params = {};
 
-    params.startDate = req.query.startDate;
-    params.endDate = req.query.endDate;
+    params.page = req.query.page;
+    params.perPage = req.query.perPage;
 
     customersService.query(params)
       .then((queryResponse) => {

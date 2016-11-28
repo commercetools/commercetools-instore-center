@@ -26,9 +26,9 @@ module.exports = (app) => {
 
   controller.query = (req, res) => {
     const params = {};
-
-    params.startDate = req.query.startDate;
-    params.endDate = req.query.endDate;
+    params.selectedChannel = req.query.selectedChannel;
+    params.page = req.query.page;
+    params.perPage = req.query.perPage;
 
     orderService.query(params)
       .then((queryResponse) => {
