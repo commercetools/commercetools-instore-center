@@ -1,0 +1,127 @@
+<!-- page header -->
+<div class="page">
+  <!-- page header -->
+  <div class="pageheader" >
+
+    <h2>{{page.title}}</h2>
+
+    <div class="page-bar">
+
+      <ul class="page-breadcrumb">
+        <li>
+          <a ui-sref="dashboard"><i class="fa fa-home"></i> Dashboard</a>
+        </li>
+        <li>
+          <a ui-sref="datatables">{{page.title}}</a>
+        </li>
+      </ul>
+
+    </div>
+
+  </div>
+  <!-- /page header -->
+
+  <!-- page content -->
+  <div class="pagecontent">
+    <!-- row -->
+    <div class="row">
+      <!-- col -->
+      <div class="col-md-12">
+        <!-- Table -->
+        <section class="tile" fullscreen="isFullscreen02">
+          <!-- tile header -->
+          <div class="tile-header dvd dvd-btm">
+            <h1 class="custom-font"><strong>{{page.title}}</strong></h1>
+          </div>
+          <!-- tile header -->
+
+          <!-- tile body -->
+          <div class="tile-body" ng-controller="PaginatorController">
+            <form>
+              <div class="row">
+                <div class="col-md-4 btn-group" role="group" data-toggle="buttons">
+                  <button type="button" ng-class="{active: itemsPerPage == 10}"
+                          ng-click="setItemsPerPage(10)"
+                          class="btn btn-default">10
+                  </button>
+                  <button type="button" ng-class="{active: itemsPerPage == 25}"
+                          ng-click="setItemsPerPage(25)"
+                          class="btn btn-default">25
+                  </button>
+                  <button type="button" ng-class="{active: itemsPerPage == 50}"
+                          ng-click="setItemsPerPage(50)"
+                          class="btn btn-default">50
+                  </button>
+                  <button type="button" ng-class="{active: itemsPerPage == 100}"
+                          ng-click="setItemsPerPage(100)"
+                          class="btn btn-default">100
+                  </button>
+                </div>
+              </div>
+            </form>
+
+            <table  st-table="rowsDisplayed" class="st-table table table-custom"
+                    paginator-entity="productProjections"
+                    paginator-default-sort="createdAt"
+                    expand-paths="productType"
+                    st-pipe="getPage">
+              <thead>
+                <tr>
+                  <td colspan="6" class="text-center">
+                    <div  st-pagination="" st-items-by-page="itemsPerPage"
+                          st-template="views/paginatorSelectPageTemplate.html"></div>
+                  </td>
+                </tr>
+                <tr>
+                  <th></th>
+                  <th>
+                    <input  st-search="masterVariant.sku"
+                            placeholder="search for sku"
+                            class="input-sm form-control input-st-search"
+                            type="search"/>
+                  </th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                </tr>
+                <tr>
+                  <th st-sort="name.en" st-sort-default class="sorting">Name</th>
+                  <th st-sort="masterVariant.sku" class="sorting">SKU</th>
+                  <th>Product Type</th>
+                  <th></th>
+                  <th>Price</th>
+                  <th st-sort="createdAt" class="sorting">Created At</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr st-select-row="row" st-select-mode="multiple" ng-repeat="row in rowsDisplayed">
+                  <td>{{::row.name.en}}</td>
+                  <td>{{::row.masterVariant.sku}}</td>
+                  <td>{{::row.productType.obj.name}}</td>
+                  <td><img src="{{::row.masterVariant.images[0].url | imageUrlFilter:'thumb'}}" /></td>
+                  <td>{{::row.masterVariant.prices[0].value.centAmount / 100 | currency: row.masterVariant.prices[0].value.currencyCode +  " "}}</td>
+                  <td>{{::row.createdAt | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td colspan="6" class="text-center">
+                    <div  st-pagination="" st-items-by-page="itemsPerPage"
+                          st-template="views/paginatorSelectPageTemplate.html"></div>
+                  </td>
+                </tr>
+              </tfoot>
+            </table>
+
+          </div>
+          <!-- /tile body -->
+        </section>
+        <!-- Table end -->
+
+      </div>
+      <!-- col end -->
+    </div>
+    <!-- row end -->
+  </div>
+</div>

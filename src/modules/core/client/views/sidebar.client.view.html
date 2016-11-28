@@ -1,0 +1,31 @@
+<div id="sidebar-wrap" ng-controller="SidebarCtrl">
+  <uib-accordion close-others="false" slimscroll="{height: '100%'}">
+    <uib-accordion-group is-open="status.isFirstOpen">
+      <uib-accordion-heading>
+        Navigation <i class="pull-right fa" ng-class="{'fa-angle-up': status.isFirstOpen, 'fa-angle-down': !status.isFirstOpen}"></i>
+      </uib-accordion-heading>
+      <ul id="navigation" nav-collapse ripple>
+        <li ui-sref-active="active"><a ui-sref="dashboard"><fa name="dashboard"></fa> <span>Dashboard</span></a></li>
+        <li ui-sref-active="active" class="open">
+          <a ui-sref="entity"><fa name="table"></fa> <span>Entities</span></a>
+          <ul class='sidebar-menu-entities'>
+            <li ui-sref-active="active"><a ui-sref="entity.carts"><fa name="caret-right"></fa>Carts</a></li>
+            <li ui-sref-active="active"><a ui-sref="entity.cartDiscounts"><fa name="caret-right"></fa>Cart Discounts</a></li>
+            <li ui-sref-active="active"><a ui-sref="entity.channels"><fa name="caret-right"></fa>Channels</a></li>
+            <li ui-sref-active="active"><a ui-sref="entity.categories"><fa name="caret-right"></fa>Categories</a></li>
+            <li ui-sref-active="active"><a ui-sref="entity.customers"><fa name="caret-right"></fa>Customers</a></li>
+            <li ui-sref-active="active"><a ui-sref="entity.customerGroups"><fa name="caret-right"></fa>Customer Groups</a></li>
+            <li ui-sref-active="active"><a ui-sref="entity.discountCodes"><fa name="caret-right"></fa>Discount Codes</a></li>
+            <li ui-sref-active="active"><a ui-sref="entity.inventory"><fa name="caret-right"></fa>Inventory</a></li>
+            <li ui-sref-active="active"><a ui-sref="entity.orders"><fa name="caret-right"></fa>Orders</a></li>
+            <li ui-sref-active="active"><a ui-sref="entity.products"><fa name="caret-right"></fa>Products</a></li>
+            <li ui-sref-active="active"><a ui-sref="entity.productDiscounts"><fa name="caret-right"></fa>Product Discounts</a></li>
+            <li ui-sref-active="active"><a ui-sref="entity.productTypes"><fa name="caret-right"></fa>Product Types</a></li>
+            <li ui-sref-active="active"><a ui-sref="entity.shippingMethods"><fa name="caret-right"></fa>Shipping Methods</a></li>
+            <li ui-sref-active="active"><a ui-sref="entity.taxCategories"><fa name="caret-right"></fa>Tax Categories</a></li>
+          </ul>
+        </li>
+      </ul>
+    </uib-accordion-group>
+  </uib-accordion>
+</div>

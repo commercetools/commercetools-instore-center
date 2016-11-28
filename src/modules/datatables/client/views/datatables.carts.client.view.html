@@ -1,0 +1,142 @@
+<!-- page header -->
+<div class="page">
+  <!-- page header -->
+  <div class="pageheader" >
+
+    <h2>{{page.title}}</h2>
+
+    <div class="page-bar">
+
+      <ul class="page-breadcrumb">
+        <li>
+          <a ui-sref="dashboard"><i class="fa fa-home"></i> Dashboard</a>
+        </li>
+        <li>
+          <a ui-sref="datatables">{{page.title}}</a>
+        </li>
+      </ul>
+
+    </div>
+
+  </div>
+  <!-- /page header -->
+
+  <!-- page content -->
+  <div class="pagecontent">
+    <!-- row -->
+    <div class="row">
+      <!-- col -->
+      <div class="col-md-12">
+        <!-- Table -->
+        <section class="tile" fullscreen="isFullscreen02">
+          <!-- tile header -->
+          <div class="tile-header dvd dvd-btm">
+            <h1 class="custom-font"><strong>{{page.title}}</strong></h1>
+          </div>
+          <!-- tile header -->
+
+          <!-- tile body -->
+          <div class="tile-body" ng-controller="PaginatorController">
+            <form>
+              <div class="row">
+                <div class="col-md-4 btn-group" role="group" data-toggle="buttons">
+                  <button type="button" ng-class="{active: itemsPerPage == 10}"
+                          ng-click="setItemsPerPage(10)"
+                          class="btn btn-default">10
+                  </button>
+                  <button type="button" ng-class="{active: itemsPerPage == 25}"
+                          ng-click="setItemsPerPage(25)"
+                          class="btn btn-default">25
+                  </button>
+                  <button type="button" ng-class="{active: itemsPerPage == 50}"
+                          ng-click="setItemsPerPage(50)"
+                          class="btn btn-default">50
+                  </button>
+                  <button type="button" ng-class="{active: itemsPerPage == 100}"
+                          ng-click="setItemsPerPage(100)"
+                          class="btn btn-default">100
+                  </button>
+                </div>
+              </div>
+            </form>
+
+            <table  st-table="rowsDisplayed" class="st-table table table-custom"
+                    paginator-entity="carts"
+                    paginator-default-sort="createdAt"
+                    st-pipe="getPage">
+              <thead>
+                <tr>
+                  <td colspan="7" class="text-center">
+                    <div  st-pagination="" st-items-by-page="itemsPerPage"
+                          st-template="views/paginatorSelectPageTemplate.html"></div>
+                  </td>
+                </tr>
+                <tr>
+                  <th>
+                    <input  st-search="id"
+                            placeholder="search for cart id"
+                            class="input-sm form-control input-st-search"
+                            type="search"/>
+                  </th>
+                  <th></th>
+                  <th>
+                    <select st-search="cartState" class="input-md select-st-search form-control" id="sel3">
+                      <option></option>
+                      <option>Active</option>
+                      <option>Merged</option>
+                      <option>Ordered</option>
+                    </select>
+                  </th>
+                  <th></th>
+                  <th></th>
+                  <th></th>
+                </tr>
+                <tr>
+                  <th st-sort="id" st-sort-default class="sorting">ID</th>
+                  <th st-sort="customerEmail" class="sorting">Customer Email</th>
+                  <th st-sort="cartState" class="sorting">State</th>
+                  <th>Shipping address</th>
+                  <th>Num of Items</th>
+                  <th st-sort="totalPrice.centAmount" class="sorting">Total Price</th>
+                  <th st-sort="createdAt" class="sorting">Created At</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr st-select-row="row" st-select-mode="multiple" ng-repeat="row in rowsDisplayed">
+                  <td>{{::row.id}}</td>
+                  <td>{{::row.customerEmail}}</td>
+                  <td>{{::row.cartState}}</td>
+                  <td><strong>{{::row.shippingAddress.firstName}}
+                      {{::row.shippingAddress.lastName}}</strong>,
+                      {{::row.shippingAddress.streetName}}
+                      {{::row.shippingAddress.streetNumber}}
+                      {{::row.shippingAddress.postalCode}}
+                      {{::row.shippingAddress.city}}
+                      {{::row.shippingAddress.state}}
+                  </td>
+                  <td><span class="badge bg-info">{{::row.lineItems.length}}</span></td>
+                  <td>{{::row.totalPrice.centAmount / 100 | currency: row.totalPrice.currencyCode +  " "}}</td>
+                  <td>{{::row.createdAt | date:'yyyy-MM-dd HH:mm:ss'}}</td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <td colspan="7" class="text-center">
+                    <div  st-pagination="" st-items-by-page="itemsPerPage"
+                          st-template="views/paginatorSelectPageTemplate.html"></div>
+                  </td>
+                </tr>
+              </tfoot>
+            </table>
+
+          </div>
+          <!-- /tile body -->
+        </section>
+        <!-- Table end -->
+
+      </div>
+      <!-- col end -->
+    </div>
+    <!-- row end -->
+  </div>
+</div>

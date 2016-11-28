@@ -1,0 +1,9 @@
+{
+  "TITLE": "DEVgurus Dashboard",
+  "PORT": 3000,
+  "FAVICON": "/images/favicon.ico",
+  "COMMERCE_TOOLS": {
+    "API_HOST": "api.commercetools.co",
+    "OAUTH_URL": "auth.commercetools.co"
+  }
+}
