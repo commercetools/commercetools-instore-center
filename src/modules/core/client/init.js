@@ -21,10 +21,6 @@ const ApplicationConfiguration = (function applicationConfiguration() {
     'oc.lazyLoad',
     'ui.select',
     'ui.tree',
-    'textAngular',
-    'colorpicker.module',
-    'angularFileUpload',
-    'ngImgCrop',
     'datatables',
     'datatables.bootstrap',
     'datatables.colreorder',
@@ -42,16 +38,12 @@ const ApplicationConfiguration = (function applicationConfiguration() {
     'angular-rickshaw',
     'easypiechart',
     'uiGmapgoogle-maps',
-    'ui.calendar',
     'ngTagsInput',
     'pascalprecht.translate',
     'ngMaterial',
     'localytics.directives',
-    'leaflet-directive',
-    'wu.masonry',
     'ipsum',
     'angular-intro',
-    'dragularModule',
   ];
 
   // Add a new vertical module

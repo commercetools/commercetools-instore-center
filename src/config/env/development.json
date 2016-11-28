@@ -7,9 +7,9 @@
     "MAX_AGE_SECONDS": 604800
   },
   "COMMERCE_TOOLS": {
-    "PROJECT_KEY": "",
-    "CLIENT_ID": "",
-    "CLIENT_SECRET": ""
+    "PROJECT_KEY": "sunrise-demo-production-1",
+    "CLIENT_ID": "K3OQDiM4JF0zvj7fuvFtCE26",
+    "CLIENT_SECRET": "hmeIn_0f0PsFivZMgGcnW-KaB_QKZsA-"
   },
   "ENTITIES": {
     "DATATABLES": {
