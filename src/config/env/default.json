@@ -1,5 +1,5 @@
 {
-  "TITLE": "DEVgurus Dashboard",
+  "TITLE": "Commercetools POS",
   "PORT": 3000,
   "FAVICON": "/images/favicon.ico",
   "COMMERCE_TOOLS": {
