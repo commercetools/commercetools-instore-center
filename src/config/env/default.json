@@ -3,7 +3,7 @@
   "PORT": 3000,
   "FAVICON": "/images/favicon.ico",
   "COMMERCE_TOOLS": {
-    "API_HOST": "api.commercetools.co",
-    "OAUTH_URL": "auth.commercetools.co"
+    "API_HOST": "api.sphere.io",
+    "OAUTH_URL": "auth.sphere.io"
   }
 }
