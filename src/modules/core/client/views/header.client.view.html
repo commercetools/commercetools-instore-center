@@ -1,5 +1,5 @@
 <!-- Branding -->
-<header class="clearfix">
+<header class="clearfix" data-ng-controller="HeaderController" data-ng-init="loadStores();">
   <div class="branding">
     <a class="brand" ui-sref="dashboard">
       <span><strong>Commercetools POS</strong></span>
@@ -20,8 +20,8 @@
     <li class="dropdown" uib-dropdown>&nbsp;</li>
 
     <li class="dropdown" uib-dropdown>
-      <select class="form-control ng-pristine ng-valid ng-not-empty ng-touched" aria-invalid="false">
-        <option label="Store Munich" value="store-munich">Store Munich</option>
+      <select class="form-control ng-pristine ng-valid ng-not-empty ng-touched" aria-invalid="false" ng-model="selectedChannel" ng-change="updateChannel();">
+        <option ng-repeat="store in stores" value="{{store.id}}">{{store.name.en}}</option>
       </select>
     </li>
 
