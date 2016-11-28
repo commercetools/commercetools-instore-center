@@ -1,5 +1,6 @@
-angular.module('core').controller('HeaderController', ['$scope', 'HeaderService', 'ChannelSelector', '$location',
-  function ($scope, HeaderService, ChannelSelector, $location) {
+angular.module('core').controller('HeaderController', ['$scope',
+'HeaderService', 'ChannelSelector', '$state',
+  function ($scope, HeaderService, ChannelSelector, $state) {
     $scope.loadStores = () => {
       HeaderService.loadStores().then(function (result) {
         $scope.stores = result.data;
@@ -12,7 +13,7 @@ angular.module('core').controller('HeaderController', ['$scope', 'HeaderService'
 
     $scope.updateChannel = () => {
       ChannelSelector.selectedChannel = $scope.selectedChannel;
-      $location.path('/dashboard');
+      $state.reload();
     }
   }
 ]);
