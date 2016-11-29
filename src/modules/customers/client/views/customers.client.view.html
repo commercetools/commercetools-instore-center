@@ -1,17 +1,50 @@
-<div data-ng-controller="CustomersController" data-ng-init="loadCustomers();">
+<div ng-controller="CustomersController">
   <h1>CUSTOMERS</h1>
-  {{showMask}}
   <h2 ng-if="showMask">LOADING ...</h2>
-  <table>
-    <thead>
-      <th>First Name</th>
-      <th>Last Name</th>
-    </thead>
-    <tbody>
-      <tr ng-repeat="customer in customers">
-        <td>{{customer.firstName}}</td>
-        <td>{{customer.lastName}}</td>
-      <tr>
-    </tbody>
-  </table>
+
+  <div class="tile-body" ng-controller="PaginatorController">
+      <form>
+          <div class="row">
+              <div class="col-md-4 btn-group" role="group" data-toggle="buttons">
+                  <button type="button" ng-class="{active: itemsPerPage == 10}" ng-click="setItemsPerPage(10)" class="btn btn-default">10
+                  </button>
+                  <button type="button" ng-class="{active: itemsPerPage == 25}" ng-click="setItemsPerPage(25)" class="btn btn-default">25
+                  </button>
+                  <button type="button" ng-class="{active: itemsPerPage == 50}" ng-click="setItemsPerPage(50)" class="btn btn-default">50
+                  </button>
+                  <button type="button" ng-class="{active: itemsPerPage == 100}" ng-click="setItemsPerPage(100)" class="btn btn-default">100
+                  </button>
+              </div>
+          </div>
+      </form>
+
+      <table st-table="rowsDisplayed" class="st-table table table-custom" paginator-entity="customers" st-pipe="getPage">
+          <thead>
+              <tr>
+                  <th>
+                      <input st-search="id" placeholder="search for cart id" class="input-sm form-control input-st-search" type="search" />
+                  </th>
+                  <th></th>
+              </tr>
+              <tr>
+                  <th st-sort="sku" st-sort-default class="sorting">First Name</th>
+                  <th st-sort="name" class="sorting">Last Name</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr st-select-row="row" st-select-mode="multiple" ng-repeat="row in rowsDisplayed">
+                  <td>{{::row.firstName}}</td>
+                  <td>{{::row.lastName}}</td>
+              </tr>
+          </tbody>
+          <tfoot>
+              <tr>
+                  <td colspan="7" class="text-center">
+                      <div st-pagination="" st-items-by-page="itemsPerPage" st-template="views/paginatorSelectPageTemplate.html"></div>
+                  </td>
+              </tr>
+          </tfoot>
+      </table>
+
+  </div>
 </div>
