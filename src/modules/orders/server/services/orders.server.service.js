@@ -21,7 +21,7 @@ module.exports = (app) => {
     const selectedChannel = params.selectedChannel;
     const ordersQuery = client.orders;
 
-    ordersQuery.where('custom(fields(isReservation=true))');
+    ordersQuery.where('custom(fields(isReservation=true)) AND orderState="Open"');
 
     if (selectedChannel) {
       ordersQuery.where(`lineItems(supplyChannel(id="${selectedChannel}"))`);
@@ -85,6 +85,23 @@ module.exports = (app) => {
     })
     .catch((err) => {
       logger.error(`Error getting the products from the customer: ${params}, Error: ${err}`);
+    });
+  };
+
+  service.completeOrder = (params) => {
+    const orderId = params.orderId;
+    const newStatus = params.newStatus;
+    const ordersQuery = client.orders;
+
+    return ordersQuery.byId(orderId).fetch().then((order) => {
+      return ordersQuery.byId(order.body.id)
+        .update({
+          version: order.body.version,
+          actions: [{
+            action: 'changeOrderState',
+            orderState: newStatus,
+          }],
+        });
     });
   };
 

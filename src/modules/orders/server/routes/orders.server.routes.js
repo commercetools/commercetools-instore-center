@@ -13,6 +13,9 @@ module.exports = (app) => {
   app.route('/api/orders/totalSales')
     .get(ordersController.totalSales);
 
+  app.route('/api/orders/complete')
+    .post(ordersController.completeOrder);
+
   app.route('/api/orders/:id')
     .get(ordersController.byId);
 

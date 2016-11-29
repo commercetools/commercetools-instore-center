@@ -7,5 +7,13 @@ angular.module('orders').controller('OrdersController', ['$scope', 'OrderService
         // TODO Modals.showErrorWindow('Error Removing line item', error.data.message);
       });
     };
+
+    $scope.completeOrder = (orderId, newStatus) => {
+      OrderService.completeOrder({ orderId, newStatus }).then((result) => {
+        $scope.loadOrders();
+      }, (error) => {
+        // TODO Modals.showErrorWindow('Error Removing line item', error.data.message);
+      });
+    };
   },
 ]);
