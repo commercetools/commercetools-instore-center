@@ -11,7 +11,7 @@ module.exports = (app) => {
 
     inventoriesService.query(params)
       .then((queryResponse) => {
-        res.json(queryResponse.results);
+        res.json(queryResponse);
       })
       .catch(() => {
         res.status(400).send({
