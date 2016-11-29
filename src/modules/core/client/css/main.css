@@ -18,7 +18,32 @@ body, html {
   width: 100%;
   z-index: 20000;
 }
-.header-container #header .row > div{padding-top: 12px;}
+.header-container #header .row > div {padding-top: 12px;}
+
+.header-container #header .nav-sign-out div {
+  text-align: right;
+  padding: 2px 0px;
+}
+.header-container #header .nav-sign-out a {color: #666;}
+
+.header-container #header select {
+  line-height: 24px!important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding-left: 10px;
+  padding-right: 10px;
+
+  background: #fafafa;
+  color: #848484;
+  border-radius: 6px;
+
+  border-width: 0px;
+  box-shadow: none;
+
+  text-transform: capitalize;
+}
+
 
 /*  Sidebar  */
 .siderbar-container {
@@ -52,4 +77,53 @@ body, html {
 /*  Container */
 .content-container {
   top: 56px;
+}
+
+
+/* Dashboard */
+
+.dashboard-graph .legend .legendLabel {padding: 0px 10px 0px 4px;}
+
+.dashboard-info-boxes .stats-box{
+  background-color: #fff;
+  box-shadow: 0 0 3px rgba(0,0,0,.2);
+  display: inline-block;
+  margin-bottom: 20px;
+  overflow: hidden;
+  text-align: center;
+  width: 100%;
+}
+
+.dashboard-info-boxes .stats-icon {
+  color: #20ad92;
+  padding: 20px;
+  font-size: 3rem;
+}
+
+.dashboard-info-boxes .stats-label-container {
+  font-weight: 400;
+  font-size: .9rem;
+  height: 18px;
+  margin: 0;
+}
+
+.dashboard-info-boxes .stats-label {
+  background-color: #fff;
+  box-shadow: 0 0 3px rgba(0,0,0,.2);
+  color: #213e48;
+  display: inline-block;
+  padding: 8px;
+}
+
+.dashboard-info-boxes .stats-total-container {
+  background-color: #f2f2f2;
+}
+
+.dashboard-info-boxes .stats-total {
+  box-shadow: 0 0 3px rgba(0,0,0,.3);
+  color: #213e48;
+  display: block;
+  font-size: 1.8rem;
+  font-weight: 400;
+  padding: 20px;
 }

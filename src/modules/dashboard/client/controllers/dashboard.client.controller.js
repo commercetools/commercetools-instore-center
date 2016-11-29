@@ -80,7 +80,7 @@ angular.module('dashboard')
         [10, 60],
         [11, 58],
         [12, 74]],
-      label: 'Unique Visits',
+      label: 'Sales&nbsp;',
       points: {
         show: true,
         radius: 4,
@@ -105,7 +105,7 @@ angular.module('dashboard')
         [10, 145],
         [11, 139],
         [12, 160]],
-      label: 'Page Views',
+      label: 'Products in Stock',
       bars: {
         show: true,
         barWidth: 0.6,
@@ -115,7 +115,7 @@ angular.module('dashboard')
     }];
 
     $scope.options = {
-      colors: ['#e05d6f', '#61c8b8'],
+      colors: ['#213e48', '#20ad92'],
       series: {
         shadowSize: 0,
       },
