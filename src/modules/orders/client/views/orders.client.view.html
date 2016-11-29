@@ -16,7 +16,7 @@
         <td>{{order.customerEmail}}</td>
         <td>{{order.shippingAddress.firstName}} {{order.shippingAddress.lastName}} {{order.shippingAddress.streetName}}</td>
         <td>{{order.lineItems.length}}</td>
-        <td>{{order.totalPrice.centAmount}}</td>
+        <td>{{order.totalPrice.centAmount/100}} {{order.totalPrice.currencyCode}}</td>
       <tr>
     </tbody>
   </table>
