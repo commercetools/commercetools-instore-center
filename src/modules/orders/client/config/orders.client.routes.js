@@ -3,7 +3,7 @@ angular.module('orders').config(['$stateProvider',
     $stateProvider
       .state('orders', {
         url: '/orders',
-        templateUrl: 'views/orders.client.view.html'
+        templateUrl: 'views/orders.client.view.html',
       });
   },
 ]);
