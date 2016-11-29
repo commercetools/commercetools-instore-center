@@ -42,7 +42,7 @@
                   <td><a ng-href="/inventories/product/{{row.productId}}/{{row.sku}}">{{::row.sku}}</a></td>
                   <td>{{::row.name}}</td>
                   <td><img style="max-width:45px;" src="{{row.image.url}}"></td>
-                  <td><span class="badge bg-info">{{::row.availableQuantity}}</span></td>
+                  <td><span ng-class="row.availableQuantity>0?'badge-green badge bg-info':'badge-red badge bg-info'" class="badge bg-info">{{::row.availableQuantity}}</span></td>
                   <td>{{::row.price.value.centAmount / 100 | currency: row.price.value.currencyCode + " "}}</td>
               </tr>
           </tbody>

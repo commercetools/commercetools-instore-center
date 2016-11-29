@@ -127,3 +127,11 @@ body, html {
   font-weight: 400;
   padding: 20px;
 }
+
+.badge-green{
+  background-color: green;
+}
+
+.badge-red{
+  background-color: red;
+}
