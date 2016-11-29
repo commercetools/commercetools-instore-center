@@ -1,0 +1,17 @@
+<div data-ng-controller="CustomersController" data-ng-init="loadCustomers();">
+  <h1>CUSTOMERS</h1>
+  {{showMask}}
+  <h2 ng-if="showMask">LOADING ...</h2>
+  <table>
+    <thead>
+      <th>First Name</th>
+      <th>Last Name</th>
+    </thead>
+    <tbody>
+      <tr ng-repeat="customer in customers">
+        <td>{{customer.firstName}}</td>
+        <td>{{customer.lastName}}</td>
+      <tr>
+    </tbody>
+  </table>
+</div>

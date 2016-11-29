@@ -1,5 +1,7 @@
 <div data-ng-controller="InventoriesController" data-ng-init="loadInventories();">
   <h1>INVENTORIES</h1>
+  {{showMask}}
+  <h2 ng-if="showMask">LOADING ...</h2>
   <table>
     <thead>
       <th>SKU</th>
