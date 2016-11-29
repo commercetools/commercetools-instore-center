@@ -2,16 +2,7 @@ angular.module('core')
   .controller('MainCtrl', function ($scope, $http, $translate) {
 
     $scope.main = {
-      title: 'Commercetools',
-      settings: {
-        navbarHeaderColor: 'scheme-default',
-        sidebarColor: 'scheme-default',
-        brandingColor: 'scheme-default',
-        activeColor: 'default-scheme-color',
-        headerFixed: true,
-        asideFixed: true,
-        rightbarShow: false
-      }
+      title: 'Commercetools'
     };
 
     $scope.ajaxFaker = function(){

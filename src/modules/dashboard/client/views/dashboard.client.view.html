@@ -1,31 +1,11 @@
 <div class="page page-dashboard" ng-controller="DashboardCtrl">
 
   <div class="pageheader">
-
-    <h2>{{page.title}} <span>// {{page.subtitle}}</span></h2>
-
-    <div class="page-bar">
-
-      <ul class="page-breadcrumb">
-        <li>
-          <a ui-sref="dashboard"><i class="fa fa-home"></i> {{main.title}}</a>
-        </li>
-        <li>
-          <a ui-sref="dashboard">{{page.title}}</a>
-        </li>
-      </ul>
-
-      <div class="page-toolbar">
-        <a href="javascript:;" class="btn btn-lightred no-border" daterangepicker="rangeOptions" callback="refreshData" date-begin="startDate" date-end="endDate">
-          <i class="fa fa-calendar"></i>&nbsp;&nbsp;<span>{{startDate | date: 'MMMM d, yyyy'}} - {{endDate | date: 'MMMM d, yyyy'}}</span>&nbsp;&nbsp;<i class="fa fa-angle-down"></i>
-        </a>
-      </div>
-
-    </div>
-
+    <h2>{{page.title}}</h2>
+    <p>
+      Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.
+    </p>
   </div>
-
-
 
 
   <!-- row -->
@@ -37,110 +17,18 @@
 
         <!-- tile header -->
         <div class="tile-header bg-greensea dvd dvd-btm">
-          <h1 class="custom-font"><strong>Statistics </strong>Graph</h1>
-          <ul class="controls">
-            <li ng-controller="DaterangepickerCtrl">
-              <a href="javascript:;" daterangepicker="rangeOptions" date-begin="startDate" date-end="endDate">
-                <span>{{startDate}} - {{endDate}}</span>&nbsp;&nbsp;<i class="fa fa-angle-down"></i>
-              </a>
-            </li>
-            <li class="dropdown" uib-dropdown on-toggle="toggled(open)">
-
-              <a href uib-dropdown-toggle class="dropdown-toggle settings"><i class="fa fa-cog"></i></a>
-
-              <ul class="dropdown-menu pull-right with-arrow animated littleFadeInUp">
-                <li>
-                  <a href tile-control-toggle>
-                    <span class="minimize"><fa name="angle-down"></fa>&nbsp;&nbsp;&nbsp;Minimize</span>
-                    <span class="expand"><fa name="angle-up"></fa>&nbsp;&nbsp;&nbsp;Expand</span>
-                  </a>
-                </li>
-                <li>
-                  <a href tile-control-refresh ng-click="ajaxFaker()">
-                    <fa name="refresh"></fa> Refresh
-                  </a>
-                </li>
-                <li>
-                  <a href tile-control-fullscreen ng-click="isFullscreen01 = !isFullscreen01">
-                    <fa name="expand"></fa> Fullscreen
-                  </a>
-                </li>
-                <li>
-                  <a href tile-control-lightbox>
-                    <fa name="magnet"></fa> Open in Lightbox
-                  </a>
-                </li>
-
-              </ul>
-
-            </li>
-            <li class="remove"><a href tile-control-close><i class="fa fa-times"></i></a></li>
-          </ul>
+          <h3 class="custom-font"><strong>Sales </strong>Graph</h3>
         </div>
         <!-- /tile header -->
 
         <!-- tile widget -->
-        <div class="tile-widget bg-greensea" ng-controller="StatisticsChartCtrl">
+        <div class="dashboard-graph" ng-controller="StatisticsChartCtrl">
 
           <flot dataset="dataset" options="options" height="250px"></flot>
 
         </div>
         <!-- /tile widget -->
 
-        <!-- tile body -->
-        <div class="tile-body" ng-controller="ActualStatisticsCtrl">
-
-          <!-- row -->
-          <div class="row">
-
-
-            <!-- col -->
-            <div class="col-md-12 col-sm-12">
-
-              <h4 class="underline custom-font mb-20"><strong>Actual</strong> Statistics</h4>
-
-              <!-- row -->
-              <div class="row">
-                <!-- col -->
-                <div class="col-md-4 text-center">
-                  <div easypiechart options="easypiechart.options" percent="easypiechart.percent" class="easypiechart" style="width: 140px; height: 140px;">
-                    <i class="fa fa-usd fa-4x text-blue" style="line-height: 140px;"></i>
-                  </div>
-                  <p class="text-uppercase text-elg mt-20 mb-0"><strong class="text-blue">6,175</strong> <small class="text-lg text-light text-default lt">Sales</small></p>
-                  <p class="text-light"><i class="fa fa-caret-up text-success"></i> 18% this month</p>
-                </div>
-                <!-- /col
-                <!-- col -->
-                <div class="col-md-4 text-center">
-                  <div easypiechart options="easypiechart2.options" percent="easypiechart2.percent" class="easypiechart" style="width: 140px; height: 140px;">
-                    <i class="fa fa-eye fa-4x text-lightred" style="line-height: 140px;"></i>
-                    <p class="text-uppercase text-elg mt-20 mb-0"><strong class="text-lightred">8,213</strong> <small class="text-lg text-light text-default lt">Visits</small></p>
-                    <p class="text-light"><i class="fa fa-caret-down text-warning"></i> 25% this month</p>
-                  </div>
-                </div>
-                <!-- /col -->
-                <!-- col -->
-                <div class="col-md-4 text-center">
-                  <div easypiechart options="easypiechart3.options" percent="easypiechart3.percent" class="easypiechart" style="width: 140px; height: 140px;">
-                    <i class="fa fa-user fa-4x text-greensea" style="line-height: 140px;"></i>
-                    <p class="text-uppercase text-elg mt-20 mb-0"><strong class="text-greensea">632</strong> <small class="text-lg text-light text-default lt">Users</small></p>
-                    <p class="text-light"><i class="fa fa-caret-down text-danger"></i> 61% this month</p>
-                  </div>
-                </div>
-                <!-- /col -->
-              </div>
-              <!-- /row -->
-
-            </div>
-            <!-- /col -->
-
-
-          </div>
-          <!-- /row -->
-
-        </div>
-        <!-- /tile body -->
-
       </section>
       <!-- /tile -->
     </div>
@@ -150,204 +38,69 @@
 
 
   <!-- row -->
-  <div class="row">
-    <!-- col -->
-    <div class="col-md-12">
-      <!-- tile -->
-      <section class="tile" fullscreen="isFullscreen03">
-
-        <!-- tile header -->
-        <div class="tile-header dvd dvd-btm">
-          <h1 class="custom-font"><strong>Realtime </strong>Load</h1>
-          <ul class="controls">
-            <li class="dropdown" uib-dropdown on-toggle="toggled(open)">
-
-              <a href uib-dropdown-toggle class="dropdown-toggle settings"><i class="fa fa-cog"></i></a>
-
-              <ul class="dropdown-menu pull-right with-arrow animated littleFadeInUp">
-                <li>
-                  <a href tile-control-toggle>
-                    <span class="minimize"><fa name="angle-down"></fa>&nbsp;&nbsp;&nbsp;Minimize</span>
-                    <span class="expand"><fa name="angle-up"></fa>&nbsp;&nbsp;&nbsp;Expand</span>
-                  </a>
-                </li>
-                <li>
-                  <a href tile-control-refresh ng-click="ajaxFaker()">
-                    <fa name="refresh"></fa> Refresh
-                  </a>
-                </li>
-                <li>
-                  <a href tile-control-fullscreen ng-click="isFullscreen03 = !isFullscreen03">
-                    <fa name="expand"></fa> Fullscreen
-                  </a>
-                </li>
-                <li>
-                  <a href tile-control-lightbox>
-                    <fa name="magnet"></fa> Open in Lightbox
-                  </a>
-                </li>
-
-              </ul>
-
-            </li>
-            <li class="remove"><a href tile-control-close><i class="fa fa-times"></i></a></li>
-          </ul>
+  <div class="row dashboard-info-boxes">
+    <div class="col-sm-3 col-xs-12">
+      <div class="stats-box">
+        <div class="stats-icon">
+          <i class="fa fa-shopping-cart"></i>
         </div>
-        <!-- /tile header -->
-
-        <!-- tile widget -->
-        <div class="tile-widget mb-40">
-
-          <div class="progress-list mt-20">
-            <div class="details">
-              <div class="title text-lg" style="line-height: 30px"><strong>125</strong> Users Online</div>
-            </div>
-            <div class="status pull-right bg-greensea">
-              <span>41</span>%
-            </div>
-            <div class="clearfix"></div>
-            <uib-progressbar class="not-rounded" value="41" type="greensea"></uib-progressbar>
-          </div>
-
-          <!-- row -->
-          <div class="row">
-            <!-- col -->
-            <div class="col-md-4">
-              <h4 class="text-light">HDD 1 <i class="fa fa-caret-up text-success"></i></h4>
-              <uib-progressbar class="progress-xs not-rounded mb-0" value="75" type="primary"></uib-progressbar>
-              <small>Health: <span class="text-success">Good</span></small>
-            </div>
-            <!-- /col -->
-            <!-- col -->
-            <div class="col-md-4">
-              <h4 class="text-light">HDD 2 <i class="fa fa-caret-up text-success"></i></h4>
-              <uib-progressbar class="progress-xs not-rounded mb-0" value="20" type="primary"></uib-progressbar>
-              <small>Health: <span class="text-success">Good</span></small>
-            </div>
-            <!-- /col -->
-            <!-- col -->
-            <div class="col-md-4">
-              <h4 class="text-light">HDD 3 <i class="fa fa-caret-down text-danger"></i></h4>
-              <uib-progressbar class="progress-xs not-rounded mb-0" value="90" type="primary"></uib-progressbar>
-              <small>Health: <span class="text-danger">Bad</span></small>
-            </div>
-            <!-- /col -->
-          </div>
-          <!-- /row -->
-
+        <h3 class="stats-label-container">
+          <a class="stats-label" href="/orders">
+            <span>Orders</span>
+          </a>
+        </h3>
+        <div class="stats-total-container">
+          <a class="stats-total" href="/orders">100</a>
         </div>
-        <!-- /tile widget -->
-
-        <!-- tile body -->
-        <div class="tile-body p-0" ng-controller="RealtimeLoadCtrl" style="height: 133px">
-
-          <rickshaw rickshaw-options="options1"
-                    rickshaw-features="features1"
-                    rickshaw-series="series1">
-          </rickshaw>
-
-        </div>
-        <!-- /tile body -->
-
-      </section>
-      <!-- /tile -->
+      </div>
     </div>
-    <!-- /col -->
+    <div class="col-sm-3 col-xs-12">
+      <div class="stats-box">
+        <div class="stats-icon">
+          <i class="fa fa-usd"></i>
+        </div>
+        <h3 class="stats-label-container">
+          <a class="stats-label" href>
+            <span>Revenue</span>
+          </a>
+        </h3>
+        <div class="stats-total-container">
+          <a class="stats-total" href>12.400,65€</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3 col-xs-12">
+      <div class="stats-box">
+        <div class="stats-icon">
+          <i class="fa fa-users"></i>
+        </div>
+        <h3 class="stats-label-container">
+          <a class="stats-label" href="/customers">
+            <span>Customers</span>
+          </a>
+        </h3>
+        <div class="stats-total-container">
+          <a class="stats-total" href="/customers">60</a>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-3 col-xs-12">
+      <div class="stats-box">
+        <div class="stats-icon">
+          <i class="fa fa-archive"></i>
+        </div>
+        <h3 class="stats-label-container">
+          <a class="stats-label" href="/inventories">
+            <span>Products in Stock</span>
+          </a>
+        </h3>
+        <div class="stats-total-container">
+          <a class="stats-total" href="/inventories">1.000</a>
+        </div>
+      </div>
+    </div>
   </div>
   <!-- /row -->
 
-
-  <!-- row -->
-  <div class="row">
-    <!-- col -->
-    <div class="col-md-12">
-      <!-- tile -->
-      <section class="tile" fullscreen="isFullscreen06">
-
-        <!-- tile header -->
-        <div class="tile-header dvd dvd-btm">
-          <h1 class="custom-font"><strong>Project </strong>Progress</h1>
-          <ul class="controls">
-            <li ng-controller="DaterangepickerCtrl">
-              <a href="javascript:;" daterangepicker="rangeOptions" date-begin="startDate" date-end="endDate">
-                <span>{{startDate}} - {{endDate}}</span>&nbsp;&nbsp;<i class="fa fa-angle-down"></i>
-              </a>
-            </li>
-
-            <li class="dropdown" uib-dropdown on-toggle="toggled(open)">
-
-              <a href uib-dropdown-toggle class="dropdown-toggle settings"><i class="fa fa-cog"></i></a>
-
-              <ul class="dropdown-menu pull-right with-arrow animated littleFadeInUp">
-                <li>
-                  <a href tile-control-toggle>
-                    <span class="minimize"><fa name="angle-down"></fa>&nbsp;&nbsp;&nbsp;Minimize</span>
-                    <span class="expand"><fa name="angle-up"></fa>&nbsp;&nbsp;&nbsp;Expand</span>
-                  </a>
-                </li>
-                <li>
-                  <a href tile-control-refresh ng-click="ajaxFaker()">
-                    <fa name="refresh"></fa> Refresh
-                  </a>
-                </li>
-                <li>
-                  <a href tile-control-fullscreen ng-click="isFullscreen06 = !isFullscreen06">
-                    <fa name="expand"></fa> Fullscreen
-                  </a>
-                </li>
-                <li>
-                  <a href tile-control-lightbox>
-                    <fa name="magnet"></fa> Open in Lightbox
-                  </a>
-                </li>
-
-              </ul>
-
-            </li>
-            <li class="remove"><a href tile-control-close><i class="fa fa-times"></i></a></li>
-          </ul>
-        </div>
-        <!-- /tile header -->
-
-        <!-- tile body -->
-        <div class="tile-body table-custom" ng-controller="ProjectProgressCtrl">
-
-          <div class="table-responsive">
-            <table datatable="ng" dt-options="dtOptions" dt-column-defs="dtColumnDefs" class="table table-custom">
-              <thead>
-              <tr>
-                <th>ID</th>
-                <th>Project</th>
-                <th>Priority</th>
-                <th style="width: 180px;">Status</th>
-                <th style="width: 60px;" class="text-right">Chart</th>
-              </tr>
-              </thead>
-              <tbody>
-              <tr ng-repeat="project in projects">
-                <td>{{ $index+1 }}</td>
-                <td>{{ project.title }}</td>
-                <td><small ng-class="{'text-danger': project.priority.value == 1, 'text-warning': project.priority.value == 2, 'text-success': project.priority.value == 3}">{{ project.priority.title }}</small></td>
-                <td><uib-progressbar class="progress-xxs not-rounded mb-0 inline-block" value="project.status" type="greensea" style="width: 150px; margin-right: 5px"></uib-progressbar><small>{{project.status}}%</small></td>
-                <td class="text-right"><span sparkline data="project.chart.data" options="{
-                  type: 'bar',
-                  barColor: project.chart.color,
-                  barWidth: '4px',
-                  height: '18px'
-                }"></span></td>
-              </tr>
-              </tbody>
-            </table>
-          </div>
-
-        </div>
-        <!-- /tile body -->
-
-      </section>
-      <!-- /tile -->
-    </div>
-    <!-- /col -->
-  </div>
-  <!-- /row -->
 
 </div>

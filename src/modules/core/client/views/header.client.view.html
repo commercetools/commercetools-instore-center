@@ -1,36 +1,25 @@
 <header class="clearfix container-fluid" data-ng-controller="HeaderController" data-ng-init="loadStores();">
   <div class="row">
-    <div class="col-xs-1 text-center">
-      <a class="brand" ui-sref="dashboard">
+    <div class="col-sm-1 col-xs-2 text-center">
+      <a class="brand" href="/dashboard">
         <img src="https://mc.commercetools.com/assets/images/logo.png" alt="Logo Commercetools">
       </a>
     </div>
-    <div class="col-xs-11">
-      <ul class="nav-right pull-right list-inline">
-
-        <li class="dropdown" uib-dropdown>
-          <select class="form-control ng-pristine ng-valid ng-not-empty ng-touched" aria-invalid="false">
-            <option label="Sunrise Demo" value="sunrise-demo">Sunrise Demo</option>
-          </select>
-        </li>
-
-        <li class="dropdown" uib-dropdown>&nbsp;</li>
-
-        <li class="dropdown" uib-dropdown>
-          <select class="form-control ng-pristine ng-valid ng-not-empty ng-touched" aria-invalid="false" ng-model="selectedChannel" ng-change="updateChannel();">
-            <option ng-repeat="store in stores" value="{{store.id}}">{{store.name.en}}</option>
-          </select>
-        </li>
-
-        <li class="dropdown nav-sign-out">
-
-          <a href="/sign-out" class="dropdown-toggle">
-            <span><fa name="sign-out"></fa></span>
-          </a>
-
-        </li>
-
-      </ul>
+    <div class="col-sm-2 hidden-xs"></div>
+    <div class="col-sm-3 col-xs-1">
+      <select class="form-control ng-pristine ng-valid ng-not-empty ng-touched" aria-invalid="false">
+        <option label="Sunrise Demo" value="sunrise-demo">Sunrise Demo</option>
+      </select>
+    </div>
+    <div class="col-sm-5 col-xs-7">
+      <select class="form-control ng-pristine ng-valid ng-not-empty ng-touched" aria-invalid="false" ng-model="selectedChannel" ng-change="updateChannel();">
+        <option ng-repeat="store in stores" value="{{store.id}}">{{store.name.en}}</option>
+      </select>
+    </div>
+    <div class="col-sm-1 col-xs-2 nav-sign-out">
+      <a href="/sign-out">
+        <div><i class="fa fa-sign-out fa-2x"></i></div>
+      </a>
     </div>
   </div>
 </header>
