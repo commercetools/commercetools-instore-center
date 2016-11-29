@@ -12,7 +12,7 @@
     </thead>
     <tbody>
       <tr ng-repeat="inventory in inventories">
-        <td>{{inventory.sku}}</td>
+        <td><a ng-href="/inventories/product/{{inventory.productId}}/{{inventory.sku}}">{{inventory.sku}}</a></td>
         <td>{{inventory.name}}</td>
         <td><img style="max-width:45px;" src="{{inventory.image.url}}"></td>
         <td>{{inventory.price.value.centAmount/100}} {{inventory.price.value.currencyCode}}</td>
