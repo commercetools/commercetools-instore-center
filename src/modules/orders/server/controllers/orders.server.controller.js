@@ -83,5 +83,22 @@ module.exports = (app) => {
       });
   };
 
+  controller.completeOrder = (req, res) => {
+    const params = {};
+
+    params.orderId = req.body.orderId;
+    params.newStatus = req.body.newStatus;
+
+    orderService.completeOrder(params)
+      .then((queryResponse) => {
+        res.json(queryResponse);
+      })
+      .catch(() => {
+        res.status(400).send({
+          message: 'Opps! something went wrong',
+        });
+      });
+  };
+
   return controller;
 };

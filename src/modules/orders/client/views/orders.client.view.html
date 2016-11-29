@@ -8,6 +8,8 @@
       <th>Shipping Address</th>
       <th>Number of Items</th>
       <th>Total Price</th>
+      <th>Complete</th>
+      <th>Cancel</th>
     </thead>
     <tbody>
       <tr ng-repeat="order in orders">
@@ -17,6 +19,8 @@
         <td>{{order.shippingAddress.firstName}} {{order.shippingAddress.lastName}} {{order.shippingAddress.streetName}}</td>
         <td>{{order.lineItems.length}}</td>
         <td>{{order.totalPrice.centAmount/100}} {{order.totalPrice.currencyCode}}</td>
+        <td><button ng-click="completeOrder(order.id, 'Complete')">+</button></td>
+        <td><button ng-click="completeOrder(order.id, 'Cancelled')">-</button></td>
       <tr>
     </tbody>
   </table>
