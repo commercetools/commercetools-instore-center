@@ -27,9 +27,20 @@ angular.module('dashboard')
         });
     }
 
+    function setTotalSales() {
+      Orders.totalSales({ selectedChannel: ChannelSelector.selectedChannel, getAll: true },
+        (res) => {
+          $scope.totalSales = res;
+        },
+        (err) => {
+          //$log.error(err);
+        });
+    }
+
     $scope.init = () => {
       setTotalOrders();
       setTotalCustomers();
+      setTotalSales();
     };
 
     $scope.init();

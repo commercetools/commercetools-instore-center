@@ -65,7 +65,10 @@
           </a>
         </h3>
         <div class="stats-total-container">
-          <a class="stats-total" href>12.400,65€</a>
+          <a class="stats-total" href>{{totalSales.totalSalesCentAmount/100}}
+            <span ng-if="totalSales.currencyCode==='EUR'">€<span>
+            <span ng-if="totalSales.currencyCode==='USD'">$<span>
+          </a>
         </div>
       </div>
     </div>
