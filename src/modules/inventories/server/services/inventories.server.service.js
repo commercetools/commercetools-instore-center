@@ -20,15 +20,22 @@ module.exports = (app) => {
     const productProjectionQuery = client.productProjections;
     const filter = params.filter;
     const sortBy = params.sortBy;
+    const sortAscending = params.sortAscending;
 
-    if (selectedChannel) {
+    console.log(params);
+
+    if (selectedChannel && filter) {
+      inventoryEntriesQuery.where(`supplyChannel(id="${selectedChannel}")`);
+    } else if (selectedChannel) {
       inventoryEntriesQuery.where(`supplyChannel(id="${selectedChannel}")`);
     }
+
     return inventoryEntriesQuery
       .page(page)
       .perPage(perPage)
+      // .sort(sortBy, sortAscending)
       .fetch()
-      .then((res) => {
+      .then((res) => {console.log(res.body.results);
         return Promise.all(res.body.results.map((inventory) => {
           return productProjectionQuery
           .staged(false)
