@@ -38,8 +38,8 @@
               </tr>
           </thead>
           <tbody>
-              <tr st-select-row="row" st-select-mode="multiple" ng-repeat="row in rowsDisplayed">
-                  <td><a ng-href="/inventories/product/{{row.productId}}/{{row.sku}}">{{::row.sku}}</a></td>
+              <tr st-select-row="row" st-select-mode="multiple" ng-repeat="row in rowsDisplayed" ng-click="redirect('/inventories/product/' + row.productId + '/' + row.sku);">
+                  <td>{{::row.sku}}</td>
                   <td>{{::row.name}}</td>
                   <td><img style="max-width:45px;" src="{{row.image.url}}"></td>
                   <td><span ng-class="row.availableQuantity>0?'badge-green badge bg-info':'badge-red badge bg-info'" class="badge bg-info">{{::row.availableQuantity}}</span></td>
