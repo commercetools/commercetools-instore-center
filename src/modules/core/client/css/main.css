@@ -143,3 +143,11 @@ input[type="search"]{-webkit-appearance:none;}
 
 .badge-green {background-color: green;}
 .badge-red {background-color: red;}
+
+nav.paginator-arrows a,
+nav.paginator-arrows a:hover,
+nav.paginator-arrows a:active {
+  color: #213e48;
+  font-size: 18px;
+  border: none;
+}
