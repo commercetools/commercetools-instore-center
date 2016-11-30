@@ -4,7 +4,7 @@
 
   <div class="tile-body" ng-controller="PaginatorController">
 
-      <table st-table="rowsDisplayed" class="st-table table table-custom table-component" paginator-entity="customers" st-pipe="getPage">
+      <table st-table="rowsDisplayed" class="st-table table table-custom table-component" paginator-entity="customers" paginator-default-sort="firstName" st-pipe="getPage">
           <thead>
               <tr>
                   <th>
@@ -22,8 +22,8 @@
                   </th>
               </tr>
               <tr>
-                  <th st-sort="sku" st-sort-default class="sorting">First Name</th>
-                  <th st-sort="name" class="sorting">Last Name</th>
+                  <th st-sort="firstName" st-sort-default class="sorting">First Name</th>
+                  <th st-sort="lastName" class="sorting">Last Name</th>
                   <th st-sort="email" class="sorting">Email</th>
               </tr>
           </thead>
