@@ -4,7 +4,7 @@
 
   <div class="tile-body" ng-controller="PaginatorController">
 
-    <table st-table="rowsDisplayed" class="st-table table table-custom table-component" paginator-entity="inventories" st-pipe="getPage">
+    <table st-table="rowsDisplayed" class="st-table table table-custom table-component" paginator-entity="inventories" paginator-default-sort="sku" st-pipe="getPage">
         <thead>
             <tr>
                 <th>
@@ -20,8 +20,6 @@
                       </button>
                       <button type="button" ng-class="{active: itemsPerPage == 50}" ng-click="setItemsPerPage(50)" class="btn btn-default">50
                       </button>
-                      <button type="button" ng-class="{active: itemsPerPage == 100}" ng-click="setItemsPerPage(100)" class="btn btn-default">100
-                      </button>
                   </div>
                 </th>
             </tr>
@@ -33,7 +31,7 @@
                 <th st-sort="name" class="sorting">Name</th>
                 <th class="text-center">Image</th>
                 <th st-sort="availableQuantity" class="sorting text-center">Availability</th>
-                <th st-sort="totalPrice.centAmount" class="sorting">Total Price</th>
+                <th st-sort="totalPrice.centAmount" class="sorting">Price</th>
             </tr>
         </thead>
         <tbody>
@@ -47,7 +45,7 @@
         </tbody>
         <tfoot>
             <tr>
-                <td colspan="7" class="text-center">
+                <td colspan="5" class="text-center">
                     <div st-pagination="" st-items-by-page="itemsPerPage" st-template="views/paginatorSelectPageTemplate.html"></div>
                 </td>
             </tr>

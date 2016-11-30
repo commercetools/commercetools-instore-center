@@ -32,7 +32,7 @@ module.exports = (app) => {
 
     orderService.query(params)
       .then((queryResponse) => {
-        res.json(queryResponse.results);
+        res.json(queryResponse);
       })
       .catch(() => {
         res.status(400).send({

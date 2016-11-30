@@ -8,6 +8,9 @@ module.exports = (app) => {
     params.selectedChannel = req.query.selectedChannel;
     params.page = req.query.page;
     params.perPage = req.query.perPage;
+    params.filter = req.query.filter;
+    params.sortBy = req.query.sortBy;
+    params.sortAscending = req.query.sortAscending;
 
     inventoriesService.query(params)
       .then((queryResponse) => {
