@@ -33,7 +33,7 @@
               </tr>
           </thead>
           <tbody>
-              <tr st-select-row="row" st-select-mode="multiple" ng-repeat="row in rowsDisplayed">
+              <tr st-select-row="row" st-select-mode="multiple" ng-repeat="row in rowsDisplayed" ng-click="redirect('/customers/' + row.id);">
                   <td>{{::row.firstName}}</td>
                   <td>{{::row.lastName}}</td>
                   <td>{{::row.email}}</td>

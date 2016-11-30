@@ -1,8 +1,7 @@
-import path from 'path';
-
 module.exports = (app) => {
   const controller = {};
   const customersService = require('../services/customers.server.service')(app);
+  const ordersService = require('../../../orders/server/services/orders.server.service')(app);
 
   controller.byId = (req, res) => {
     const customerId = req.params.id;
@@ -10,7 +9,10 @@ module.exports = (app) => {
     if (customerId) {
       customersService.byId(customerId)
         .then((customer) => {
-          res.json(customer);
+          ordersService.getCustomerProductReservations({ customerId })
+          .then((products) => {
+            res.json({ ...customer, products });
+          });
         })
         .catch(() => {
           res.status(400).send({
