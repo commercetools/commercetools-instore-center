@@ -37,8 +37,7 @@
     <div class="col-sm-12"><h3>Placed Products</h3></div>
     <div ng-repeat="product in customer.products" class="col-sm-4">
       <img src="{{product[0].images[0].url}}" style="max-width: 150px;padding:1px;border:1px solid #021a40;">
-      <p><b>Ordered at:</b> {{product[0].placedOn}}</p>
-      <p><span class="badge-green badge bg-info">Available!</span></p>
+      <p><b>Ordered at:</b> {{product[0].placedOn | date:'MM/dd/yyyy'}}</p>
     </div>
   </div>
   <div class="row">
