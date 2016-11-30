@@ -1,16 +1,12 @@
-angular.module('orders').controller('OrdersController', ['$scope', 'OrderService',
-  ($scope, OrderService) => {
-    $scope.loadOrders = () => {
-      OrderService.loadOrders().then((result) => {
-        $scope.orders = result.data;
-      }, (error) => {
-        // TODO Modals.showErrorWindow('Error Removing line item', error.data.message);
-      });
-    };
-
+angular.module('orders')
+.controller('OrdersController',
+['$scope',
+'OrderService',
+'$state',
+  ($scope, OrderService, $state) => {
     $scope.completeOrder = (orderId, newStatus) => {
-      OrderService.completeOrder({ orderId, newStatus }).then((result) => {
-        $scope.loadOrders();
+      OrderService.completeOrder({ orderId, newStatus }).then(() => {
+        $state.reload();
       }, (error) => {
         // TODO Modals.showErrorWindow('Error Removing line item', error.data.message);
       });

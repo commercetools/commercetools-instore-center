@@ -98,6 +98,7 @@ export default {
         'public/lib/oclazyload/dist/ocLazyLoad.js',
         'public/lib/owl-carousel/owl-carousel/owl.carousel.min.js',
         'public/lib/magnific-popup/dist/jquery.magnific-popup.js',
+        'public/lib/bootstrap-confirmation2/bootstrap-confirmation.js',
       ],
       fonts: [
         'public/lib/font-awesome/fonts/*',
