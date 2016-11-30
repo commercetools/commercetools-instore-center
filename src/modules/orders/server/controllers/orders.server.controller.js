@@ -43,11 +43,9 @@ module.exports = (app) => {
 
   controller.totalOrders = (req, res) => {
     const params = {};
-
     params.page = 1;
     params.perPage = 1;
-    params.startDate = req.query.startDate;
-    params.endDate = req.query.endDate;
+    params.selectedChannel = req.query.selectedChannel;
 
     orderService.query(params)
       .then((queryResponse) => {
@@ -66,8 +64,7 @@ module.exports = (app) => {
     const params = {};
 
     params.getAll = true;
-    params.startDate = req.query.startDate;
-    params.endDate = req.query.endDate;
+    params.selectedChannel = req.query.selectedChannel;
 
     orderService.totalSales(params)
       .then((queryResponse) => {

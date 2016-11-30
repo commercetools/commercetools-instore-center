@@ -1,6 +1,6 @@
 angular.module('paginator')
-  .controller('PaginatorController', ['$scope', '$http', 'ChannelSelector',
-  ($scope, $http, ChannelSelector) => {
+  .controller('PaginatorController', ['$scope', '$http', 'ChannelSelector', '$location',
+  ($scope, $http, ChannelSelector, $location) => {
     $scope.itemsPerPage = 25;
 
     function getMatchFields(fields, key) {
@@ -116,6 +116,10 @@ angular.module('paginator')
     $scope.setItemsPerPage = (value) => {
       $scope.itemsPerPage = value;
     };
+
+    $scope.redirect = (url) => {
+      $location.path(url);
+    }
   }])
   .directive('paginatorEntity', () => {
     return {

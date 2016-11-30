@@ -29,12 +29,14 @@
               <tr>
                   <th st-sort="sku" st-sort-default class="sorting">First Name</th>
                   <th st-sort="name" class="sorting">Last Name</th>
+                  <th st-sort="email" class="sorting">Email</th>
               </tr>
           </thead>
           <tbody>
               <tr st-select-row="row" st-select-mode="multiple" ng-repeat="row in rowsDisplayed">
                   <td>{{::row.firstName}}</td>
                   <td>{{::row.lastName}}</td>
+                  <td>{{::row.email}}</td>
               </tr>
           </tbody>
           <tfoot>

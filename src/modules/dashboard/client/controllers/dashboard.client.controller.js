@@ -1,9 +1,39 @@
 angular.module('dashboard')
-  .controller('DashboardCtrl', ($scope) => {
+  .controller('DashboardCtrl',['$scope', 'Orders', 'Customers', 'ChannelSelector',
+  ($scope, Orders, Customers, ChannelSelector) => {
+    $scope.totalOrders = 0;
+    $scope.totalCustomers = 0;
+
     $scope.page = {
       title: 'Dashboard',
     };
-  })
+    function setTotalOrders() {
+      Orders.totalOrders({ selectedChannel: ChannelSelector.selectedChannel },
+        (res) => {
+          $scope.totalOrders = res.totalOrders;
+        },
+        (err) => {
+          //$log.error(err);
+        });
+    }
+
+    function setTotalCustomers() {
+      Customers.totalCustomers({},
+        (res) => {
+          $scope.totalCustomers = res.totalCustomers;
+        },
+        (err) => {
+          //$log.error(err);
+        });
+    }
+
+    $scope.init = () => {
+      setTotalOrders();
+      setTotalCustomers();
+    };
+
+    $scope.init();
+  }])
   .controller('StatisticsChartCtrl', ($scope) => {
     $scope.dataset = [{
       data: [
