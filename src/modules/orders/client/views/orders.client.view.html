@@ -1,43 +1,16 @@
 <div data-ng-controller="OrdersController">
   <h1>ORDERS</h1>
-  <!--<table>
-    <thead>
-      <th>Order Number</th>
-      <th>Order State</th>
-      <th>Customer</th>
-      <th>Shipping Address</th>
-      <th>Number of Items</th>
-      <th>Total Price</th>
-      <th>Complete</th>
-      <th>Cancel</th>
-    </thead>
-    <tbody>
-      <tr ng-repeat="order in orders">
-        <td>{{order.orderNumber}}</td>
-        <td>{{order.orderState}}</td>
-        <td>{{order.customerEmail}}</td>
-        <td>{{order.shippingAddress.firstName}} {{order.shippingAddress.lastName}} {{order.shippingAddress.streetName}}</td>
-        <td>{{order.lineItems.length}}</td>
-        <td>{{order.totalPrice.centAmount/100}} {{order.totalPrice.currencyCode}}</td>
-        <td><button ng-click="completeOrder(order.id, 'Complete')">+</button></td>
-        <td><button ng-click="completeOrder(order.id, 'Cancelled')">-</button></td>
-      <tr>
-    </tbody>
-  </table>-->
 
   <div class="tile-body" ng-controller="PaginatorController">
 
       <table st-table="rowsDisplayed" class="st-table table table-custom table-component" paginator-entity="orders" paginator-default-sort="createdAt" st-pipe="getPage">
           <thead>
               <tr>
-                  <th colspan="2">
+                  <th colspan="3">
                       <input st-search="id" placeholder="search for order id" class="input-sm form-control input-st-search" type="search" />
                   </th>
                   <th></th>
-                  <th></th>
-                  <th></th>
-                  <th></th>
-                  <th colspan="2" class="text-right">
+                  <th colspan="4" class="text-right">
                     <div class="btn-group" role="group" data-toggle="buttons">
                         <button type="button" ng-class="{active: itemsPerPage == 10}" ng-click="setItemsPerPage(10)" class="btn btn-default">10
                         </button>
