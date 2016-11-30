@@ -8,6 +8,8 @@ body, html {
   font-size: 14px;
 }
 
+input[type="search"]{-webkit-appearance:none;}
+
 
 /*  Header  */
 .header-container {
@@ -42,6 +44,7 @@ body, html {
   box-shadow: none;
 
   text-transform: capitalize;
+  -webkit-appearance:none;
 }
 
 
