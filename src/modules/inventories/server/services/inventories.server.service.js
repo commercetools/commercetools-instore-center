@@ -35,13 +35,16 @@ module.exports = (app) => {
           .filterByQuery(`variants.sku:"${inventory.sku}"`)
           .search()
           .then(({ body }) => {
-            const chosenVariant = findVariant(body.results[0], inventory.sku);
-            return { ...inventory,
-                     name: body.results[0].name.en,
-                     price: chosenVariant.prices[0],
-                     image: chosenVariant.images[0],
-                     productId: body.results[0].id,
-                   };
+            if (body.results[0]) {
+              const chosenVariant = findVariant(body.results[0], inventory.sku);
+              return { ...inventory,
+                       name: body.results[0].name.en,
+                       price: chosenVariant.prices[0],
+                       image: chosenVariant.images[0],
+                       productId: body.results[0].id,
+                     };
+            }
+            return null;
           });
         })).then((results) => {
           return { results,

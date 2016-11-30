@@ -72,6 +72,7 @@ module.exports = (app) => {
       ordersQuery.where(`customerId="${customerId}"`);
     }
     return ordersQuery
+    .sort('createdAt', false)
     .fetch()
     .then((res) => {
       return res.body.results.map((order) => {
