@@ -5,13 +5,13 @@
         <img src="https://mc.commercetools.com/assets/images/logo.png" alt="Logo Commercetools">
       </a>
     </div>
-    <div class="col-sm-2 hidden-xs"></div>
+    <div class="col-sm-4 hidden-xs"></div>
     <div class="col-sm-3 col-xs-1">
       <select class="form-control ng-pristine ng-valid ng-not-empty ng-touched" aria-invalid="false">
         <option label="Sunrise Demo" value="sunrise-demo">Sunrise Demo</option>
       </select>
     </div>
-    <div class="col-sm-5 col-xs-7">
+    <div class="col-sm-3 col-xs-7">
       <select class="form-control ng-pristine ng-valid ng-not-empty ng-touched" aria-invalid="false" ng-model="selectedChannel" ng-change="updateChannel();">
         <option ng-repeat="store in stores" value="{{store.id}}">{{store.name.en}}</option>
       </select>
