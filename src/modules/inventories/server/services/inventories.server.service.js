@@ -61,7 +61,8 @@ module.exports = (app) => {
       .byId(productId)
       .fetch()
       .then((product) => {
-        return findVariant(product.body, sku);
+        const chosenVariant = findVariant(product.body, sku);
+        return { ...chosenVariant, name: product.body.name, description: product.body.description };
       })
       .catch((err) => {
         logger.error(`Error getting product info with the params: ${params}, Error: ${err}`);
