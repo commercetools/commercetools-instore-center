@@ -74,7 +74,6 @@ module.exports = (app) => {
   service.getCustomerProductReservations = (params) => {
     const customerId = params.customerId;
     const ordersQuery = client.orders;
-    ordersQuery.where('custom(fields(isReservation=true))');
     if (customerId) {
       ordersQuery.where(`customerId="${customerId}"`);
     }
