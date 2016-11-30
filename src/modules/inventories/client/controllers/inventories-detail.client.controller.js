@@ -1,4 +1,7 @@
-angular.module('inventories').controller('InventoryDetailController', ['$scope', 'InventoryService', '$stateParams',
+angular.module('inventories').controller('InventoryDetailController',
+['$scope',
+'InventoryService',
+'$stateParams',
   ($scope, InventoryService, $stateParams) => {
     $scope.openProductDetail = () => {
       const params = { productId: $stateParams.productId, sku: $stateParams.sku };
