@@ -9,10 +9,27 @@
   </div>
   <div class="row">
     <div class="col-sm-6">
-      <p>{{customer.firstName}} {{customer.lastName}}</p>
-      <p>{{customer.email}}</p>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <h4>Customer Details</h4>
+          <p>{{customer.firstName}} {{customer.lastName}}</p>
+          <p>{{customer.email}}</p>
+        </div>
+      </div>
     </div>
     <div class="col-sm-6">
+      <div class="panel panel-default">
+        <div class="panel-body" ng-if="customer.addresses.length > 0">
+          <h4>Address</h4>
+          <p>{{customer.addresses[0].streetName}}</p>
+          <p>{{customer.addresses[0].postalCode}}</p>
+          <p>{{customer.addresses[0].city}}, {{customer.addresses[0].country}}</p>
+        </div>
+        <div class="panel-body" ng-if="customer.addresses.length === 0">
+          <h4>Address</h4>
+          <p>The customer has no addresses</p>
+        </div>
+      </div>
 
     </div>
   </div>
@@ -21,6 +38,27 @@
     <div ng-repeat="product in customer.products" class="col-sm-4">
       <img src="{{product[0].images[0].url}}" style="max-width: 150px;padding:1px;border:1px solid #021a40;">
       <p><b>Ordered at:</b> {{product[0].placedOn}}</p>
+      <p><span class="badge-green badge bg-info">Available!</span></p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <h3>Recommended Products</h3>
+    </div>
+
+    <div class="col-sm-4">
+      <img src="https://s3-eu-west-1.amazonaws.com/commercetools-maximilian/products/081506_1_medium.jpg" style="max-width: 150px;padding:1px;border:1px solid #021a40;">
+      <p><b>Price:</b> {{product.prices[0].value.currencyCode}} 130</p>
+      <p><span class="badge-green badge bg-info">Available!</span></p>
+    </div>
+    <div class="col-sm-4">
+      <img src="https://s3-eu-west-1.amazonaws.com/commercetools-maximilian/products/081119_1_large.jpg" style="max-width: 150px;padding:1px;border:1px solid #021a40;">
+      <p><b>Price:</b> {{product.prices[0].value.currencyCode}} 92</p>
+      <p><span class="badge-red badge bg-info">Out of stock!</span></p>
+    </div>
+    <div class="col-sm-4">
+      <img src="https://s3-eu-west-1.amazonaws.com/commercetools-maximilian/products/080592_1_large.jpg" style="max-width: 150px;padding:1px;border:1px solid #021a40;">
+      <p><b>Price:</b> {{product.prices[0].value.currencyCode}} 148.75</p>
       <p><span class="badge-green badge bg-info">Available!</span></p>
     </div>
   </div>

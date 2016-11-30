@@ -50,7 +50,6 @@
               </tr>
               <tr>
                   <th st-sort="orderNumber" st-sort-default class="sorting">Number</th>
-                  <th st-sort="orderState" class="sorting">State</th>
                   <th st-sort="customerEmail">Customer</th>
                   <th>Shipping Address</th>
                   <th>Items</th>
@@ -61,7 +60,6 @@
           <tbody>
               <tr st-select-row="row" st-select-mode="multiple" ng-repeat="row in rowsDisplayed">
                   <td>{{::row.orderNumber}}</td>
-                  <td>{{::row.orderState}}</td>
                   <td>{{::row.customerEmail}}</td>
                   <td>{{::row.shippingAddress.firstName}} {{::row.shippingAddress.lastName}} {{::row.shippingAddress.streetName}}</td>
                   <td>{{::row.lineItems.length}}</td>
