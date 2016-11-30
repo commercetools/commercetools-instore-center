@@ -33,7 +33,7 @@
                   <th st-sort="sku" st-sort-default class="sorting">SKU</th>
                   <th st-sort="name" class="sorting">Name</th>
                   <th>Image</th>
-                  <th st-sort="availableQuantity" class="sorting">Num of Items</th>
+                  <th st-sort="availableQuantity" class="sorting">Availability</th>
                   <th st-sort="totalPrice.centAmount" class="sorting">Total Price</th>
               </tr>
           </thead>
@@ -42,7 +42,7 @@
                   <td>{{::row.sku}}</td>
                   <td>{{::row.name}}</td>
                   <td><img style="max-width:45px;" src="{{row.image.url}}"></td>
-                  <td><span ng-class="row.availableQuantity>0?'badge-green badge bg-info':'badge-red badge bg-info'" class="badge bg-info">{{::row.availableQuantity}}</span></td>
+                  <td class="text-center"><span ng-class="row.availableQuantity>0?'badge-green badge bg-info':'badge-red badge bg-info'" class="badge bg-info">{{::row.availableQuantity}}</span></td>
                   <td>{{::row.price.value.centAmount / 100 | currency: row.price.value.currencyCode + " "}}</td>
               </tr>
           </tbody>
