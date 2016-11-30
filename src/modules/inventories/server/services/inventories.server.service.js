@@ -22,12 +22,12 @@ module.exports = (app) => {
     const sortBy = params.sortBy;
     const sortAscending = params.sortAscending;
 
-    console.log(params);
+    if (selectedChannel) {
+      inventoryEntriesQuery.where(`supplyChannel(id="${selectedChannel}")`);
+    }
 
-    if (selectedChannel && filter) {
-      inventoryEntriesQuery.where(`supplyChannel(id="${selectedChannel}")`);
-    } else if (selectedChannel) {
-      inventoryEntriesQuery.where(`supplyChannel(id="${selectedChannel}")`);
+    if (filter) {
+      // inventoryEntriesQuery.where(``);
     }
 
     return inventoryEntriesQuery

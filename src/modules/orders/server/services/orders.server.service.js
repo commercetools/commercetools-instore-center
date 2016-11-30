@@ -16,10 +16,13 @@ module.exports = (app) => {
   };
 
   service.query = (params) => {
-    const page = params.page;
-    const perPage = params.perPage;
+    const page = parseInt(params.page, 10);
+    const perPage = parseInt(params.perPage, 10);
     const selectedChannel = params.selectedChannel;
     const ordersQuery = client.orders;
+    const filter = params.filter;
+    const sortBy = params.sortBy ? params.sortBy : 'createdAt';
+    const sortAscending = params.sortAscending;
 
     ordersQuery.where('custom(fields(isReservation=true)) AND orderState="Open"');
 
@@ -27,10 +30,14 @@ module.exports = (app) => {
       ordersQuery.where(`lineItems(supplyChannel(id="${selectedChannel}"))`);
     }
 
+    if (filter) {
+      // ordersQuery.where(``);
+    }
+
     return ordersQuery
       .page(page)
       .perPage(perPage)
-      .sort('createdAt', false)
+      .sort(sortBy, sortAscending)
       .fetch()
       .then((res) => {
         return res.body;
