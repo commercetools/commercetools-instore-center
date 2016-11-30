@@ -33,9 +33,9 @@ module.exports = (app) => {
     return inventoryEntriesQuery
       .page(page)
       .perPage(perPage)
-      // .sort(sortBy, sortAscending)
+      .sort(sortBy, sortAscending)
       .fetch()
-      .then((res) => {console.log(res.body.results);
+      .then((res) => {
         return Promise.all(res.body.results.map((inventory) => {
           return productProjectionQuery
           .staged(false)
@@ -50,8 +50,9 @@ module.exports = (app) => {
                        image: chosenVariant.images[0],
                        productId: body.results[0].id,
                      };
+            } else {
+              return inventory;
             }
-            return null;
           });
         })).then((results) => {
           return { results,
