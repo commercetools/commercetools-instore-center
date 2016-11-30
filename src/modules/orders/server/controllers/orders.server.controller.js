@@ -25,12 +25,7 @@ module.exports = (app) => {
   };
 
   controller.query = (req, res) => {
-    const params = {};
-    params.selectedChannel = req.query.selectedChannel;
-    params.page = parseInt(req.query.page);
-    params.perPage = parseInt(req.query.perPage);
-
-    orderService.query(params)
+    orderService.query(req.query)
       .then((queryResponse) => {
         res.json(queryResponse);
       })
@@ -42,12 +37,11 @@ module.exports = (app) => {
   };
 
   controller.totalOrders = (req, res) => {
-    const params = {};
-    params.page = 1;
-    params.perPage = 1;
-    params.selectedChannel = req.query.selectedChannel;
-
-    orderService.query(params)
+    orderService.query({
+      page: 1,
+      perPage: 1,
+      selectedChannel: req.query.selectedChannel,
+    })
       .then((queryResponse) => {
         res.json({
           totalOrders: queryResponse.total,
@@ -61,12 +55,10 @@ module.exports = (app) => {
   };
 
   controller.totalSales = (req, res) => {
-    const params = {};
-
-    params.getAll = true;
-    params.selectedChannel = req.query.selectedChannel;
-
-    orderService.totalSales(params)
+    orderService.totalSales({
+      getAll: true,
+      selectedChannel: req.query.selectedChannel,
+    })
       .then((queryResponse) => {
         res.json({
           totalSalesCentAmount: queryResponse.totalSalesCentAmount,
@@ -81,12 +73,10 @@ module.exports = (app) => {
   };
 
   controller.completeOrder = (req, res) => {
-    const params = {};
-
-    params.orderId = req.body.orderId;
-    params.newStatus = req.body.newStatus;
-
-    orderService.completeOrder(params)
+    orderService.completeOrder({
+      orderId: req.body.orderId,
+      newStatus: req.body.newStatus,
+    })
       .then((queryResponse) => {
         res.json(queryResponse);
       })

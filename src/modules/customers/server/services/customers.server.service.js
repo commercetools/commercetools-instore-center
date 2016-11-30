@@ -18,9 +18,12 @@ module.exports = (app) => {
   service.query = (params) => {
     const startDate = params.startDate;
     const endDate = params.endDate;
-    const page = params.page;
-    const perPage = params.perPage;
+    const page = parseInt(params.page, 10);
+    const perPage = parseInt(params.perPage, 10);
     const customersQuery = client.customers;
+    const filter = params.filter;
+    const sortBy = params.sortBy ? params.sortBy : 'createdAt';
+    const sortAscending = params.sortAscending;
 
     if (startDate) {
       customersQuery.where(`createdAt >= "${startDate}"`);
@@ -30,9 +33,14 @@ module.exports = (app) => {
       customersQuery.where(`createdAt <= "${endDate}"`);
     }
 
+    if (filter) {
+      // customersQuery.where(``);
+    }
+
     return customersQuery
       .page(page)
       .perPage(perPage)
+      .sort(sortBy, sortAscending)
       .fetch()
       .then((res) => {
         return res.body;
