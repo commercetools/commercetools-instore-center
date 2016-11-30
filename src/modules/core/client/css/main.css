@@ -128,10 +128,15 @@ body, html {
   padding: 20px;
 }
 
-.badge-green{
-  background-color: green;
-}
+/* Table Component */
 
-.badge-red{
-  background-color: red;
+.table-component > thead tr:first-child {
+  background-color: #fafafa;
+  box-shadow: 0 1px 4px 0 rgba(0,0,0,.2);
 }
+.table-component > thead tr:first-child .input-sm {height: 22px;}
+.table-component > thead > tr > th {border-bottom: none;}
+
+
+.badge-green {background-color: green;}
+.badge-red {background-color: red;}

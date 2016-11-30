@@ -1,7 +1,7 @@
 angular.module('paginator')
   .controller('PaginatorController', ['$scope', '$http', 'ChannelSelector', '$location',
   ($scope, $http, ChannelSelector, $location) => {
-    $scope.itemsPerPage = 25;
+    $scope.itemsPerPage = 10;
 
     function getMatchFields(fields, key) {
       let matchFields;
@@ -100,12 +100,12 @@ angular.module('paginator')
         },
       })
       .then((response) => {
-        tableState.pagination.totalItemCount = (response.data.total) ? response.data.total : response.data.length;
+        tableState.pagination.totalItemCount = response.data.total;
         tableState.pagination.numberOfPages = Math.ceil(response.data.total / $scope.perPage);
         tableState.pagination.start = $scope.start;
         tableState.search.predicateObject = $scope.predicateObject;
         tableState.sort = $scope.sortPredicateObject;
-        $scope.rowsDisplayed = (response.data.results) ? response.data.results : response.data;
+        $scope.rowsDisplayed = response.data.results;
       })
       .catch((err) => {
         $scope.rowsDisplayed = [];
@@ -119,7 +119,7 @@ angular.module('paginator')
 
     $scope.redirect = (url) => {
       $location.path(url);
-    }
+    };
   }])
   .directive('paginatorEntity', () => {
     return {

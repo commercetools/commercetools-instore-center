@@ -14,11 +14,12 @@ module.exports = (app) => {
 
   service.query = (params) => {
     const selectedChannel = params.selectedChannel;
-    const page = params.page;
-    const perPage = params.perPage;
+    const page = parseInt(params.page, 10);
+    const perPage = parseInt(params.perPage, 10);
     const inventoryEntriesQuery = client.inventoryEntries;
     const productProjectionQuery = client.productProjections;
-
+    const filter = params.filter;
+    const sortBy = params.sortBy;
 
     if (selectedChannel) {
       inventoryEntriesQuery.where(`supplyChannel(id="${selectedChannel}")`);
@@ -42,8 +43,12 @@ module.exports = (app) => {
                      productId: body.results[0].id,
                    };
           });
-        })).then((result) => {
-          return result;
+        })).then((results) => {
+          return { results,
+            offset: res.body.offset,
+            count: res.body.count,
+            total: res.body.total,
+          };
         });
       })
       .catch((err) => {
