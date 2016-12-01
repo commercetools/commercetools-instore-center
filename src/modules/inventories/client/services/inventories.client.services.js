@@ -1,14 +1,14 @@
-angular.module('inventories').service('InventoryService', ['$http', 'ChannelSelector',
-  function handleService($http, ChannelSelector) {
-    this.loadInventories = () => {
-      return $http.get(
-        `/api/inventories?selectedChannel=${ChannelSelector.selectedChannel}&page=1&perPage=10`
-      );
-    };
-
+angular.module('inventories').service('InventoryService', ['$http',
+  function handleService($http) {
     this.openProductDetail = (params) => {
       return $http.get(
         `/api/inventories/product?productId=${params.productId}&sku=${params.sku}`
+      );
+    };
+
+    this.totalProducts = (params) => {
+      return $http.get(
+        `/api/inventories/products?selectedChannel=${params.selectedChannel}`
       );
     };
   },

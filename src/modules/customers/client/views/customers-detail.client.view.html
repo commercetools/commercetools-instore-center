@@ -4,7 +4,7 @@
       <h1>Customer Insights</h1>
     </div>
     <div class="col-sm-1">
-      <a href="/customers"><i class="fa fa-arrow-left" aria-hidden="true" style="font-size: x-large;color:#666;bottom:0;padding-top:25px;"></i></a>
+      <a href="/customers"><i class="fa fa-arrow-left arrow-back" aria-hidden="true"></i></a>
     </div>
   </div>
   <div class="row">
@@ -36,7 +36,7 @@
   <div class="row">
     <div class="col-sm-12"><h3>Placed Products</h3></div>
     <div ng-repeat="product in customer.products" class="col-sm-4">
-      <img src="{{product[0].images[0].url}}" style="max-width: 150px;padding:1px;border:1px solid #021a40;">
+      <img src="{{product[0].images[0].url}}" class="product-thumbnail-image">
       <p><b>Ordered at:</b> {{product[0].placedOn | date:'MM/dd/yyyy'}}</p>
     </div>
   </div>
@@ -46,17 +46,17 @@
     </div>
 
     <div class="col-sm-4">
-      <img src="https://s3-eu-west-1.amazonaws.com/commercetools-maximilian/products/081506_1_medium.jpg" style="max-width: 150px;padding:1px;border:1px solid #021a40;">
+      <img src="https://s3-eu-west-1.amazonaws.com/commercetools-maximilian/products/081506_1_medium.jpg" class="product-thumbnail-image">
       <p><b>Price:</b> {{product.prices[0].value.currencyCode}} 130</p>
       <p><span class="badge-green badge bg-info">Available!</span></p>
     </div>
     <div class="col-sm-4">
-      <img src="https://s3-eu-west-1.amazonaws.com/commercetools-maximilian/products/081119_1_large.jpg" style="max-width: 150px;padding:1px;border:1px solid #021a40;">
+      <img src="https://s3-eu-west-1.amazonaws.com/commercetools-maximilian/products/081119_1_large.jpg" class="product-thumbnail-image">
       <p><b>Price:</b> {{product.prices[0].value.currencyCode}} 92</p>
       <p><span class="badge-red badge bg-info">Out of stock!</span></p>
     </div>
     <div class="col-sm-4">
-      <img src="https://s3-eu-west-1.amazonaws.com/commercetools-maximilian/products/080592_1_large.jpg" style="max-width: 150px;padding:1px;border:1px solid #021a40;">
+      <img src="https://s3-eu-west-1.amazonaws.com/commercetools-maximilian/products/080592_1_large.jpg" class="product-thumbnail-image">
       <p><b>Price:</b> {{product.prices[0].value.currencyCode}} 148.75</p>
       <p><span class="badge-green badge bg-info">Available!</span></p>
     </div>

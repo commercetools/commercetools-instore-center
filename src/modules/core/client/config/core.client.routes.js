@@ -18,6 +18,9 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
               'scripts/vendor/datatables/datatables.bootstrap.min.css',
             ]);
           }],
+          channels: ['HeaderService', (HeaderService) => {
+            return HeaderService.promise;
+          }],
         },
       })
       .state('not-found', {
