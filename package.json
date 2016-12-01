@@ -1,7 +1,7 @@
 {
-  "name": "project_template",
+  "name": "commercetools-instore-center",
   "version": "1.0.0",
-  "description": "Commercetools POS",
+  "description": "Commercetools In Store Center",
   "main": "index.js",
   "scripts": {
     "test": "gulp test",

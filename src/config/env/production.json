@@ -1,14 +1,14 @@
 {
   "LOGGER": {
-    "LEVEL": "debug"
+    "LEVEL": "error"
   },
   "TOKEN": {
     "SECRET": "test",
     "MAX_AGE_SECONDS": 604800
   },
   "COMMERCE_TOOLS": {
-    "PROJECT_KEY": "",
-    "CLIENT_ID": "",
-    "CLIENT_SECRET": ""
+    "PROJECT_KEY": "process.env.CTP_PROJECT_KEY",
+    "CLIENT_ID": "process.env.CTP_CLIENT_ID",
+    "CLIENT_SECRET": "process.env.CTP_CLIENT_SECRET"
   }
 }

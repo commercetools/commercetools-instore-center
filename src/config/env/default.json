@@ -1,9 +1,16 @@
 {
-  "TITLE": "commercetools In Store Center",
+  "TITLE": "Commercetools In Store Center",
   "PORT": 3000,
   "FAVICON": "/images/favicon.ico",
   "COMMERCE_TOOLS": {
     "API_HOST": "api.sphere.io",
     "OAUTH_URL": "auth.sphere.io"
+  },
+  "ENTITIES": {
+    "DATATABLES": {
+      "PER_PAGE": 10,
+      "SORT_BY": "createdAt",
+      "SORT_ASCENDING": "true"
+    }
   }
 }
