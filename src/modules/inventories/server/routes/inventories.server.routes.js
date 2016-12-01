@@ -6,4 +6,7 @@ module.exports = (app) => {
 
   app.route('/api/inventories/product')
     .get(inventoriesController.getProductById);
+
+  app.route('/api/inventories/products')
+    .get(inventoriesController.getAvailableProducts);
 };

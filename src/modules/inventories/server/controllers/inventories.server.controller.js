@@ -30,5 +30,19 @@ module.exports = (app) => {
       });
   };
 
+  controller.getAvailableProducts = (req, res) => {
+    const params = {};
+    params.selectedChannel = req.query.selectedChannel;
+    inventoriesService.getAvailableProducts(params)
+      .then((totalProducts) => {
+        res.json({ totalProducts });
+      })
+      .catch(() => {
+        res.status(400).send({
+          message: 'Opps! something went wrong',
+        });
+      });
+  };
+
   return controller;
 };

@@ -150,4 +150,31 @@ nav.paginator-arrows a:active {
   color: #213e48;
   font-size: 18px;
   border: none;
+  cursor: pointer;
+}
+
+.arrow-back{
+  font-size: x-large;
+  color:#666;
+  bottom:0;
+  padding-top:25px;
+}
+
+.product-main-image {
+  max-width: 300px;
+  padding:1px;
+  border:1px solid #213e48;
+}
+
+.product-thumbnail-image{
+  max-width: 150px;
+  padding:1px;
+  border:1px solid #213e48;
+}
+
+.confirmation-buttons a{
+  border-radius: 4px !important;
+}
+.confirmation-buttons a.btn.btn-success{
+  margin-right: 15px;
 }

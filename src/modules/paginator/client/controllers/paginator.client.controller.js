@@ -1,6 +1,6 @@
 angular.module('paginator')
-  .controller('PaginatorController', ['$scope', '$http', 'ChannelSelector', '$location',
-  ($scope, $http, ChannelSelector, $location) => {
+  .controller('PaginatorController', ['$scope', '$http', '$rootScope', '$location',
+  ($scope, $http, $rootScope, $location) => {
     $scope.itemsPerPage = 10;
 
     function getMatchFields(fields, key) {
@@ -92,7 +92,7 @@ angular.module('paginator')
         params: {
           page: $scope.page,
           perPage: $scope.perPage,
-          selectedChannel: ChannelSelector.selectedChannel,
+          selectedChannel: $rootScope.selectedChannel,
           filter: JSON.stringify($scope.filter),
           sortBy: $scope.sortBy,
           sortAscending: $scope.sortAscending,

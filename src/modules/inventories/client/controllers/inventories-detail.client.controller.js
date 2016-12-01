@@ -1,4 +1,5 @@
-angular.module('inventories').controller('InventoryDetailController',
+angular.module('inventories')
+.controller('InventoryDetailController',
 ['$scope',
 'InventoryService',
 '$stateParams',
@@ -7,7 +8,6 @@ angular.module('inventories').controller('InventoryDetailController',
       const params = { productId: $stateParams.productId, sku: $stateParams.sku };
       InventoryService.openProductDetail(params).then((result) => {
         $scope.product = result.data;
-        console.log(result);
       }, (error) => {
         // TODO Modals.showErrorWindow('Error Removing line item', error.data.message);
       });

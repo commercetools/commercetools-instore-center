@@ -12,7 +12,6 @@ angular.module('customers').factory('Customers', ['$resource',
         method: 'GET',
         isArray: true,
         url: 'api/customers',
-        params: { page: 1, perPage: 500 },
       },
     });
   },
