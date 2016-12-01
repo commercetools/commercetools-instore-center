@@ -3,8 +3,9 @@ angular.module('dashboard')
     '$scope',
     'Orders',
     'Customers',
+    'InventoryService',
     '$rootScope',
-    ($scope, Orders, Customers, $rootScope) => {
+    ($scope, Orders, Customers, InventoryService, $rootScope) => {
       $scope.totalOrders = 0;
       $scope.totalCustomers = 0;
 
@@ -41,10 +42,21 @@ angular.module('dashboard')
           });
       }
 
+      function setTotalProducts() {
+        InventoryService.totalProducts({ selectedChannel: $rootScope.selectedChannel })
+          .then((res) => {
+            $scope.totalProducts = res.data.totalProducts;
+          },
+          (err) => {
+            //$log.error(err);
+          });
+      }
+
       $scope.init = () => {
         setTotalOrders();
         setTotalCustomers();
         setTotalSales();
+        setTotalProducts();
       };
 
       $scope.init();

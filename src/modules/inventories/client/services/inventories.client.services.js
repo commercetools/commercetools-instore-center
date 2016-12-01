@@ -5,5 +5,11 @@ angular.module('inventories').service('InventoryService', ['$http',
         `/api/inventories/product?productId=${params.productId}&sku=${params.sku}`
       );
     };
+
+    this.totalProducts = (params) => {
+      return $http.get(
+        `/api/inventories/products?selectedChannel=${params.selectedChannel}`
+      );
+    };
   },
 ]);

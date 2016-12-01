@@ -63,7 +63,8 @@ module.exports = (app) => {
         });
       })
       .catch((err) => {
-        logger.error(`Error getting inventory entries with the params: ${params}, Error: ${err}`);
+        logger.error(`Error getting inventory entries with the params:
+          ${params}, Error: ${err}`);
       });
   };
 
@@ -81,7 +82,23 @@ module.exports = (app) => {
         return { ...chosenVariant, name: product.body.name, description: product.body.description };
       })
       .catch((err) => {
-        logger.error(`Error getting product info with the params: ${params}, Error: ${err}`);
+        logger.error(`Error getting product info with the params: ${params},
+          Error: ${err}`);
+      });
+  };
+
+  service.getAvailableProducts = (params) => {
+    const selectedChannel = params.selectedChannel;
+    const inventoryEntriesQuery = client.inventoryEntries;
+
+    return inventoryEntriesQuery
+      .where(`availableQuantity > 0 AND supplyChannel(id="${selectedChannel}")`)
+      .fetch()
+      .then((result) => {
+        return result.body.total;
+      })
+      .catch((err) => {
+        logger.error(`Error getting the available products, Error: ${err}`);
       });
   };
 
