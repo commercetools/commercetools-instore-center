@@ -8,7 +8,7 @@ before_install:
 - docker build -t "ctpinstorecenter/commercetools-instore-center:${TRAVIS_COMMIT::8}" .
 - docker tag "ctpinstorecenter/commercetools-instore-center:${TRAVIS_COMMIT::8}" "ctpinstorecenter/commercetools-instore-center:latest"
 before_script:
-- docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+- docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
 script:
 - ./travis-build.sh
 after_script:
