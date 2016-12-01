@@ -92,30 +92,27 @@ angular.module(ApplicationConfiguration.applicationModuleName)
     $rootScope.$on('$stateChangeSuccess', (event, toState, toParams, fromState, fromParams) => {
       storePreviousState(fromState, fromParams);
 
-      event.targetScope.$watch('$viewContentLoaded', function () {
-
+      event.targetScope.$watch('$viewContentLoaded', () => {
         angular.element('html, body, #content').animate({ scrollTop: 0 }, 200);
 
-        $timeout(function() {
-          angular.element('#wrap').css('visibility','visible');
+        $timeout(() => {
+          angular.element('#wrap').css('visibility', 'visible');
 
           if (!angular.element('.dropdown').hasClass('open')) {
             angular.element('.dropdown').find('>ul').slideUp();
           }
-        },0);
-
+        }, 0);
       });
       $rootScope.containerClass = toState.containerClass;
     });
   })
-  .config(['uiSelectConfig', function (uiSelectConfig) {
+  .config(['uiSelectConfig', (uiSelectConfig) => {
     uiSelectConfig.theme = 'bootstrap';
   }])
-  //angular-language
-  .config(['$translateProvider', function($translateProvider) {
+  .config(['$translateProvider', ($translateProvider) => {
     $translateProvider.useStaticFilesLoader({
       prefix: 'languages/',
-      suffix: '.json'
+      suffix: '.json',
     });
     $translateProvider.useLocalStorage();
     $translateProvider.preferredLanguage('en');

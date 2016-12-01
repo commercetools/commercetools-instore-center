@@ -1,4 +1,5 @@
-angular.module('inventories').controller('InventoryDetailController',
+angular.module('inventories')
+.controller('InventoryDetailController',
 ['$scope',
 'InventoryService',
 '$stateParams',
