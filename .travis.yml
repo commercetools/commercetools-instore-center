@@ -10,7 +10,6 @@ before_install:
 before_script:
 - docker login -e="$DOCKER_EMAIL" -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
 script:
-- chmod +x travis-build.sh
 - ./travis-build.sh
 after_script:
 - docker logout
