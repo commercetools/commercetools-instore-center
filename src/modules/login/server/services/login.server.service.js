@@ -10,8 +10,34 @@ module.exports = (app) => {
   };
   const apiHost = 'https://mc.commercetools.com';
   const loginUrl = `${apiHost}/tokens`;
-  const userUrl = `${apiHost}/users`;
   const projectsByUserUrl = `${apiHost}/projects`;
+
+  function processResponse(response) {
+    let isOk = response.ok;
+    return response.text()
+    .then((text) => {
+      let parsed;
+      try { parsed = JSON.parse(text); } catch (error) { isOk = false; }
+      if (isOk) return parsed;
+      const error = new Error(parsed ? parsed.message : text);
+      if (parsed) error.body = parsed;
+      throw error;
+    });
+  }
+
+  service.getUserProjects = (params) => {
+    console.log(params);
+    return fetch(
+      `${projectsByUserUrl}?userId=${params.user}`,
+      {
+        method: 'GET',
+        headers: {
+          ...defaultHeaders,
+          Authorization: params.token,
+        },
+      }
+    ).then(processResponse);
+  };
 
   service.login = (params) => {
     return fetch(
@@ -24,10 +50,7 @@ module.exports = (app) => {
           password: params.password,
         }),
       }
-    ).then((processResponse) => {
-      console.log(processResponse);
-      return processResponse;
-    });
+    ).then(processResponse);
   };
 
   return service;

@@ -7,6 +7,8 @@ angular.module('login')
     $scope.login = () => {
       LoginService.login($scope.credentials).then((data) => {
         console.log(data);
+      }, (err) => {
+        console.log('Error login in: ' + JSON.stringify(err));
       });
     };
   },
