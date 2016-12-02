@@ -3,7 +3,7 @@
 set -e
 
 export REPO=ctpinstorecenter/commercetools-instore-center
-export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "latest"; else echo ${TRAVIS_BRANCH/\//-} ; fi`
+export TAG=`if [ "$TRAVIS_BRANCH" == "master" ]; then echo "master"; else echo ${TRAVIS_BRANCH/\//-} ; fi`
 echo "Building Docker image using tag '${REPO}:${COMMIT}'."
 docker build -t $REPO:$COMMIT .
 echo "Adding additional tag '${REPO}:${TAG}' to already built Docker image '${REPO}:${COMMIT}'."
