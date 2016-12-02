@@ -44,5 +44,21 @@ module.exports = (app) => {
       });
   };
 
+  controller.checkStores = (req, res) => {
+    const params = {};
+    params.currentId = req.query.currentId;
+    params.sku = req.query.sku;
+
+    inventoriesService.checkStores(params)
+      .then((queryResponse) => {
+        res.json(queryResponse);
+      })
+      .catch(() => {
+        res.status(400).send({
+          message: 'Opps! something went wrong',
+        });
+      });
+  };
+
   return controller;
 };

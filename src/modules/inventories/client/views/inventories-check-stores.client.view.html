@@ -1,0 +1,24 @@
+<div ng-controller="InventoriesCheckStoresController" ng-init="checkStores();">
+  <div class="row">
+    <div class="col-sm-11">
+      <h1>{{stores[0].name}} Store Availability</h1>
+    </div>
+    <div class="col-sm-1">
+      <a href="/inventories"><i class="fa fa-arrow-left arrow-back" aria-hidden="true"></i></a>
+    </div>
+  </div>
+  <table class="st-table table table-custom table-component">
+    <thead>
+      <th>Store</th>
+      <th>Availability</th>
+      <th>Distance (km)</th>
+    </thead>
+    <tbody>
+      <tr ng-repeat="store in stores">
+        <td><span ng-if="!store.supplyChannel">Unknown Store</span><span ng-if="store.supplyChannel">{{store.supplyChannel.obj.name.en}}</span></td>
+        <td><span ng-class="store.availableQuantity>0?'badge-green':'badge-red'" class="badge bg-info">{{store.availableQuantity}}</span></td>
+        <td>{{store.distance}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

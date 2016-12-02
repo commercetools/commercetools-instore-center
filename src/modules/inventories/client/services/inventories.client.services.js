@@ -11,5 +11,11 @@ angular.module('inventories').service('InventoryService', ['$http',
         `/api/inventories/products?selectedChannel=${params.selectedChannel}`
       );
     };
+
+    this.checkStores = (params) => {
+      return $http.get(
+        `/api/inventories/checkStores?currentId=${params.currentId}&sku=${params.sku}`
+      );
+    };
   },
 ]);

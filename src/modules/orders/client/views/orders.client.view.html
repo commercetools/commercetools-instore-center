@@ -6,10 +6,15 @@
       <table st-table="rowsDisplayed" class="st-table table table-custom table-component" paginator-entity="orders" paginator-default-sort="createdAt" st-pipe="getPage">
           <thead>
               <tr>
-                  <th colspan="3">
+                  <th colspan="2">
                       <input st-search="id" placeholder="search for order id" class="input-sm form-control input-st-search" type="search" />
                   </th>
-                  <th></th>
+                  <th>
+                    <select class="form-control ng-pristine ng-valid ng-not-empty ng-touched" aria-invalid="false" ng-model="status">
+                      <option value="Open">Open</option>
+                      <option value="Cancelled">Cancelled</option>
+                    </select>
+                  </th>
                   <th colspan="4" class="text-right">
                     <div class="btn-group" role="group" data-toggle="buttons">
                         <button type="button" ng-class="{active: itemsPerPage == 10}" ng-click="setItemsPerPage(10)" class="btn btn-default">10

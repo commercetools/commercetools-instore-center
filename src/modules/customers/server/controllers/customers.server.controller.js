@@ -7,9 +7,9 @@ module.exports = (app) => {
     const customerId = req.params.id;
 
     if (customerId) {
-      customersService.byId(customerId)
+      return customersService.byId(customerId)
         .then((customer) => {
-          ordersService.getCustomerProductReservations({ customerId })
+          return ordersService.getCustomerProductReservations({ customerId })
           .then((products) => {
             res.json({ ...customer, products });
           });

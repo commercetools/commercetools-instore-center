@@ -28,19 +28,21 @@
             </tr>
             <tr>
                 <th st-sort="sku" st-sort-default class="sorting">SKU</th>
-                <th st-sort="name" class="sorting">Name</th>
                 <th class="text-center">Image</th>
-                <th st-sort="availableQuantity" class="sorting text-center">Availability</th>
+                <th st-sort="name" class="sorting">Name</th>
                 <th st-sort="totalPrice.centAmount" class="sorting">Price</th>
+                <th st-sort="availableQuantity" class="sorting text-center">Availability</th>
+                <th>Other Stores</th>
             </tr>
         </thead>
         <tbody>
             <tr st-select-row="row" st-select-mode="multiple" ng-repeat="row in rowsDisplayed" ng-click="redirect('/inventories/product/' + row.productId + '/' + row.sku);">
                 <td>{{::row.sku}}</td>
-                <td>{{::row.name}}</td>
                 <td class="text-center table-image"><img style="max-width:45px;" src="{{row.image.url}}"></td>
-                <td class="text-center"><span ng-class="row.availableQuantity>0?'badge-green':'badge-red'" class="badge bg-info">{{::row.availableQuantity}}</span></td>
+                <td>{{::row.name}}</td>
                 <td>{{::row.price.value.centAmount / 100 | currency: row.price.value.currencyCode + " "}}</td>
+                <td class="text-center"><span ng-class="row.availableQuantity>0?'badge-green':'badge-red'" class="badge bg-info">{{::row.availableQuantity}}</span></td>
+                <td><button ng-click='redirect("/inventories/checkStores/" + row.id + "/" + row.sku);' class="btn btn-large btn-primary">Check Stores</button></td>
             </tr>
         </tbody>
         <tfoot>

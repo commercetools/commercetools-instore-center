@@ -1,3 +1,4 @@
+import geolib from 'geolib';
 
 module.exports = (app) => {
   const service = {};
@@ -14,16 +15,30 @@ module.exports = (app) => {
 
   service.query = (params) => {
     const selectedChannel = params.selectedChannel;
-    const page = parseInt(params.page, 10);
-    const perPage = parseInt(params.perPage, 10);
+    const sku = params.sku;
+    const page = parseInt(params.page, 10) || 1;
+    const perPage = parseInt(params.perPage, 10) || 50;
     const inventoryEntriesQuery = client.inventoryEntries;
     const productProjectionQuery = client.productProjections;
     const filter = params.filter;
     const sortBy = params.sortBy;
     const sortAscending = params.sortAscending;
+    const expandParameter = params.expandParameter;
 
     if (selectedChannel) {
       inventoryEntriesQuery.where(`supplyChannel(id="${selectedChannel}")`);
+    }
+
+    if (sku) {
+      inventoryEntriesQuery.where(`sku="${sku}"`);
+    }
+
+    if (expandParameter) {
+      inventoryEntriesQuery.expand(expandParameter);
+    }
+
+    if (sortBy) {
+      inventoryEntriesQuery.sort(sortBy, sortAscending);
     }
 
     if (filter) {
@@ -33,7 +48,6 @@ module.exports = (app) => {
     return inventoryEntriesQuery
       .page(page)
       .perPage(perPage)
-      .sort(sortBy, sortAscending)
       .fetch()
       .then((res) => {
         return Promise.all(res.body.results.map((inventory) => {
@@ -96,6 +110,45 @@ module.exports = (app) => {
       .fetch()
       .then((result) => {
         return result.body.total;
+      })
+      .catch((err) => {
+        logger.error(`Error getting the available products, Error: ${err}`);
+      });
+  };
+
+  service.checkStores = (params) => {
+    params.expandParameter = 'supplyChannel';
+    const currentId = params.currentId;
+    return service
+      .query(params)
+      .then((result) => {
+        const currentInventory = result.results.filter((inventory) => {
+          return inventory.id === currentId;
+        })[0];
+        return result.results.map((inventory) => {
+          let distance = 'Not available';
+          if (currentInventory.supplyChannel
+              && inventory.supplyChannel) {
+            distance = Math.floor(geolib.getDistance({
+              latitude: currentInventory.supplyChannel.obj.custom.fields.latitude,
+              longitude: currentInventory.supplyChannel.obj.custom.fields.longitude,
+            }, {
+              latitude: inventory.supplyChannel.obj.custom.fields.latitude,
+              longitude: inventory.supplyChannel.obj.custom.fields.longitude,
+            }) / 1000);
+          }
+          return { ...inventory,
+                   distance,
+                 };
+        }).sort((inv1, inv2) => {
+          if (inv1.distance < inv2.distance) {
+            return -1;
+          }
+          if (inv1.distance > inv2.distance) {
+            return 1;
+          }
+          return 0;
+        });
       })
       .catch((err) => {
         logger.error(`Error getting the available products, Error: ${err}`);

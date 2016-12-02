@@ -8,6 +8,9 @@ angular.module('inventories').config(['$stateProvider',
       .state('product-detail', {
         url: '/inventories/product/:productId/:sku',
         templateUrl: 'views/inventories-detail.client.view.html',
+      }).state('check-stores', {
+        url: '/inventories/checkStores/:id/:sku',
+        templateUrl: 'views/inventories-check-stores.client.view.html',
       });
   },
 ]);

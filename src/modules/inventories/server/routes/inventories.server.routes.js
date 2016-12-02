@@ -9,4 +9,7 @@ module.exports = (app) => {
 
   app.route('/api/inventories/products')
     .get(inventoriesController.getAvailableProducts);
+
+  app.route('/api/inventories/checkStores')
+    .get(inventoriesController.checkStores);
 };
