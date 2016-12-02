@@ -1,5 +1,5 @@
 <div>
-  <h1>CUSTOMERS</h1>
+  <h1>Customers</h1>
   <h2 ng-if="showMask">LOADING ...</h2>
 
   <div class="tile-body" ng-controller="PaginatorController">
@@ -8,20 +8,21 @@
           <thead>
               <tr>
                   <th colspan="2">
-                    <div class="input-group">
+                    <div class="input-group filter-text-box">
                       <div class="input-group-btn search-panel" text-filter-label="First Name" text-filter-field="firstName">
                           <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                           	<span>{{filterTextLabel}}</span> <span class="caret"></span>
                           </button>
                           <ul class="dropdown-menu" role="menu">
-                            <li><a ng-click="setTextFilter('firstName', 'First Name')">First Name</a></li>
-                            <li><a ng-click="setTextFilter('lastName', 'Last Name')">Last Name</a></li>
-                            <li><a ng-click="setTextFilter('email', 'Email')">Email</a></li>
+                            <li><a ng-click="setTextFilter('firstName', 'First Name')" onclick="$('#filter-text-tmp').val('')">First Name</a></li>
+                            <li><a ng-click="setTextFilter('lastName', 'Last Name')" onclick="$('#filter-text-tmp').val('')">Last Name</a></li>
+                            <li><a ng-click="setTextFilter('email', 'Email')" onclick="$('#filter-text-tmp').val('')">Email</a></li>
                           </ul>
                       </div>
-                      <input st-search="id" placeholder="Fill search ..." class="input-sm form-control input-st-search" type="search" />
+                      <input id="filter-text-tmp" placeholder="Fill search ..." class="input-sm form-control input-st-search" type="search" />
+                      <input id="filter-text" st-search="{{filterTextField}}" st-input-event="change" type="hidden" value="" />
                       <span class="input-group-btn">
-                        <button class="btn btn-default" type="button">Search</button>
+                        <button class="btn btn-default" type="button" onclick="$('#filter-text').val($('#filter-text-tmp').val()).trigger('change');">Search</button>
                       </span>
                     </div>
                   </th>
@@ -35,6 +36,9 @@
                         </button>
                     </div>
                   </th>
+              </tr>
+              <tr>
+                <th colspan="3"></th>
               </tr>
               <tr>
                   <th st-sort="firstName" st-sort-default class="sorting">First Name</th>

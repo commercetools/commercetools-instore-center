@@ -153,6 +153,16 @@ nav.paginator-arrows a:active {
   cursor: pointer;
 }
 
+.filter-text-box {
+  width: 85%;
+}
+.filter-text-box .input-group-btn:last-child {
+  padding-left: 22px;
+}
+
+
+/* Page Detail */
+
 .arrow-back{
   font-size: x-large;
   color:#666;

@@ -1,5 +1,5 @@
 <div data-ng-controller="OrdersController">
-  <h1>ORDERS</h1>
+  <h1>Orders</h1>
 
   <div class="tile-body" ng-controller="PaginatorController">
 
@@ -7,7 +7,22 @@
           <thead>
               <tr>
                   <th colspan="2">
-                      <input st-search="id" placeholder="search for order id" class="input-sm form-control input-st-search" type="search" />
+                    <div class="input-group filter-text-box">
+                      <div class="input-group-btn search-panel" text-filter-label="Number" text-filter-field="Number">
+                          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                            <span>{{filterTextLabel}}</span> <span class="caret"></span>
+                          </button>
+                          <ul class="dropdown-menu" role="menu">
+                            <li><a ng-click="setTextFilter('orderNumber', 'Number')" onclick="$('#filter-text-tmp').val('')">Number</a></li>
+                            <li><a ng-click="setTextFilter('customerEmail', 'Customer')" onclick="$('#filter-text-tmp').val('')">Customer</a></li>
+                          </ul>
+                      </div>
+                      <input id="filter-text-tmp" placeholder="Fill search ..." class="input-sm form-control input-st-search" type="search" />
+                      <input id="filter-text" st-search="{{filterTextField}}" st-input-event="change" type="hidden" value="" />
+                      <span class="input-group-btn">
+                        <button class="btn btn-default" type="button" onclick="$('#filter-text').val($('#filter-text-tmp').val()).trigger('change');">Search</button>
+                      </span>
+                    </div>
                   </th>
                   <th>
                     <select class="form-control ng-pristine ng-valid ng-not-empty ng-touched" aria-invalid="false" ng-model="status">
@@ -25,6 +40,9 @@
                         </button>
                     </div>
                   </th>
+              </tr>
+              <tr>
+                <th colspan="7"></th>
               </tr>
               <tr>
                   <th st-sort="orderNumber" st-sort-default class="sorting">Number</th>
@@ -56,7 +74,7 @@
           </tbody>
           <tfoot>
               <tr>
-                  <td colspan="8" class="text-center">
+                  <td colspan="7" class="text-center">
                       <div st-pagination="" st-items-by-page="itemsPerPage" st-template="views/paginatorSelectPageTemplate.html"></div>
                   </td>
               </tr>

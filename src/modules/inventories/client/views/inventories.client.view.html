@@ -1,5 +1,5 @@
 <div>
-  <h1>INVENTORIES</h1>
+  <h1>Inventories</h1>
   <h2 ng-if="showMask">LOADING ...</h2>
 
   <div class="tile-body" ng-controller="PaginatorController">
@@ -7,10 +7,15 @@
     <table st-table="rowsDisplayed" class="st-table table table-custom table-component" paginator-entity="inventories" paginator-default-sort="sku" st-pipe="getPage">
         <thead>
             <tr>
-                <th>
-                    <input st-search="sku" placeholder="search for sku" class="input-sm form-control input-st-search" type="search" />
+                <th colspan="3">
+                  <div class="input-group filter-text-box">
+                    <input id="filter-text-tmp" placeholder="Fill search ..." class="input-sm form-control input-st-search" type="search" />
+                    <input id="filter-text" st-search="sku" st-input-event="change" type="hidden" value="" />
+                    <span class="input-group-btn">
+                      <button class="btn btn-default" type="button" onclick="$('#filter-text').val($('#filter-text-tmp').val()).trigger('change');">Search</button>
+                    </span>
+                  </div>
                 </th>
-                <th></th>
                 <th></th>
                 <th colspan="2" class="text-right">
                   <div class="btn-group" role="group" data-toggle="buttons">
@@ -24,7 +29,7 @@
                 </th>
             </tr>
             <tr>
-              <th colspan="5"></th>
+              <th colspan="6"></th>
             </tr>
             <tr>
                 <th st-sort="sku" st-sort-default class="sorting">SKU</th>
@@ -47,7 +52,7 @@
         </tbody>
         <tfoot>
             <tr>
-                <td colspan="5" class="text-center">
+                <td colspan="6" class="text-center">
                     <div st-pagination="" st-items-by-page="itemsPerPage" st-template="views/paginatorSelectPageTemplate.html"></div>
                 </td>
             </tr>
