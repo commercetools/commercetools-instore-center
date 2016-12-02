@@ -57,7 +57,7 @@ module.exports = (app) => {
           .filterByQuery(`variants.sku:"${inventory.sku}"`)
           .search()
           .then(({ body }) => {
-            if (body.results[0]) {
+            if (body.results.length > 0) {
               const chosenVariant = findVariant(body.results[0], inventory.sku);
               return { ...inventory,
                        name: body.results[0].name.en,
