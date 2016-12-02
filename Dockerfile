@@ -13,12 +13,12 @@ RUN apt-get update \
     && npm install -g gulp \
     && npm install -g bower
 
+# Set development environment as default
+ENV NODE_ENV production
+
 # Make everything available for start
 ADD . /home/app
 RUN npm install
-
-# Set development environment as default
-ENV NODE_ENV production
 
 # Port 3000 for server
 EXPOSE 3000

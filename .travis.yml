@@ -1,6 +1,10 @@
 sudo: required
 services:
 - docker
+branches:
+  only:
+  - master
+  - /^v.*$/
 env:
   global:
   - COMMIT=${TRAVIS_COMMIT::8}
