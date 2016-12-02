@@ -12,12 +12,6 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
         url: '/dashboard',
         templateUrl: 'views/dashboard.client.view.html',
         resolve: {
-          plugins: ['$ocLazyLoad', ($ocLazyLoad) => {
-            return $ocLazyLoad.load([
-              'scripts/vendor/datatables/datatables.bootstrap.min.css',
-              'scripts/vendor/datatables/datatables.bootstrap.min.css',
-            ]);
-          }],
           channels: ['HeaderService', (HeaderService) => {
             return HeaderService.promise;
           }],
