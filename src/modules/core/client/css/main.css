@@ -131,6 +131,10 @@ input[type="search"]{-webkit-appearance:none;}
   padding: 20px;
 }
 
+.page-toolbar i{
+  color: #213e48;
+}
+
 /* Table Component */
 
 .table-component > thead tr:first-child {

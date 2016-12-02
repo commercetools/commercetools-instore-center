@@ -101,8 +101,11 @@ module.exports = (app) => {
           return {
             ...lineItem.variant,
             placedOn: order.createdAt,
+            name: lineItem.name.en,
           };
         });
+      }).reduce((a, b) => {
+        return a.concat(b);
       });
     })
     .catch((err) => {

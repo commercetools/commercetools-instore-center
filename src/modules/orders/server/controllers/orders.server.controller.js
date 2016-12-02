@@ -1,5 +1,3 @@
-import path from 'path';
-
 module.exports = (app) => {
   const controller = {};
   const orderService = require('../services/orders.server.service')(app);
