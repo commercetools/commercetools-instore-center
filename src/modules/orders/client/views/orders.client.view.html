@@ -13,8 +13,8 @@
                             <span>{{filterTextLabel}}</span> <span class="caret"></span>
                           </button>
                           <ul class="dropdown-menu" role="menu">
-                            <li><a ng-click="setTextFilter('orderNumber', 'Number')" onclick="$('#filter-text-tmp').val('')">Number</a></li>
-                            <li><a ng-click="setTextFilter('customerEmail', 'Customer')" onclick="$('#filter-text-tmp').val('')">Customer</a></li>
+                            <li><a ng-click="setTextFilter('orderNumber', 'Number')" onclick="$('#filter-text-tmp').val('').trigger('change')">Number</a></li>
+                            <li><a ng-click="setTextFilter('customerEmail', 'Customer')" onclick="$('#filter-text-tmp').val('').trigger('change')">Customer</a></li>
                           </ul>
                       </div>
                       <input id="filter-text-tmp" placeholder="Fill search ..." class="input-sm form-control input-st-search" type="search" />

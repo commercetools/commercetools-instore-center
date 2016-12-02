@@ -4,6 +4,7 @@ module.exports = (app) => {
   const service = {};
   const logger = app.logger;
   const client = require('../../../sphere/server/client/sphere.server.client')(app);
+  const filterUtils = require('../../../commons/server/helpers/filters.server.helper')(app);
 
   const findVariant = (product, sku) => {
     return product.masterVariant.sku === sku ?
@@ -42,7 +43,7 @@ module.exports = (app) => {
     }
 
     if (filter) {
-      // inventoryEntriesQuery.where(``);
+      inventoryEntriesQuery.where(filterUtils.getFilter(filter));
     }
 
     return inventoryEntriesQuery

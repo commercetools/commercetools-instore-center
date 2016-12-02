@@ -2,6 +2,7 @@ module.exports = (app) => {
   const service = {};
   const logger = app.logger;
   const client = require('../../../sphere/server/client/sphere.server.client')(app);
+  const filterUtils = require('../../../commons/server/helpers/filters.server.helper')(app);
 
   service.byId = (customerId) => {
     return client.customers.byId(customerId)
@@ -34,7 +35,7 @@ module.exports = (app) => {
     }
 
     if (filter) {
-      // customersQuery.where(``);
+      customersQuery.where(filterUtils.getFilter(filter));
     }
 
     return customersQuery

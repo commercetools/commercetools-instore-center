@@ -14,9 +14,9 @@
                           	<span>{{filterTextLabel}}</span> <span class="caret"></span>
                           </button>
                           <ul class="dropdown-menu" role="menu">
-                            <li><a ng-click="setTextFilter('firstName', 'First Name')" onclick="$('#filter-text-tmp').val('')">First Name</a></li>
-                            <li><a ng-click="setTextFilter('lastName', 'Last Name')" onclick="$('#filter-text-tmp').val('')">Last Name</a></li>
-                            <li><a ng-click="setTextFilter('email', 'Email')" onclick="$('#filter-text-tmp').val('')">Email</a></li>
+                            <li><a ng-click="setTextFilter('firstName', 'First Name')" onclick="$('#filter-text-tmp').val('').trigger('change')">First Name</a></li>
+                            <li><a ng-click="setTextFilter('lastName', 'Last Name')" onclick="$('#filter-text-tmp').val('').trigger('change')">Last Name</a></li>
+                            <li><a ng-click="setTextFilter('email', 'Email')" onclick="$('#filter-text-tmp').val('').trigger('change')">Email</a></li>
                           </ul>
                       </div>
                       <input id="filter-text-tmp" placeholder="Fill search ..." class="input-sm form-control input-st-search" type="search" />
