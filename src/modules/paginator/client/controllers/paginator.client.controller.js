@@ -2,6 +2,8 @@ angular.module('paginator')
   .controller('PaginatorController', ['$scope', '$http', '$rootScope', '$location',
   ($scope, $http, $rootScope, $location) => {
     $scope.itemsPerPage = 10;
+    $scope.filterTextField = null;
+    $scope.filterTextLabel = 'Filter by';
 
     function getMatchFields(fields, key) {
       let matchFields;
@@ -117,6 +119,11 @@ angular.module('paginator')
       $scope.itemsPerPage = value;
     };
 
+    $scope.setTextFilter = (value, label) => {
+      $scope.filterTextField = value;
+      $scope.filterTextLabel = label;
+    };
+
     $scope.redirect = (url) => {
       $location.path(url);
     };
@@ -189,6 +196,24 @@ angular.module('paginator')
             scope.expandPaths.push(field.trim());
           });
         }
+      },
+    };
+  })
+  .directive('textFilterLabel', () => {
+    return {
+      restrict: 'A',
+      controller: 'PaginatorController',
+      link: (scope, element, attrs) => {
+        scope.filterTextLabel = attrs.textFilterLabel;
+      },
+    };
+  })
+  .directive('textFilterField', () => {
+    return {
+      restrict: 'A',
+      controller: 'PaginatorController',
+      link: (scope, element, attrs) => {
+        scope.filterTextField = attrs.textFilterField;
       },
     };
   })
