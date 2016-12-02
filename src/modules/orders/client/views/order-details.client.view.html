@@ -1,0 +1,78 @@
+<div ng-controller="OrderDetailsController" ng-init="getOrder();">
+  <div class="row">
+    <div class="col-sm-11">
+      <h2>Order Details</h2>
+    </div>
+    <div class="col-sm-1">
+      <a href="/orders"><i class="fa fa-arrow-left arrow-back" aria-hidden="true"></i></a>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-6">
+      <p><b>Order Number:</b></p>
+      <p>{{order.orderNumber}}</p>
+      <p><b>Customer:</b></p>
+      <p>{{order.customerEmail}}</p>
+      <p><b>Order Status:</b></p>
+      <p>{{order.orderState}}</p>
+    </div>
+    <div ng-controller="OrdersController">
+      <div class="col-sm-3">
+        <button setup-confirmation-page class="btn btn-success" data-id="{{order.id}}" data-status="Complete" data-toggle="confirmation" data-placement="bottom">Complete Order</button>
+      </div>
+      <div class="col-sm-3">
+        <button setup-confirmation-page class="btn btn-danger" data-id="{{order.id}}" data-status="Cancelled" data-toggle="confirmation" data-placement="bottom">Cancel Order</button>
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <h3>Items</h3>
+    </div>
+  </div>
+  <div class="row minicart">
+    <div class="col-sm-12">
+      <div class="col-sm-2 text-center">
+
+      </div>
+      <div class="col-sm-3">
+        <b>Product Name</b>
+      </div>
+      <div class="col-sm-2 text-right">
+        <b>Unit Price</b>
+      </div>
+      <div class="col-sm-2 text-right">
+        <b>Quantity</b>
+      </div>
+      <div class="col-sm-3 text-right">
+        <b>Price</b>
+      </div>
+    </div>
+    <div class="col-sm-12" ng-repeat="item in order.lineItems" style="padding:10px;">
+      <div class="col-sm-2">
+        <img ng-src="{{item.variant.images[0].url}}" class="img-responsive" style="max-width: 80px;"/>
+      </div>
+      <div class="col-sm-3">
+        <p><i>{{item.variant.sku}}</i></p>
+        <p>{{item.name.en}}</p>
+      </div>
+      <div class="col-sm-2 text-right">
+        {{item.price.value.currencyCode}} {{item.price.value.centAmount/100}}
+      </div>
+      <div class="col-sm-2 text-right">
+        {{item.quantity}}
+      </div>
+      <div class="col-sm-3 text-right">
+        {{item.totalPrice.currencyCode}} {{item.totalPrice.centAmount/100}}
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12 text-right">
+      <p><b>Subtotal: {{order.taxedPrice.totalNet.currencyCode}} {{order.taxedPrice.totalNet.centAmount/100}}</b></p>
+      <p><b>Shipping: <span ng-if="!order.shippingInfo">EUR 0</span><span ng-if="order.shippingInfo">{{order.shippingInfo.shippingRate.price.currencyCode}} {{order.shippingInfo.shippingRate.price.centAmount/100}}</span></b></p>
+      <p><b>Taxes: {{order.taxedPrice.totalGross.currencyCode}} {{(order.taxedPrice.totalGross.centAmount - order.taxedPrice.totalNet.centAmount)/100}}</b></p>
+      <p><b>Grand Total: {{order.taxedPrice.totalGross.currencyCode}} {{order.taxedPrice.totalGross.centAmount/100}}</  b></p>
+    </div>
+  </div>
+</div>

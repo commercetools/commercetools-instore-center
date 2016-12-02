@@ -54,14 +54,14 @@
               </tr>
           </thead>
           <tbody>
-              <tr st-select-row="row" st-select-mode="multiple" ng-repeat="row in rowsDisplayed">
+              <tr st-select-row="row" st-select-mode="multiple" ng-repeat="row in rowsDisplayed" ng-click="redirect('/orders/' + row.id);">
                   <td>{{::row.orderNumber}}</td>
                   <td>{{::row.customerEmail}}</td>
                   <td>{{::row.shippingAddress.firstName}} {{::row.shippingAddress.lastName}} {{::row.shippingAddress.streetName}}</td>
                   <td>{{::row.lineItems.length}}</td>
                   <td>{{::row.totalPrice.centAmount / 100 | currency: row.totalPrice.currencyCode + " "}}</td>
                   <td ng-controller="OrdersController" colspan="2">
-                    <button setup-confirmation data-popout="true" id="{{row.id}}" class="ct-button" data-toggle="confirmation"
+                    <button setup-confirmation-list data-popout="true" id="{{row.id}}" class="ct-button" data-toggle="confirmation"
                             data-btn-ok-label="" data-btn-ok-icon="glyphicon glyphicon-share-alt"
                             data-btn-ok-class="btn-success"
                             data-btn-cancel-label="" data-btn-cancel-icon="glyphicon glyphicon-ban-circle"
