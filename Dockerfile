@@ -22,4 +22,4 @@ RUN npm install
 
 # Port 3000 for server
 EXPOSE 3000
-CMD gulp production
+CMD gulp
