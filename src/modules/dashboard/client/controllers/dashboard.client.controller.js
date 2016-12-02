@@ -5,7 +5,8 @@ angular.module('dashboard')
     'Customers',
     'InventoryService',
     '$rootScope',
-    ($scope, Orders, Customers, InventoryService, $rootScope) => {
+    'toastr',
+    ($scope, Orders, Customers, InventoryService, $rootScope, toastr) => {
       $scope.totalOrders = 0;
       $scope.totalCustomers = 0;
 
@@ -18,7 +19,7 @@ angular.module('dashboard')
             $scope.totalOrders = res.totalOrders;
           },
           (err) => {
-            //$log.error(err);
+            toastr.error(`Error getting total orders: ${err.data.message}`);
           });
       }
 
@@ -28,7 +29,7 @@ angular.module('dashboard')
             $scope.totalCustomers = res.totalCustomers;
           },
           (err) => {
-            //$log.error(err);
+            toastr.error(`Error getting total customers: ${err.data.message}`);
           });
       }
 
@@ -38,7 +39,7 @@ angular.module('dashboard')
             $scope.totalSales = res;
           },
           (err) => {
-            //$log.error(err);
+            toastr.error(`Error getting total sales: ${err.data.message}`);
           });
       }
 
@@ -48,7 +49,7 @@ angular.module('dashboard')
             $scope.totalProducts = res.data.totalProducts;
           },
           (err) => {
-            //$log.error(err);
+            toastr.error(`Error getting total products: ${err.data.message}`);
           });
       }
 

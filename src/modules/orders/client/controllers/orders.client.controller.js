@@ -3,12 +3,14 @@ angular.module('orders')
 ['$scope',
 'OrderService',
 '$state',
-  ($scope, OrderService, $state) => {
+'toastr',
+  ($scope, OrderService, $state, toastr) => {
     $scope.completeOrder = (orderId, newStatus) => {
       OrderService.completeOrder({ orderId, newStatus }).then(() => {
+        toastr.success(`Order processed succesfully: -> ${newStatus}`);
         $state.reload();
       }, (error) => {
-        // TODO Modals.showErrorWindow('Error Removing line item', error.data.message);
+        toastr.error(`Error processing the order: ${error.data.message}`);
       });
     };
   },
