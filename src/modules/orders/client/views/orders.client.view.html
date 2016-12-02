@@ -43,7 +43,7 @@
                   <td>{{::row.lineItems.length}}</td>
                   <td>{{::row.totalPrice.centAmount / 100 | currency: row.totalPrice.currencyCode + " "}}</td>
                   <td ng-controller="OrdersController" colspan="2">
-                    <button setup-confirmation data-popout="true" id="{{row.id}}" class="btn btn-large btn-primary" data-toggle="confirmation"
+                    <button setup-confirmation data-popout="true" id="{{row.id}}" class="ct-button" data-toggle="confirmation"
                             data-btn-ok-label="" data-btn-ok-icon="glyphicon glyphicon-share-alt"
                             data-btn-ok-class="btn-success"
                             data-btn-cancel-label="" data-btn-cancel-icon="glyphicon glyphicon-ban-circle"

@@ -178,3 +178,21 @@ nav.paginator-arrows a:active {
 .confirmation-buttons a.btn.btn-success{
   margin-right: 15px;
 }
+
+
+.ct-button {
+  background: #20ad92;
+  border: none;
+  border-radius: 6px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: Open Sans,sans-serif;
+  font-size: 1rem;
+  outline: 0;
+  padding: 7px 15px;
+  -webkit-transition: background-color .08s linear;
+  transition: background-color .08s linear;
+  vertical-align: middle;
+  min-height: 32px;
+}

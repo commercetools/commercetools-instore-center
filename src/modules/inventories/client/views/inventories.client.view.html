@@ -42,7 +42,7 @@
                 <td>{{::row.name}}</td>
                 <td>{{::row.price.value.centAmount / 100 | currency: row.price.value.currencyCode + " "}}</td>
                 <td class="text-center"><span ng-class="row.availableQuantity>0?'badge-green':'badge-red'" class="badge bg-info">{{::row.availableQuantity}}</span></td>
-                <td><button ng-click='redirect("/inventories/checkStores/" + row.id + "/" + row.sku);' class="btn btn-large btn-primary">Check Stores</button></td>
+                <td><button ng-click='redirect("/inventories/checkStores/" + row.id + "/" + row.sku);' class="ct-button">Check Stores</button></td>
             </tr>
         </tbody>
         <tfoot>
