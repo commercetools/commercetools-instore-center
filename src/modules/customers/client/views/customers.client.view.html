@@ -4,63 +4,62 @@
 
   <div class="tile-body" ng-controller="PaginatorController">
 
-      <table st-table="rowsDisplayed" class="st-table table table-custom table-component" paginator-entity="customers" paginator-default-sort="firstName" st-pipe="getPage">
-          <thead>
-              <tr>
-                  <th colspan="2">
-                    <div class="input-group filter-text-box">
-                      <div class="input-group-btn search-panel" text-filter-label="First Name" text-filter-field="firstName">
-                          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                          	<span>{{filterTextLabel}}</span> <span class="caret"></span>
-                          </button>
-                          <ul class="dropdown-menu" role="menu">
-                            <li><a ng-click="setTextFilter('firstName', 'First Name')" onclick="$('#filter-text-tmp').val('').trigger('change')">First Name</a></li>
-                            <li><a ng-click="setTextFilter('lastName', 'Last Name')" onclick="$('#filter-text-tmp').val('').trigger('change')">Last Name</a></li>
-                            <li><a ng-click="setTextFilter('email', 'Email')" onclick="$('#filter-text-tmp').val('').trigger('change')">Email</a></li>
-                          </ul>
-                      </div>
-                      <input id="filter-text-tmp" placeholder="Fill search ..." class="input-sm form-control input-st-search" type="search" />
-                      <input id="filter-text" st-search="{{filterTextField}}" st-input-event="change" type="hidden" value="" />
-                      <span class="input-group-btn">
-                        <button class="btn btn-default" type="button" onclick="$('#filter-text').val($('#filter-text-tmp').val()).trigger('change');">Search</button>
-                      </span>
-                    </div>
-                  </th>
-                  <th class="text-right">
-                    <div class="btn-group" role="group" data-toggle="buttons">
-                        <button type="button" ng-class="{active: itemsPerPage == 10}" ng-click="setItemsPerPage(10)" class="btn btn-default">10
-                        </button>
-                        <button type="button" ng-class="{active: itemsPerPage == 25}" ng-click="setItemsPerPage(25)" class="btn btn-default">25
-                        </button>
-                        <button type="button" ng-class="{active: itemsPerPage == 50}" ng-click="setItemsPerPage(50)" class="btn btn-default">50
-                        </button>
-                    </div>
-                  </th>
-              </tr>
-              <tr>
-                <th colspan="3"></th>
-              </tr>
-              <tr>
-                  <th st-sort="firstName" st-sort-default class="sorting">First Name</th>
-                  <th st-sort="lastName" class="sorting">Last Name</th>
-                  <th st-sort="email" class="sorting">Email</th>
-              </tr>
-          </thead>
-          <tbody>
-              <tr st-select-row="row" st-select-mode="multiple" ng-repeat="row in rowsDisplayed" ng-click="redirect('/customers/' + row.id);">
-                  <td>{{::row.firstName}}</td>
-                  <td>{{::row.lastName}}</td>
-                  <td>{{::row.email}}</td>
-              </tr>
-          </tbody>
-          <tfoot>
-              <tr>
-                  <td colspan="3" class="text-center">
-                      <div st-pagination="" st-items-by-page="itemsPerPage" st-template="views/paginatorSelectPageTemplate.html"></div>
-                  </td>
-              </tr>
-          </tfoot>
-      </table>
+    <div st-table="rowsDisplayed" paginator-entity="customers" paginator-default-sort="createdAt" st-pipe="getPage">
+
+      <div class="container-fluid">
+        <div class="row filter-box">
+            <div class="col-sm-9">
+              <div class="input-group filter-text-box">
+                <div class="input-group-btn search-panel" text-filter-label="First Name" text-filter-field="firstName">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                      <span>{{filterTextLabel}}</span> <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu" role="menu">
+                      <li><a ng-click="setTextFilter('firstName', 'First Name')" onclick="$('#filter-text-tmp').val('').trigger('change')">First Name</a></li>
+                      <li><a ng-click="setTextFilter('lastName', 'Last Name')" onclick="$('#filter-text-tmp').val('').trigger('change')">Last Name</a></li>
+                      <li><a ng-click="setTextFilter('email', 'Email')" onclick="$('#filter-text-tmp').val('').trigger('change')">Email</a></li>
+                    </ul>
+                </div>
+                <input id="filter-text-tmp" placeholder="Fill search ..." class="input-sm form-control input-st-search" type="search" />
+                <input id="filter-text" st-search="{{filterTextField}}" st-input-event="change" type="hidden" value="" />
+                <span class="input-group-btn">
+                  <button class="btn btn-default" type="button" onclick="$('#filter-text').val($('#filter-text-tmp').val()).trigger('change');">Search</button>
+                </span>
+              </div>
+            </div>
+            <div class="col-sm-3 text-right">
+              <div class="btn-group" role="group" data-toggle="buttons">
+                  <button type="button" ng-class="{active: itemsPerPage == 10}" ng-click="setItemsPerPage(10)" class="btn btn-default">10
+                  </button>
+                  <button type="button" ng-class="{active: itemsPerPage == 25}" ng-click="setItemsPerPage(25)" class="btn btn-default">25
+                  </button>
+                  <button type="button" ng-class="{active: itemsPerPage == 50}" ng-click="setItemsPerPage(50)" class="btn btn-default">50
+                  </button>
+              </div>
+            </div>
+        </div>
+      </div>
+
+      <div class="st-table table table-custom table-component container-fluid">
+        <div class="row table-component-head">
+          <div st-sort="firstName" st-sort-default class="sorting col-sm-4 col-xs-12">First Name</div>
+          <div class="col-sm-4 hidden-xs">Last Name</div>
+          <div class="col-sm-4 hidden-xs">Email</div>
+        </div>
+        <div class="row" st-select-row="row" st-select-mode="multiple" ng-repeat="row in rowsDisplayed" ng-click="redirect('/customers/' + row.id);">
+          <div class="col-sm-4 overflow-ellipse-text"><span class="visible-xs">First Name:</span>{{::row.firstName}}</div>
+          <div class="col-sm-4 overflow-ellipse-text"><span class="visible-xs">Last Name:</span>{{::row.lastName}}</div>
+          <div class="col-sm-4 overflow-ellipse-text"><span class="visible-xs">Email:</span>{{::row.email}}</div>
+        </div>
+      </div>
+
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-12 text-center">
+            <div st-pagination="" st-items-by-page="itemsPerPage" st-template="views/paginatorSelectPageTemplate.html"></div>
+          </div>
+        </div>
+      </div>
 
   </div>
 </div>

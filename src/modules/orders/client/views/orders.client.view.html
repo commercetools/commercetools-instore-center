@@ -3,83 +3,85 @@
 
   <div class="tile-body" ng-controller="PaginatorController">
 
-      <table st-table="rowsDisplayed" class="st-table table table-custom table-component" paginator-entity="orders" paginator-default-sort="createdAt" st-pipe="getPage">
-          <thead>
-              <tr>
-                  <th colspan="2">
-                    <div class="input-group filter-text-box">
-                      <div class="input-group-btn search-panel" text-filter-label="Number" text-filter-field="Number">
-                          <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-                            <span>{{filterTextLabel}}</span> <span class="caret"></span>
-                          </button>
-                          <ul class="dropdown-menu" role="menu">
-                            <li><a ng-click="setTextFilter('orderNumber', 'Number')" onclick="$('#filter-text-tmp').val('').trigger('change')">Number</a></li>
-                            <li><a ng-click="setTextFilter('customerEmail', 'Customer')" onclick="$('#filter-text-tmp').val('').trigger('change')">Customer</a></li>
-                          </ul>
-                      </div>
-                      <input id="filter-text-tmp" placeholder="Fill search ..." class="input-sm form-control input-st-search" type="search" />
-                      <input id="filter-text" st-search="{{filterTextField}}" st-input-event="change" type="hidden" value="" />
-                      <span class="input-group-btn">
-                        <button class="btn btn-default" type="button" onclick="$('#filter-text').val($('#filter-text-tmp').val()).trigger('change');">Search</button>
-                      </span>
-                    </div>
-                  </th>
-                  <th>
-                    <select class="form-control ng-pristine ng-valid ng-not-empty ng-touched" aria-invalid="false" ng-model="status">
-                      <option value="Open">Open</option>
-                      <option value="Cancelled">Cancelled</option>
-                    </select>
-                  </th>
-                  <th colspan="4" class="text-right">
-                    <div class="btn-group" role="group" data-toggle="buttons">
-                        <button type="button" ng-class="{active: itemsPerPage == 10}" ng-click="setItemsPerPage(10)" class="btn btn-default">10
-                        </button>
-                        <button type="button" ng-class="{active: itemsPerPage == 25}" ng-click="setItemsPerPage(25)" class="btn btn-default">25
-                        </button>
-                        <button type="button" ng-class="{active: itemsPerPage == 50}" ng-click="setItemsPerPage(50)" class="btn btn-default">50
-                        </button>
-                    </div>
-                  </th>
-              </tr>
-              <tr>
-                <th colspan="7"></th>
-              </tr>
-              <tr>
-                  <th st-sort="orderNumber" st-sort-default class="sorting">Number</th>
-                  <th st-sort="customerEmail">Customer</th>
-                  <th>Shipping Address</th>
-                  <th>Items</th>
-                  <th>Total</th>
-                  <th colspan="2">Actions</th>
-              </tr>
-          </thead>
-          <tbody>
-              <tr st-select-row="row" st-select-mode="multiple" ng-repeat="row in rowsDisplayed" ng-click="redirect('/orders/' + row.id);">
-                  <td>{{::row.orderNumber}}</td>
-                  <td>{{::row.customerEmail}}</td>
-                  <td>{{::row.shippingAddress.firstName}} {{::row.shippingAddress.lastName}} {{::row.shippingAddress.streetName}}</td>
-                  <td>{{::row.lineItems.length}}</td>
-                  <td>{{::row.totalPrice.centAmount / 100 | currency: row.totalPrice.currencyCode + " "}}</td>
-                  <td ng-controller="OrdersController" colspan="2">
-                    <button setup-confirmation-list data-popout="true" id="{{row.id}}" class="ct-button" data-toggle="confirmation"
-                            data-btn-ok-label="" data-btn-ok-icon="glyphicon glyphicon-share-alt"
-                            data-btn-ok-class="btn-success"
-                            data-btn-cancel-label="" data-btn-cancel-icon="glyphicon glyphicon-ban-circle"
-                            data-btn-cancel-class="btn-danger"
-                            data-title="New Order Status?" data-content="Process order">
-                      Process
+    <div st-table="rowsDisplayed" paginator-entity="orders" paginator-default-sort="createdAt" st-pipe="getPage">
+
+      <div class="container-fluid">
+        <div class="row filter-box">
+            <div class="col-sm-5">
+              <div class="input-group filter-text-box">
+                <div class="input-group-btn search-panel" text-filter-label="Number" text-filter-field="Number">
+                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                      <span>{{filterTextLabel}}</span> <span class="caret"></span>
                     </button>
-                  </td>
-              </tr>
-          </tbody>
-          <tfoot>
-              <tr>
-                  <td colspan="7" class="text-center">
-                      <div st-pagination="" st-items-by-page="itemsPerPage" st-template="views/paginatorSelectPageTemplate.html"></div>
-                  </td>
-              </tr>
-          </tfoot>
-      </table>
+                    <ul class="dropdown-menu" role="menu">
+                      <li><a ng-click="setTextFilter('orderNumber', 'Number')" onclick="$('#filter-text-tmp').val('').trigger('change')">Number</a></li>
+                      <li><a ng-click="setTextFilter('customerEmail', 'Customer')" onclick="$('#filter-text-tmp').val('').trigger('change')">Customer</a></li>
+                    </ul>
+                </div>
+                <input id="filter-text-tmp" placeholder="Fill search ..." class="input-sm form-control input-st-search" type="search" />
+                <input id="filter-text" st-search="{{filterTextField}}" st-input-event="change" type="hidden" value="" />
+                <span class="input-group-btn">
+                  <button class="btn btn-default" type="button" onclick="$('#filter-text').val($('#filter-text-tmp').val()).trigger('change');">Search</button>
+                </span>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <select class="form-control ng-pristine ng-valid ng-not-empty ng-touched" aria-invalid="false" st-search="orderState">
+                <option value>All Orders</option>
+                <option value="Open">Orders Open</option>
+                <option value="Cancelled">Orders Cancelled</option>
+              </select>
+            </div>
+            <div class="col-sm-3 text-right">
+              <div class="btn-group" role="group" data-toggle="buttons">
+                  <button type="button" ng-class="{active: itemsPerPage == 10}" ng-click="setItemsPerPage(10)" class="btn btn-default">10
+                  </button>
+                  <button type="button" ng-class="{active: itemsPerPage == 25}" ng-click="setItemsPerPage(25)" class="btn btn-default">25
+                  </button>
+                  <button type="button" ng-class="{active: itemsPerPage == 50}" ng-click="setItemsPerPage(50)" class="btn btn-default">50
+                  </button>
+              </div>
+            </div>
+        </div>
+      </div>
+
+      <div class="st-table table table-custom table-component container-fluid">
+        <div class="row table-component-head">
+          <div st-sort="orderNumber" st-sort-default class="sorting col-sm-2 col-xs-6">Number</div>
+          <div st-sort="customerEmail" class="col-sm-3 col-xs-6">Customer</div>
+          <div class="col-sm-2 hidden-xs">Address</div>
+          <div class="col-sm-1 text-center hidden-xs">Items</div>
+          <div class="col-sm-2 hidden-xs">Total</div>
+          <div class="col-sm-2 text-center hidden-xs">Actions</div>
+        </div>
+        <div class="row" st-select-row="row" st-select-mode="multiple" ng-repeat="row in rowsDisplayed" ng-click="redirect('/orders/' + row.id);">
+          <div class="col-sm-2"><span class="visible-xs">Number:</span>{{::row.orderNumber}}</div>
+          <div class="col-sm-3 overflow-ellipse-text"><span class="visible-xs">Customer:</span>{{::row.customerEmail}}</div>
+          <div class="col-sm-2 overflow-ellipse-text"><span class="visible-xs">Address:</span>{{::row.shippingAddress.firstName}} {{::row.shippingAddress.lastName}} {{::row.shippingAddress.streetName}}</div>
+          <div class="col-sm-1 text-center text-xs-left"><span class="visible-xs">Items:</span>{{::row.lineItems.length}}</div>
+          <div class="col-sm-2"><span class="visible-xs">Total:</span>{{::row.totalPrice.centAmount / 100 | currency: row.totalPrice.currencyCode + " "}}</div>
+          <div class="col-sm-2 text-center" ng-controller="OrdersController">
+            <button setup-confirmation-list data-popout="true" id="{{row.id}}" class="ct-button" data-toggle="confirmation"
+                    data-btn-ok-label="" data-btn-ok-icon="glyphicon glyphicon-share-alt"
+                    data-btn-ok-class="btn-success"
+                    data-btn-cancel-label="" data-btn-cancel-icon="glyphicon glyphicon-ban-circle"
+                    data-btn-cancel-class="btn-danger"
+                    data-title="New Order Status?" data-content="Process order">
+              Process
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-sm-12 text-center">
+            <div st-pagination="" st-items-by-page="itemsPerPage" st-template="views/paginatorSelectPageTemplate.html"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
 
   </div>
 </div>
