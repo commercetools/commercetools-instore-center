@@ -289,6 +289,9 @@ input[type="search"]{-webkit-appearance:none;}
   border-top: 1px solid #ddd;
   padding: 10px 0px;
 }
+.table-component .row:nth-child(2) {
+  border-top: none;
+}
 
 .table-component .row > div {
   padding-right: 8px;
@@ -299,6 +302,8 @@ input[type="search"]{-webkit-appearance:none;}
 .table-component .table-component-head {
   margin-top: 10px;
   font-weight: bold;
+  background-color: #FAFAFA;
+  border-top: none;
 }
 .table-component .table-component-head > div {
   min-height: initial;
