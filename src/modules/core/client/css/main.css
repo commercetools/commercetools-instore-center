@@ -138,7 +138,7 @@ input[type="search"]{-webkit-appearance:none;}
 }
 
 .h1 {
-  font-family: OpenSans,sans-serif;
+  font-family: Open Sans,sans-serif;
   font-size: 30px;
   color: #213E48;
   letter-spacing: 0;
@@ -323,6 +323,14 @@ nav.paginator-arrows a:active {
 .filter-box {
   padding: 10px 0px;
 }
+
+.filter-box > div:first-child {
+  padding-left: 0px;
+}
+.filter-box > div:last-child {
+  padding-right: 0px;
+}
+
 .filter-box .input-sm {height: 22px;}
 
 .filter-text-box {
@@ -385,7 +393,7 @@ nav.paginator-arrows a:active {
   -webkit-transition: background-color .08s linear;
   transition: background-color .08s linear;
   vertical-align: middle;
-  font-family: OpenSans,sans-serif;
+  font-family: Open Sans,sans-serif;
   font-size: 14px;
   color: #FFFFFF;
   letter-spacing: 0;
@@ -417,7 +425,7 @@ nav.paginator-arrows a:active {
 }
 
 .circle {
-  display: block;
+  display: inline-block;
   background: black;
   border-radius: 50%;
   height: 15px;
@@ -434,7 +442,7 @@ nav.paginator-arrows a:active {
 }
 
 .ct-pagination {
-  font-family: OpenSans,sans-serif;
+  font-family: Open Sans,sans-serif;
   font-size: 14px;
   letter-spacing: 0;
 }
