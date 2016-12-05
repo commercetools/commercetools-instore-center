@@ -9,7 +9,7 @@ module.exports = (app) => {
 
     channelsService.query(params)
       .then((queryResponse) => {
-        res.json(queryResponse.results);
+        res.json({ stores: queryResponse.results, name: req.user.name });
       })
       .catch(() => {
         res.status(400).send({

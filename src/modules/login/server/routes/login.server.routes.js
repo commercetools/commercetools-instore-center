@@ -3,4 +3,7 @@ module.exports = (app) => {
 
   app.route('/mc/login')
     .post(loginController.login);
+
+  app.route('/mc/signout')
+    .post(loginController.logout);
 };

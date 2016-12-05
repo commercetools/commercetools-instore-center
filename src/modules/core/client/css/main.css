@@ -57,6 +57,7 @@ input[type="search"]{-webkit-appearance:none;}
   top: 56px;
   z-index: 19999;
   background: #213e48;
+  max-width: 70px;
 }
 
 .siderbar-container .navbar {
@@ -134,6 +135,13 @@ input[type="search"]{-webkit-appearance:none;}
 
 .page-toolbar i{
   color: #213e48;
+}
+
+.h1 {
+  font-family: OpenSans,sans-serif;
+  font-size: 30px;
+  color: #213E48;
+  letter-spacing: 0;
 }
 
 /* Login */
@@ -269,7 +277,13 @@ input[type="search"]{-webkit-appearance:none;}
 
 /* Table Component */
 
-.table-component {margin-top: 10px;}
+.table-component {
+  margin-top: 10px;
+  font-family: Open Sans,sans-serif;
+  font-size: 14px;
+  color: #484848;
+  letter-spacing: 0;
+}
 
 .table-component .row {
   border-top: 1px solid #ddd;
@@ -307,8 +321,6 @@ nav.paginator-arrows a:active {
 }
 
 .filter-box {
-  background-color: #fafafa;
-  box-shadow: 0 1px 4px 0 rgba(0,0,0,.2);
   padding: 10px 0px;
 }
 .filter-box .input-sm {height: 22px;}
@@ -361,20 +373,23 @@ nav.paginator-arrows a:active {
 
 
 .ct-button {
-  background: #20ad92;
+  background: #00B6A1;
+  border-radius: 6px;
   border: none;
   border-radius: 6px;
   color: #fff;
   cursor: pointer;
   display: inline-block;
-  font-family: Open Sans,sans-serif;
-  font-size: 1rem;
   outline: 0;
   padding: 7px 15px;
   -webkit-transition: background-color .08s linear;
   transition: background-color .08s linear;
   vertical-align: middle;
-  min-height: 32px;
+  font-family: OpenSans,sans-serif;
+  font-size: 14px;
+  color: #FFFFFF;
+  letter-spacing: 0;
+  line-height: 14px;
 }
 
 /* Custom styles */
@@ -387,4 +402,43 @@ nav.paginator-arrows a:active {
   .text-xs-left {
     text-align: left!important;
   }
+}
+
+.same-height-row {
+ display: -webkit-box;
+ display: -webkit-flex;
+ display: -ms-flexbox;
+ display:         flex;
+ flex-wrap: wrap;
+}
+.same-height-row > [class*='col-'] {
+ display: flex;
+ flex-direction: column;
+}
+
+.circle {
+  display: block;
+  background: black;
+  border-radius: 50%;
+  height: 15px;
+  width: 15px;
+  margin: 0;
+}
+
+.circle-green {
+  background: #7ED321;
+}
+
+.circle-red {
+  background: #E60050;
+}
+
+.ct-pagination {
+  font-family: OpenSans,sans-serif;
+  font-size: 14px;
+  letter-spacing: 0;
+}
+
+.ct-pagination-center {
+  color: #848484;
 }

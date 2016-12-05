@@ -26,24 +26,24 @@ module.exports = (app) => {
   }
 
   controller.login = (req, res, next) => {
-    loginService.login(req.body)
+    return loginService.login(req.body)
       .then((queryResponse) => {
-        login(queryResponse, (err, token) => {
-          if (err) {
-            app.logger.error(`Error Login in customer: ${JSON.stringify(err)}`);
-            // return res.status(400).send({
-            //   message: 'Issue login in customer. Please try again.',
-            // });
-            core.renderAuthenticationRequired(req, res, next, true);
-          } else {
-            res.cookie('token', token, {
-              maxAge: app.config.get('TOKEN:MAX_AGE_SECONDS') * 1000,
-            });
-            return loginService.getUserProjects(queryResponse)
-            .then((projects) => {
+        return loginService.getUserInfo(queryResponse)
+        .then((userInfo) => {
+          const userData = { ...queryResponse, name: userInfo.firstName };
+          login(userData, (err, token) => {
+            if (err) {
+              app.logger.error(`Error Login in customer: ${JSON.stringify(err)}`);
+              return res.status(400).send({
+                message: 'Issue login in customer. Please try again.',
+              });
+            } else {
+              res.cookie('token', token, {
+                maxAge: app.config.get('TOKEN:MAX_AGE_SECONDS') * 1000,
+              });
               res.redirect('/');
-            });
-          }
+            }
+          });
         });
       })
       .catch(() => {
@@ -52,6 +52,11 @@ module.exports = (app) => {
         //   message: 'Opps! something went wrong',
         // });
       });
+  };
+
+  controller.logout = (req, res) => {
+    res.clearCookie('token');
+    res.send();
   };
 
   return controller;

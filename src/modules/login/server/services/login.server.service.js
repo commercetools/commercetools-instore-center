@@ -2,7 +2,6 @@ const fetch = require('node-fetch');
 
 module.exports = (app) => {
   const service = {};
-  const logger = app.logger;
   const defaultHeaders = {
     Accept: 'application/json',
     'Content-Type': 'application/json',
@@ -11,6 +10,7 @@ module.exports = (app) => {
   const apiHost = 'https://mc.commercetools.com';
   const loginUrl = `${apiHost}/tokens`;
   const projectsByUserUrl = `${apiHost}/projects`;
+  const userUrl = `${apiHost}/users`
 
   function processResponse(response) {
     let isOk = response.ok;
@@ -26,9 +26,21 @@ module.exports = (app) => {
   }
 
   service.getUserProjects = (params) => {
-    console.log(params);
     return fetch(
       `${projectsByUserUrl}?userId=${params.user}`,
+      {
+        method: 'GET',
+        headers: {
+          ...defaultHeaders,
+          Authorization: params.token,
+        },
+      }
+    ).then(processResponse);
+  };
+
+  service.getUserInfo = (params) => {
+    return fetch(
+      `${userUrl}/${params.user}`,
       {
         method: 'GET',
         headers: {
