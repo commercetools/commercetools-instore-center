@@ -62,6 +62,7 @@ angular.module(ApplicationConfiguration.applicationModuleName).config(['$locatio
   ($locationProvider, $httpProvider) => {
     $locationProvider.html5Mode(true).hashPrefix('!');
     $httpProvider.interceptors.push('httpInterceptor');
+    $httpProvider.interceptors.push('authInterceptor');
   },
 ]);
 
