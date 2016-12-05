@@ -127,6 +127,11 @@ angular.module('paginator')
     $scope.redirect = (url) => {
       $location.path(url);
     };
+
+    $scope.clearSearch = () => {
+      $('#filter-text-tmp').val('');
+      $('#filter-text').val('').trigger('change');
+    };
   }])
   .directive('paginatorEntity', () => {
     return {

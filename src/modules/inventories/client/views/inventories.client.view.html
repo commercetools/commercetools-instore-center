@@ -14,6 +14,7 @@
                 <input id="filter-text" st-search="sku" st-input-event="change" type="hidden" value="" />
                 <span class="input-group-btn">
                   <button class="btn btn-default" type="button" onclick="$('#filter-text').val($('#filter-text-tmp').val()).trigger('change');">Search</button>
+                  <button class="btn btn-default" type="button" ng-click="clearSearch();">Clear</button>
                 </span>
               </div>
             </div>
