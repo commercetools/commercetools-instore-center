@@ -281,6 +281,22 @@ function initStaticFiles(app, assets) {
   app.use('/', express.static(path.join(__dirname, assets.client.dest)));
 }
 
+function requireLogin(req, res, next) {
+  if (req.user) {
+    next(); // allow the next route to run
+  } else {
+    // require the user to log in
+    res.sendStatus(401);
+  }
+}
+
+function initProtectedRoutes(app) {
+  // Protected Routes
+  app.all('/api/*', requireLogin, (req, res, next) => {
+    next();
+  });
+}
+
 function init(app) {
   const assets = assetsMod(process.env.NODE_ENV);
 
@@ -295,6 +311,7 @@ function init(app) {
   initModulesConfiguration(app);
   initModulesServerRoutes(app);
   initErrorRoutes(app);
+  initProtectedRoutes(app);
 
   app.listen(app.config.get('PORT'), () => {
     app.logger.info(`Server listening on port ${app.config.get('PORT')}`);

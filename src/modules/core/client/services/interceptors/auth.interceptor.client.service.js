@@ -1,18 +1,17 @@
-angular.module('core').factory('authInterceptor', ['$q', '$injector',
-  ($q, $injector) => {
+angular.module('core').factory('authInterceptor', ['$q', '$injector', '$window',
+  ($q, $injector, $window) => {
     return {
       responseError: (rejection) => {
-        console.log(rejection);
         if (!rejection.config.ignoreAuthModule) {
           switch (rejection.status) {
             case 401:
-              // Deauthenticate the global user
-              $injector.get('$state').transitionTo('login');
+              $window.location.href = '/login';
               break;
             case 403:
-              $injector.get('$state').transitionTo('home');
+              $window.location.href = '/login';
               break;
             default:
+              break;
           }
         }
         // otherwise, default behaviour
