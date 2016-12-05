@@ -1,14 +1,14 @@
 <div ng-controller="OrderDetailsController" ng-init="getOrder();">
   <div class="row">
-    <div class="col-sm-11">
+    <div class="col-sm-11 col-xs-10">
       <h2>Order Details</h2>
     </div>
-    <div class="col-sm-1">
+    <div class="col-sm-1 col-xs-2">
       <a href="/orders"><i class="fa fa-arrow-left arrow-back" aria-hidden="true"></i></a>
     </div>
   </div>
   <div class="row">
-    <div class="col-sm-6">
+    <div class="col-sm-6 col-xs-12">
       <p><b>Order Number:</b></p>
       <p>{{order.orderNumber}}</p>
       <p><b>Customer:</b></p>
@@ -17,10 +17,10 @@
       <p>{{order.orderState}}</p>
     </div>
     <div ng-controller="OrdersController">
-      <div class="col-sm-3">
+      <div class="col-sm-3 col-xs-6">
         <button setup-confirmation-page class="btn btn-success" data-id="{{order.id}}" data-status="Complete" data-toggle="confirmation" data-placement="bottom">Complete Order</button>
       </div>
-      <div class="col-sm-3">
+      <div class="col-sm-3 col-xs-6">
         <button setup-confirmation-page class="btn btn-danger" data-id="{{order.id}}" data-status="Cancelled" data-toggle="confirmation" data-placement="bottom">Cancel Order</button>
       </div>
     </div>
@@ -30,7 +30,17 @@
       <h3>Items</h3>
     </div>
   </div>
-  <div class="row minicart">
+  <div class="row visible-xs" ng-repeat="item in order.lineItems">
+    <div class="col-xs-5">
+      <img ng-src="{{item.variant.images[0].url}}" class="img-responsive"/>
+    </div>
+    <div class="col-xs-7">
+      <p>{{item.name.en}} - {{item.variant.sku}}</p>
+      <p><b>Quantity: </b> {{item.quantity}}</p>
+      <p><b>Price: </b> {{item.totalPrice.currencyCode}} {{item.totalPrice.centAmount/100}}</p>
+    </div>
+  </div>
+  <div class="row minicart hidden-xs">
     <div class="col-sm-12">
       <div class="col-sm-2 text-center">
 
