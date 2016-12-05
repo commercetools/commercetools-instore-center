@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" ng-controller="MainCtrl">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
+  <base href="/">
+  <title>{{title}}</title>
+
+  <!-- Fav Icon -->
+  <link href="{{favicon}}" rel="shortcut icon" type="image/x-icon">
+
+  <!-- Vendor CSS Files -->
+  {% for vendorCssFile in vendorCssFiles %}<link rel="stylesheet" href="{{vendorCssFile}}">{% endfor %}
+
+  <!-- Application CSS Files -->
+  {% for applicationCssFile in applicationCssFiles %}<link rel="stylesheet" href="{{applicationCssFile}}">{% endfor %}
+</head>
+
+<body class="header-fixed">
+
+{% block content %}
+<div class="login-content" ng-controller="LoginController">
+    <div class="login-box">
+        <div class="login-header">
+            <div class="login-logo"><img src="https://mc.commercetools.com/assets/images/ct_logo_bw_white.svg"></div>
+        </div>
+        <div class="login-holder">
+          <!--<div class="login__error-message___2zyno"><span>Sorry, but the login details entered below are not in our system. Please enter your correct email address and password below.</span></div>-->
+          <form method="post" class="login-form" action="/mc/login">
+            <fieldset class="login-fieldset">
+              <input type="hidden" name="url" value="{{url}}">
+              <legend class="login-title"><span>Sign in to your account</span></legend>
+              <label class="login-label forms-label" for="username"><span>Email</span></label>
+              <input type="text" name="username" class="login-input-text" ng-model="credentials.username">
+              <label class="login-label forms-label" for="password"><span>Password</span></label>
+              <input type="password" name="password" class="login-input-text" ng-model="credentials.password">
+              <button class="button-full button-confirm button-button" type="submit"><span>Sign in</span></button>
+            </fieldset>
+          </form>
+        </div>
+        <p class="login-copyright">
+            2016 © commercetools
+        </p>
+    </div>
+</div>
+{% endblock %}
+
+<div id="pageloader" page-loader></div>
+
+<!--Vendor JavaScript Files-->
+{% for vendorJsFile in vendorJsFiles %}<script src="{{vendorJsFile}}"></script>{% endfor %}
+
+<!--Application JavaScript Files-->
+{% for applicationJsFile in applicationJsFiles %}<script src="{{applicationJsFile}}"></script>{% endfor %}
+
+</body>
+
+</html>

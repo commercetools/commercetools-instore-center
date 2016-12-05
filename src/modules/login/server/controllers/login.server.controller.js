@@ -39,7 +39,7 @@ module.exports = (app) => {
             });
             return loginService.getUserProjects(queryResponse)
             .then((projects) => {
-              res.json(projects);
+              res.redirect('/');
             });
           }
         });

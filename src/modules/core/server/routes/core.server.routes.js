@@ -6,6 +6,8 @@ module.exports = (app) => {
 
   app.route('/:url(api|modules|lib)/*').get(core.renderNotFound);
 
+  app.route('/login').get(core.renderAuthenticationRequired);
+
   // Define application route
   app.route('/*').get(core.renderIndex);
 };

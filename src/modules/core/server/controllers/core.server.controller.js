@@ -1,11 +1,4 @@
 /**
- * Render the main application page
- */
-export function renderIndex(req, res) {
-  res.render('app/modules/core/server/views/index');
-}
-
-/**
  * Render the server error page
  */
 export function renderServerError(req, res) {
@@ -34,4 +27,36 @@ export function renderNotFound(req, res) {
       res.send('Path not found');
     },
   });
+}
+
+/**
+ * Render the server authentication required
+ */
+export function renderAuthenticationRequired(req, res) {
+  res.status(401).format({
+    'text/html': () => {
+      res.render('app/modules/core/server/views/401', {
+        url: req.originalUrl,
+      });
+    },
+    'application/json': () => {
+      res.json({
+        error: 'Authentication Required',
+      });
+    },
+    default: () => {
+      res.send('Authentication Required');
+    },
+  });
+}
+
+/**
+ * Render the main application page
+ */
+export function renderIndex(req, res) {
+  if (!req.user) {
+    renderAuthenticationRequired(req, res);
+  } else {
+    res.render('app/modules/core/server/views/index');
+  }
 }

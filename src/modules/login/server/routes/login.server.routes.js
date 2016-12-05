@@ -1,6 +1,6 @@
 module.exports = (app) => {
   const loginController = require('../controllers/login.server.controller')(app);
 
-  app.route('/api/login')
+  app.route('/mc/login')
     .post(loginController.login);
 };
