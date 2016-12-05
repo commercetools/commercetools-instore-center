@@ -8,7 +8,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-sm-6 col-xs-12">
+    <div class="col-sm-8 col-xs-12">
       <p><b>Order Number:</b></p>
       <p>{{order.orderNumber}}</p>
       <p><b>Customer:</b></p>
@@ -16,12 +16,12 @@
       <p><b>Order Status:</b></p>
       <p>{{order.orderState}}</p>
     </div>
-    <div ng-controller="OrdersController" ng-if="order.orderState === 'Open'">
-      <div class="col-sm-3 col-xs-6">
-        <button setup-confirmation-page class="btn btn-success" data-id="{{order.id}}" data-status="Complete" data-toggle="confirmation" data-placement="bottom">Complete Order</button>
+    <div class="col-sm-4 col-xs-12" ng-controller="OrdersController" ng-if="order.orderState === 'Open'">
+      <div class="col-sm-12 col-xs-12" style="padding: 10px;">
+        <button setup-confirmation-page class="ct-button" data-id="{{order.id}}" data-status="Complete" data-toggle="confirmation" data-placement="bottom">Complete Order</button>
       </div>
-      <div class="col-sm-3 col-xs-6">
-        <button setup-confirmation-page class="btn btn-danger" data-id="{{order.id}}" data-status="Cancelled" data-toggle="confirmation" data-placement="bottom">Cancel Order</button>
+      <div class="col-sm-12 col-xs-12" style="padding: 10px;">
+        <button setup-confirmation-page class="ct-cancel-button" data-id="{{order.id}}" data-status="Cancelled" data-toggle="confirmation" data-placement="bottom">Cancel Order</button>
       </div>
     </div>
   </div>

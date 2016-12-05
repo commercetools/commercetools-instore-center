@@ -38,7 +38,7 @@
           <div class="col-sm-1 hidden-xs">Image</div>
           <div class="col-sm-3 hidden-xs">Name</div>
           <div class="col-sm-2 hidden-xs">Price</div>
-          <div st-sort="availableQuantity" class="col-sm-1 col-xs-6 text-center">Available</div>
+          <div st-sort="availableQuantity" class="col-sm-1 col-xs-6 text-center hidden-xs">Available</div>
           <div class="col-sm-2 text-center hidden-xs">Other Stores</div>
         </div>
         <div class="row" st-select-row="row" st-select-mode="multiple" ng-repeat="row in rowsDisplayed" ng-click="redirect('/inventories/product/' + row.productId + '/' + row.sku);">

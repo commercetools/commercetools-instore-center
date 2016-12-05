@@ -389,7 +389,6 @@ nav.paginator-arrows a:active {
   background: #00B6A1;
   border-radius: 6px;
   border: none;
-  border-radius: 6px;
   color: #fff;
   cursor: pointer;
   display: inline-block;
@@ -403,6 +402,17 @@ nav.paginator-arrows a:active {
   color: #FFFFFF;
   letter-spacing: 0;
   line-height: 14px;
+}
+
+.ct-cancel-button {
+  border: 1px solid #E60050;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #E60050;
+  letter-spacing: 0;
+  line-height: 14px;
+  background: #fff;
+  font-family: OpenSans,sans-serif;
 }
 
 /* Custom styles */
