@@ -222,6 +222,14 @@ input[type="search"]{-webkit-appearance:none;}
     margin-bottom: 25px
 }
 
+.login-error-message {
+    margin: 0;
+    padding: 20px 10px;
+    background-color: #fdf2f4;
+    color: #e60050;
+    border-bottom: 1px solid #e60050;
+}
+
 .forms-label {
     color: #666;
     display: block;

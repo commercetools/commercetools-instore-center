@@ -8,6 +8,10 @@ module.exports = (app) => {
 
   app.route('/login').get(core.renderAuthenticationRequired);
 
+  // Exceptions
+  app.route('/:url(languages)/*').get(core.renderIndex);
+  app.route('/**/favicon.ico').get(core.renderIndex);
+
   // Define application route
-  app.route('/*').get(core.renderIndex);
+  app.route('/*').get(core.renderIndexSecure);
 };

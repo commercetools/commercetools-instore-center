@@ -32,11 +32,12 @@ export function renderNotFound(req, res) {
 /**
  * Render the server authentication required
  */
-export function renderAuthenticationRequired(req, res) {
+export function renderAuthenticationRequired(req, res, next, showError) {
   res.status(401).format({
     'text/html': () => {
       res.render('app/modules/core/server/views/401', {
         url: req.originalUrl,
+        showError,
       });
     },
     'application/json': () => {
@@ -54,6 +55,13 @@ export function renderAuthenticationRequired(req, res) {
  * Render the main application page
  */
 export function renderIndex(req, res) {
+  res.render('app/modules/core/server/views/index');
+}
+
+/**
+ * Render the main application page
+ */
+export function renderIndexSecure(req, res) {
   if (!req.user) {
     renderAuthenticationRequired(req, res);
   } else {

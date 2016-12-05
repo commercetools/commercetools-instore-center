@@ -1,4 +1,5 @@
 import jwt from 'jsonwebtoken';
+import * as core from '../../../core/server/controllers/core.server.controller';
 
 module.exports = (app) => {
   const controller = {};
@@ -24,15 +25,16 @@ module.exports = (app) => {
     });
   }
 
-  controller.login = (req, res) => {
+  controller.login = (req, res, next) => {
     loginService.login(req.body)
       .then((queryResponse) => {
         login(queryResponse, (err, token) => {
           if (err) {
             app.logger.error(`Error Login in customer: ${JSON.stringify(err)}`);
-            return res.status(400).send({
-              message: 'Issue login in customer. Please try again.',
-            });
+            // return res.status(400).send({
+            //   message: 'Issue login in customer. Please try again.',
+            // });
+            core.renderAuthenticationRequired(req, res, next, true);
           } else {
             res.cookie('token', token, {
               maxAge: app.config.get('TOKEN:MAX_AGE_SECONDS') * 1000,
@@ -45,9 +47,10 @@ module.exports = (app) => {
         });
       })
       .catch(() => {
-        res.status(400).send({
-          message: 'Opps! something went wrong',
-        });
+        core.renderAuthenticationRequired(req, res, next, true);
+        // res.status(400).send({
+        //   message: 'Opps! something went wrong',
+        // });
       });
   };
 
