@@ -11,11 +11,6 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
       .state('dashboard', {
         url: '/dashboard',
         templateUrl: 'views/dashboard.client.view.html',
-        resolve: {
-          channels: ['HeaderService', (HeaderService) => {
-            return HeaderService.promise;
-          }],
-        },
       })
       .state('not-found', {
         url: '/not-found',
