@@ -16,7 +16,7 @@
       <p><b>Order Status:</b></p>
       <p>{{order.orderState}}</p>
     </div>
-    <div ng-controller="OrdersController">
+    <div ng-controller="OrdersController" ng-if="order.orderState === 'Open'">
       <div class="col-sm-3 col-xs-6">
         <button setup-confirmation-page class="btn btn-success" data-id="{{order.id}}" data-status="Complete" data-toggle="confirmation" data-placement="bottom">Complete Order</button>
       </div>

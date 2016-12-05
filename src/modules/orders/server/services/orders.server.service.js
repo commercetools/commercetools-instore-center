@@ -27,7 +27,7 @@ module.exports = (app) => {
     const sortAscending = params.sortAscending;
 
     if (!getAll) {
-      ordersQuery.where('custom(fields(isReservation=true)) AND orderState="Open"');
+      ordersQuery.where('custom(fields(isReservation=true))');
     }
 
 

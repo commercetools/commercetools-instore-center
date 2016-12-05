@@ -62,7 +62,7 @@
           <div class="col-sm-1 text-center text-xs-left"><span class="visible-xs">Items:</span>{{::row.lineItems.length}}</div>
           <div class="col-sm-2"><span class="visible-xs">Total:</span>{{::row.totalPrice.centAmount / 100 | currency: row.totalPrice.currencyCode + " "}}</div>
           <div class="col-sm-2 text-center" ng-controller="OrdersController">
-            <button setup-confirmation-list data-popout="true" id="{{row.id}}" class="ct-button" data-toggle="confirmation"
+            <button ng-if="row.orderState === 'Open'" setup-confirmation-list data-popout="true" id="{{row.id}}" class="ct-button" data-toggle="confirmation"
                     data-btn-ok-label="" data-btn-ok-icon="glyphicon glyphicon-share-alt"
                     data-btn-ok-class="btn-success"
                     data-btn-cancel-label="" data-btn-cancel-icon="glyphicon glyphicon-ban-circle"
