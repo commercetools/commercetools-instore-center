@@ -55,7 +55,7 @@
           <div class="col-sm-2 hidden-xs">Total</div>
           <div class="col-sm-2 text-center hidden-xs">Actions</div>
         </div>
-        <div class="row" st-select-row="row" st-select-mode="multiple" ng-repeat="row in rowsDisplayed" ng-click="redirect('/orders/' + row.id);">
+        <div class="row" st-select-row="row" st-select-mode="multiple" ng-repeat="row in rowsDisplayed" ng-click="redirect($event, '/orders/' + row.id);">
           <div class="col-sm-2"><span class="visible-xs">Number:</span>{{::row.orderNumber}}</div>
           <div class="col-sm-3 overflow-ellipse-text"><span class="visible-xs">Customer:</span>{{::row.customerEmail}}</div>
           <div class="col-sm-2 overflow-ellipse-text"><span class="visible-xs">Address:</span>{{::row.shippingAddress.firstName}} {{::row.shippingAddress.lastName}} {{::row.shippingAddress.streetName}}</div>

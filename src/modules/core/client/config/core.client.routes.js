@@ -13,7 +13,7 @@ angular.module('core').config(['$stateProvider', '$urlRouterProvider',
         templateUrl: 'views/dashboard.client.view.html',
         resolve: {
           channels: ['HeaderService', (HeaderService) => {
-            return HeaderService.fetchData();
+            return HeaderService.promise;
           }],
         },
 

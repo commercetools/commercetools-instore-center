@@ -124,8 +124,9 @@ angular.module('paginator')
       $scope.filterTextLabel = label;
     };
 
-    $scope.redirect = (url) => {
+    $scope.redirect = (event, url) => {
       $location.path(url);
+      event.stopPropagation();
     };
 
     $scope.clearSearch = () => {

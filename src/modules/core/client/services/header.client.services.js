@@ -1,14 +1,13 @@
 angular.module('core').service('HeaderService', ['$http', '$rootScope',
   function handleService($http, $rootScope) {
+    const promise = $http.get('/mc/channels')
+    .then((result) => {
+      $rootScope.stores = result.data.stores;
+      $rootScope.selectedChannel = result.data.stores[0].id;
+      $rootScope.userName = result.data.name;
+    });
     return {
-      fetchData: () => {
-        return $http.get('/mc/channels')
-        .then((result) => {
-          $rootScope.stores = result.data.stores;
-          $rootScope.selectedChannel = result.data.stores[0].id;
-          $rootScope.userName = result.data.name;
-        });
-      },
+      promise,
       setSelectedChannel: (newSelectedChannel) => {
         $rootScope.selectedChannel = newSelectedChannel;
       },

@@ -16,7 +16,7 @@
     <tbody>
       <tr ng-repeat="store in stores">
         <td><span ng-if="!store.supplyChannel">Unknown Store</span><span ng-if="store.supplyChannel">{{store.supplyChannel.obj.name.en}}</span></td>
-        <td class="text-center"><div ng-class="store.availableQuantity > 1?'circle circle-green':'circle circle-red'" class="circle"></div><div>{{store.availableQuantity}}</div></td>
+        <td class="text-center"><div ng-class="store.availableQuantity > 0?'circle circle-green':'circle circle-red'" class="circle"></div><div>{{store.availableQuantity}}</div></td>
         <td>{{store.distance}}</td>
       </tr>
     </tbody>
