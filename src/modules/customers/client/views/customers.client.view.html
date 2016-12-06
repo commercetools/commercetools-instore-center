@@ -47,7 +47,7 @@
           <div class="col-sm-4 hidden-xs">Last Name</div>
           <div class="col-sm-4 hidden-xs">Email</div>
         </div>
-        <div class="row" st-select-row="row" st-select-mode="multiple" ng-repeat="row in rowsDisplayed" ng-click="redirect('/customers/' + row.id);">
+        <div class="row" st-select-row="row" st-select-mode="multiple" ng-repeat="row in rowsDisplayed" ng-click="redirect($event, '/customers/' + row.id);">
           <div class="col-sm-4 overflow-ellipse-text"><span class="visible-xs">First Name:</span>{{::row.firstName}}</div>
           <div class="col-sm-4 overflow-ellipse-text"><span class="visible-xs">Last Name:</span>{{::row.lastName}}</div>
           <div class="col-sm-4 overflow-ellipse-text"><span class="visible-xs">Email:</span>{{::row.email}}</div>
