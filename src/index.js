@@ -307,11 +307,11 @@ function init(app) {
   initMiddleware(app);
   initViewEngine(app);
   initJwtToken(app);
+  initProtectedRoutes(app);
   initStaticFiles(app, assets);
   initModulesConfiguration(app);
   initModulesServerRoutes(app);
   initErrorRoutes(app);
-  initProtectedRoutes(app);
 
   app.listen(app.config.get('PORT'), () => {
     app.logger.info(`Server listening on port ${app.config.get('PORT')}`);
