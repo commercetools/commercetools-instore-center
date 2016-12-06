@@ -14,7 +14,9 @@ module.exports = (app) => {
       .all()
       .fetch()
       .then((res) => {
-        return res.body;
+        return res.body.results.map((store) => {
+          return { id: store.id, name: store.name.en };
+        });
       })
       .catch((err) => {
         logger.error(`Error getting channels with the params: ${params}, Error: ${err}`);
