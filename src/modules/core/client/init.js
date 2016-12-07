@@ -61,7 +61,6 @@ angular.module(ApplicationConfiguration.applicationModuleName,
 angular.module(ApplicationConfiguration.applicationModuleName).config(['$locationProvider', '$httpProvider',
   ($locationProvider, $httpProvider) => {
     $locationProvider.html5Mode(true).hashPrefix('!');
-    $httpProvider.interceptors.push('httpInterceptor');
     $httpProvider.interceptors.push('authInterceptor');
   },
 ]);
@@ -109,6 +108,10 @@ angular.module(ApplicationConfiguration.applicationModuleName)
     $translateProvider.useLocalStorage();
     $translateProvider.preferredLanguage('en');
     $translateProvider.useSanitizeValueStrategy(null);
+  }])
+  .config(['cfpLoadingBarProvider', (cfpLoadingBarProvider) => {
+    // cfpLoadingBarProvider.latencyThreshold = 500;
+    cfpLoadingBarProvider.spinnerTemplate = '<div><span class="fa fa-spinner">Loading...</div>';
   }]);
 
 // Then define the init function for starting up the application

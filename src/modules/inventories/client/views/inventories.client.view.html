@@ -1,8 +1,7 @@
 <div>
   <h1>Inventories</h1>
-  <h2 ng-if="showMask">LOADING ...</h2>
 
-  <div class="tile-body" ng-controller="PaginatorController">
+  <div class="tile-body loading-component" ng-controller="PaginatorController">
 
     <div st-table="rowsDisplayed" paginator-entity="inventories" paginator-default-sort="createdAt" st-pipe="getPage">
 

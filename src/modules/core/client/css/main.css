@@ -10,7 +10,9 @@ body, html {
 
 input[type="search"]{-webkit-appearance:none;}
 
-#pageloader {z-index: 20001;}
+#pageloader {
+  /*z-index: 20001;*/
+}
 
 
 /*  Header  */
@@ -20,7 +22,7 @@ input[type="search"]{-webkit-appearance:none;}
   min-height: 56px;
   position: fixed;
   width: 100%;
-  z-index: 20000;
+  z-index: 1;
 }
 .header-container #header .row > div {padding-top: 12px;}
 

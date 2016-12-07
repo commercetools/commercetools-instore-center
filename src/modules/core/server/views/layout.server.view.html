@@ -19,6 +19,8 @@
 
 <body class="header-fixed">
 
+  <div id="pageloader" page-loader></div>
+
   <div class="container-fluid" autoscroll="false">
     <div class="row header-container">
       <section id="header" class="main-header" ng-include="'views/header.client.view.html'"></section>
@@ -38,8 +40,6 @@
       </div>
     </div>
   </div>
-
-  <div id="pageloader" page-loader></div>
 
   <!--Vendor JavaScript Files-->
   {% for vendorJsFile in vendorJsFiles %}<script src="{{vendorJsFile}}"></script>{% endfor %}
