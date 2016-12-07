@@ -377,10 +377,11 @@ input[type="search"]{-webkit-appearance:none;}
 nav.paginator-arrows a,
 nav.paginator-arrows a:hover,
 nav.paginator-arrows a:active {
-  color: #213e48;
-  font-size: 17px;
+  font-size: 14px;
+  color: #848484;
   border: none;
   cursor: pointer;
+  letter-spacing: 0;
 }
 
 .filter-box {
