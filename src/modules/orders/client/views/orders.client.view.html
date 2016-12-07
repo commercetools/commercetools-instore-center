@@ -1,7 +1,7 @@
 <div data-ng-controller="OrdersController">
   <h1>Orders</h1>
 
-  <div class="tile-body loading-component" ng-controller="PaginatorController">
+  <div class="tile-body loading-component loading-component-hide" ng-controller="PaginatorController">
 
     <div st-table="rowsDisplayed" paginator-entity="orders" paginator-default-sort="createdAt" st-pipe="getPage">
 

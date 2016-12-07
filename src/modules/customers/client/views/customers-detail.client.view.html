@@ -7,7 +7,7 @@
       <h1>Customer / <span class="ct-subtitle">Insights</span></h1>
     </div>
   </div>
-  <div class="row">
+  <div class="row loading-component loading-component-hide">
     <div class="col-sm-6">
       <div class="panel panel-default" style="background-color:#FAFAFA;">
         <div class="panel-body">
@@ -33,7 +33,7 @@
 
     </div>
   </div>
-  <div class="row">
+  <div class="row loading-component loading-component-hide">
     <div class="col-sm-7"><h3>Purchased Products</h3></div>
     <div class="col-sm-5" style="padding-top: 15px;">
       <div class="col-sm-4">
@@ -52,7 +52,7 @@
       <p>This customer has no information to show</p>
     </div>
   </div>
-  <div class="row same-height-row">
+  <div class="row loading-component loading-component-hide same-height-row">
     <div ng-repeat="product in customer.products" class="col-sm-3 col-xs-12">
       <img src="{{product.images[0].url}}" class="product-thumbnail-image">
       <div class="product-thumbnail-base">
@@ -62,7 +62,7 @@
       </div>
     </div>
   </div>
-  <div class="row">
+  <div class="row loading-component loading-component-hide">
     <div class="col-md-12">
       <h3>Recommend these products to your customer</h3>
     </div>

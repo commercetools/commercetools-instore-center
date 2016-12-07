@@ -7,7 +7,7 @@
       <h1>Order / <span class="ct-subtitle">Details</span></h1>
     </div>
   </div>
-  <div class="row">
+  <div class="row loading-component loading-component-hide">
     <div class="col-sm-8 col-xs-12">
       <p><span class="order-details-label">Order No.</span>&nbsp;&nbsp;{{order.orderNumber}}</p>
       <p><span class="order-details-label">Customer</span>&nbsp;&nbsp;{{order.customerEmail}}</p>
@@ -22,12 +22,12 @@
       </div>
     </div>
   </div>
-  <div class="row">
+  <div class="row loading-component loading-component-hide">
     <div class="col-sm-12">
       <h3>Items</h3>
     </div>
   </div>
-  <div class="st-table table table-custom table-component container-fluid">
+  <div class="st-table table table-custom table-component container-fluid loading-component loading-component-hide">
     <div class="row table-component-head">
       <div class="col-sm-3 col-xs-6">Product</div>
       <div class="col-sm-offset-3 col-sm-2">Qty.</div>
@@ -53,7 +53,7 @@
       </div>
     </div>
   </div>
-  <div class="row">
+  <div class="row loading-component loading-component-hide">
     <div class="col-sm-12 text-right order-totals">
       <p>Subtotal: {{order.taxedPrice.totalNet.currencyCode}} {{(order.taxedPrice.totalNet.centAmount/100).toFixed(2)}}</p>
       <p>Shipping: <span ng-if="!order.shippingInfo">EUR 0.00</span><span ng-if="order.shippingInfo">{{order.shippingInfo.shippingRate.price.currencyCode}} {{(order.shippingInfo.shippingRate.price.centAmount/100).toFixed(2)}}</span></p>

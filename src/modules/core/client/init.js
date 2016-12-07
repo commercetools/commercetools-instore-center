@@ -111,7 +111,7 @@ angular.module(ApplicationConfiguration.applicationModuleName)
   }])
   .config(['cfpLoadingBarProvider', (cfpLoadingBarProvider) => {
     // cfpLoadingBarProvider.latencyThreshold = 500;
-    cfpLoadingBarProvider.spinnerTemplate = '<div><span class="fa fa-spinner">Loading...</div>';
+    cfpLoadingBarProvider.spinnerTemplate = '<div id="main-spinner"><div class="double-bounce1"></div><div class="double-bounce2"></div></div>';
   }]);
 
 // Then define the init function for starting up the application
