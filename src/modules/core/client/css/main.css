@@ -443,7 +443,7 @@ nav.paginator-arrows a:active {
   border-top: 2px solid #CCCCCC;
   width:60%;
   padding: 10px;
-  margin: 10px;
+  margin-left: 10px;
 }
 
 .product-detail-price {
