@@ -41,7 +41,7 @@
         </div>
         <div class="row" st-select-row="row" st-select-mode="multiple" ng-repeat="row in rowsDisplayed" ng-click="redirect($event, '/inventories/product/' + row.productId + '/' + row.sku);">
           <div class="col-sm-3 overflow-ellipse-text"><span class="visible-xs">SKU:</span>{{::row.sku}}</div>
-          <div class="col-sm-1"><img style="max-width:45px;" src="{{row.image.url}}"></div>
+          <div class="col-sm-1"><img style="max-width:45px;" class="img-panel" src="{{row.image.url}}"></div>
           <div class="col-sm-3 overflow-ellipse-text"><span class="visible-xs">Name:</span>{{::row.name}}</div>
           <div class="col-sm-2"><span class="visible-xs">Price:</span>{{::row.price.value.centAmount / 100 | currency: row.price.value.currencyCode + " "}}</div>
           <div class="col-sm-1 text-center text-xs-left"><span class="visible-xs">Availability:</span><div ng-class="row.availableQuantity > 0?'circle circle-green':'circle circle-red'" class="circle"></div><div>{{::row.availableQuantity}}</div></div>

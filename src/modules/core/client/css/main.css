@@ -561,6 +561,15 @@ nav.paginator-arrows a:active {
   color: #848484;
 }
 
+.img-panel {
+  border: 1px solid #CCCCCC;
+  text-align: center;
+}
+
+.img-panel > img {
+  display: inline!important;
+}
+
 .order-details-label {
   font-family: Open Sans,sans-serif;
   font-size: 18px;
