@@ -566,6 +566,8 @@ nav.paginator-arrows a:active {
   font-size: 18px;
   color: #484848;
   letter-spacing: 0;
+  width: 130px;
+  display: inline-block;
 }
 
 .order-totals {
