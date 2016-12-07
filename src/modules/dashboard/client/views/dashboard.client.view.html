@@ -7,10 +7,18 @@
     </p>
   </div>
   <div class="page-toolbar date-filter">
-    Revenue for the time period
-    <a href="javascript:;" class="btn btn-lightred no-border" daterangepicker="rangeOptions" callback="refreshData" date-begin="startDate" date-end="endDate">
-      <i class="fa fa-calendar"></i>&nbsp;&nbsp;<span>{{startDate | date: 'MMMM d, yyyy'}} - {{endDate | date: 'MMMM d, yyyy'}}</span>&nbsp;&nbsp;<i class="fa fa-angle-down"></i>
-    </a>
+    <div class="col-sm-8" style="padding-top:15px;margin-left: -15px;">
+      Revenue for the time period
+      <a href="javascript:;" class="btn btn-lightred no-border" daterangepicker="rangeOptions" callback="refreshData" date-begin="startDate" date-end="endDate">
+        <i class="fa fa-calendar"></i>&nbsp;&nbsp;<span>{{startDate | date: 'MMMM d, yyyy'}} - {{endDate | date: 'MMMM d, yyyy'}}</span>&nbsp;&nbsp;<i class="fa fa-angle-down"></i>
+      </a>
+    </div>
+    <div class="col-sm-4 text-right">
+      <div class="tile-header bg-greensea dvd dvd-btm">
+        <h3 class="custom-font"><strong>Sales </strong>Graph</h3>
+      </div>
+    </div>
+
   </div>
 
 
@@ -21,13 +29,6 @@
     <div class="col-md-12">
       <!-- tile -->
       <section class="tile">
-
-        <!-- tile header -->
-        <div class="tile-header bg-greensea dvd dvd-btm">
-          <h3 class="custom-font"><strong>Sales </strong>Graph</h3>
-        </div>
-        <!-- /tile header -->
-
         <!-- tile widget -->
         <div class="dashboard-graph" ng-controller="StatisticsChartCtrl">
 
