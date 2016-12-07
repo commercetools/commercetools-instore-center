@@ -602,3 +602,9 @@ nav.paginator-arrows a:active {
   width:155px;
   display:inline-block;
 }
+
+.btn-success {
+  color: #fff;
+  background-color: #00B6A1;
+  border-color: #00B6A1;
+}
