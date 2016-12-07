@@ -32,6 +32,8 @@ input[type="search"]{-webkit-appearance:none;}
 }
 .header-container #header .nav-sign-out a {color: #666;}
 
+.header-container #header .nav-sign-out img {max-width: 25px;}
+
 .header-container #header select {
   line-height: 24px!important;
   overflow: hidden;
@@ -191,9 +193,16 @@ input[type="search"]{-webkit-appearance:none;}
   color: #213e48;
 }
 
-.h1 {
+h1 {
   font-family: Open Sans,sans-serif;
   font-size: 30px;
+  color: #213E48;
+  letter-spacing: 0;
+}
+
+h3 {
+  font-family: Open Sans,sans-serif;
+  font-size: 24px;
   color: #213E48;
   letter-spacing: 0;
 }
@@ -465,8 +474,8 @@ nav.paginator-arrows a:active {
 .confirmation-buttons a{
   border-radius: 4px !important;
 }
-.confirmation-buttons a.btn.btn-success{
-  margin-right: 15px;
+.confirmation-buttons a.ct-button{
+  margin-right: 5px;
 }
 
 
@@ -570,4 +579,10 @@ nav.paginator-arrows a:active {
   font-size: 13px;
   color: #000000;
   letter-spacing: 0;
+}
+
+.ct-customer-panels {
+  background-color:#FAFAFA;
+  height: 140px;
+  box-shadow: 4px 4px 2px #EEEEEE;
 }

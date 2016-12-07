@@ -9,7 +9,7 @@
   </div>
   <div class="row loading-component loading-component-hide">
     <div class="col-sm-6">
-      <div class="panel panel-default" style="background-color:#FAFAFA;">
+      <div class="panel panel-default ct-customer-panels">
         <div class="panel-body">
           <p><b>Customer Details</b></p>
           <p>{{customer.firstName}} {{customer.lastName}}</p>
@@ -18,7 +18,7 @@
       </div>
     </div>
     <div class="col-sm-6">
-      <div class="panel panel-default" style="background-color:#FAFAFA;">
+      <div class="panel panel-default ct-customer-panels">
         <div class="panel-body" ng-if="customer.addresses.length > 0">
           <p><b>Address</b></p>
           <p>{{customer.addresses[0].streetName}}</p>
@@ -36,15 +36,15 @@
   <div class="row loading-component loading-component-hide">
     <div class="col-sm-7"><h3>Purchased Products</h3></div>
     <div class="col-sm-5" style="padding-top: 15px;">
-      <div class="col-sm-4">
+      <div class="col-sm-5">
         Sort products by:
       </div>
-      <div class="col-sm-8">
-        <select id="sort" name="sort" class="form-control" style="width:120px;" ng-change="sortData(selectedSortMethod);" ng-model="selectedSortMethod">
-          <option value="placedOn-desc">Date Desc</option>
-          <option value="placedOn-asc">Date Asc</option>
-          <option value="name-desc">Name Desc</option>
-          <option value="name-asc">Name Asc</option>
+      <div class="col-sm-7">
+        <select id="sort" name="sort" class="form-control" style="width:155px;" ng-change="sortData(selectedSortMethod);" ng-model="selectedSortMethod">
+          <option value="placedOn-desc">Date Descending</option>
+          <option value="placedOn-asc">Date Ascending</option>
+          <option value="name-desc">Name Descending</option>
+          <option value="name-asc">Name Ascending</option>
         </select>
       </div>
     </div>
@@ -62,38 +62,5 @@
       </div>
     </div>
   </div>
-  <div class="row loading-component loading-component-hide">
-    <div class="col-md-12">
-      <h3>Recommend these products to your customer</h3>
-    </div>
-
-    <div class="col-sm-3 col-xs-12">
-      <img src="https://s3-eu-west-1.amazonaws.com/commercetools-maximilian/products/081506_1_medium.jpg" class="product-thumbnail-image">
-      <div class="product-thumbnail-base">
-        <p class="product-thumbnail-price"><b>{{product.prices[0].value.currencyCode}} 130</b></p>
-        <p><span class="circle circle-green"></span> Available!</p>
-      </div>
-    </div>
-    <div class="col-sm-3 col-xs-12">
-      <img src="https://s3-eu-west-1.amazonaws.com/commercetools-maximilian/products/081119_1_large.jpg" class="product-thumbnail-image">
-      <div class="product-thumbnail-base">
-        <p class="product-thumbnail-price"><b>{{product.prices[0].value.currencyCode}} 92</b></p>
-        <p><span class="circle circle-green"></span> Available!</p>
-      </div>
-    </div>
-    <div class="col-sm-3 col-xs-12">
-      <img src="https://s3-eu-west-1.amazonaws.com/commercetools-maximilian/products/080592_1_large.jpg" class="product-thumbnail-image">
-      <div class="product-thumbnail-base">
-        <p class="product-thumbnail-price"><b>{{product.prices[0].value.currencyCode}} 148.75</b></p>
-        <p><span class="circle circle-green"></span> Available!</p>
-      </div>
-    </div>
-    <div class="col-sm-3 col-xs-12">
-      <img src="https://s3-eu-west-1.amazonaws.com/commercetools-maximilian/products/080592_1_large.jpg" class="product-thumbnail-image">
-      <div class="product-thumbnail-base">
-        <p class="product-thumbnail-price"><b>{{product.prices[0].value.currencyCode}} 148.75</b></p>
-        <p><span class="circle circle-green"></span> Available!</p>
-      </div>
-    </div>
-  </div>
+  <div ng-include="'/views/recommend-section.client.view.html'"></div>
 </div>

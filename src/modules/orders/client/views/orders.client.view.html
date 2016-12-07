@@ -7,7 +7,7 @@
 
       <div class="container-fluid">
         <div class="row filter-box">
-            <div class="col-sm-5">
+            <div class="col-sm-6">
               <div class="input-group filter-text-box">
                 <div class="input-group-btn search-panel" text-filter-label="Number" text-filter-field="Number">
                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
@@ -26,7 +26,7 @@
                 </span>
               </div>
             </div>
-            <div class="col-sm-4">
+            <div class="col-sm-3">
               <select class="form-control ng-pristine ng-valid ng-not-empty ng-touched" aria-invalid="false" st-search="orderState">
                 <option value="Open">Orders Open</option>
                 <option value="Cancelled">Orders Cancelled</option>
@@ -64,10 +64,10 @@
           <div class="col-sm-2 text-center" ng-controller="OrdersController">
             <button ng-if="row.orderState === 'Open'" setup-confirmation-list data-popout="true" id="{{row.id}}" class="ct-button" data-toggle="confirmation"
                     data-btn-ok-label="" data-btn-ok-icon="glyphicon glyphicon-share-alt"
-                    data-btn-ok-class="btn-success"
+                    data-btn-ok-class="ct-button"
                     data-btn-cancel-label="" data-btn-cancel-icon="glyphicon glyphicon-ban-circle"
-                    data-btn-cancel-class="btn-danger"
-                    data-title="New Order Status?" data-content="Process order">
+                    data-btn-cancel-class="ct-cancel-button"
+                    data-title="Process Order" data-content="Complete / Cancel">
               Process
             </button>
           </div>

@@ -17,43 +17,10 @@
       <br/>
       <p><b>Details</b></p>
       <p>100% Polyester. Chemische Renigung</p>
-      <p class="product-detail-price"><b>{{product.prices[0].value.currencyCode}} {{product.prices[0].value.centAmount/100}}</b></p>
-      <p><span class="circle circle-green"></span> Available!</p>
+      <p class="product-detail-price"><b>{{product.prices[0].value.currencyCode}} {{(product.prices[0].value.centAmount/100).toFixed(2)}}</b></p>
+      <p ng-if="product.availability.channels[selectedChannel].availableQuantity > 0"><span class="circle circle-green"></span> Available!</p>
+      <p ng-if="product.availability.channels[selectedChannel].availableQuantity <= 0"><span class="circle circle-red"></span> Out of Stock!</p>
     </div>
   </div>
-  <div class="row loading-component loading-component-hide">
-    <div class="col-md-12">
-      <h3>Recommend these products to your customer</h3>
-    </div>
-
-    <div class="col-sm-3 col-xs-12">
-      <img src="https://s3-eu-west-1.amazonaws.com/commercetools-maximilian/products/081506_1_medium.jpg" class="product-thumbnail-image">
-      <div class="product-thumbnail-base">
-        <p class="product-thumbnail-price"><b>{{product.prices[0].value.currencyCode}} 130</b></p>
-        <p><span class="circle circle-green"></span> Available!</p>
-      </div>
-    </div>
-    <div class="col-sm-3 col-xs-12">
-      <img src="https://s3-eu-west-1.amazonaws.com/commercetools-maximilian/products/081119_1_large.jpg" class="product-thumbnail-image">
-      <div class="product-thumbnail-base">
-        <p class="product-thumbnail-price"><b>{{product.prices[0].value.currencyCode}} 92</b></p>
-        <p><span class="circle circle-green"></span> Available!</p>
-      </div>
-    </div>
-    <div class="col-sm-3 col-xs-12">
-      <img src="https://s3-eu-west-1.amazonaws.com/commercetools-maximilian/products/080592_1_large.jpg" class="product-thumbnail-image">
-      <div class="product-thumbnail-base">
-        <p class="product-thumbnail-price"><b>{{product.prices[0].value.currencyCode}} 148.75</b></p>
-        <p><span class="circle circle-green"></span> Available!</p>
-      </div>
-    </div>
-    <div class="col-sm-3 col-xs-12">
-      <img src="https://s3-eu-west-1.amazonaws.com/commercetools-maximilian/products/080592_1_large.jpg" class="product-thumbnail-image">
-      <div class="product-thumbnail-base">
-        <p class="product-thumbnail-price"><b>{{product.prices[0].value.currencyCode}} 148.75</b></p>
-        <p><span class="circle circle-green"></span> Available!</p>
-      </div>
-
-    </div>
-  </div>
+  <div ng-include="'/views/recommend-section.client.view.html'"></div>
 </div>
