@@ -575,6 +575,8 @@ nav.paginator-arrows a:active {
   display: inline!important;
 }
 
+.img-panel.img-panel-fix-size {height: 230px;}
+
 .order-details-label {
   font-family: Open Sans,sans-serif;
   font-size: 18px;
