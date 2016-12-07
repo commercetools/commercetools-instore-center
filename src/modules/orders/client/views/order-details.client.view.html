@@ -54,11 +54,32 @@
     </div>
   </div>
   <div class="row loading-component loading-component-hide">
-    <div class="col-sm-12 text-right order-totals">
-      <p>Subtotal: {{order.taxedPrice.totalNet.currencyCode}} {{(order.taxedPrice.totalNet.centAmount/100).toFixed(2)}}</p>
-      <p>Shipping: <span ng-if="!order.shippingInfo">EUR 0.00</span><span ng-if="order.shippingInfo">{{order.shippingInfo.shippingRate.price.currencyCode}} {{(order.shippingInfo.shippingRate.price.centAmount/100).toFixed(2)}}</span></p>
-      <p>Taxes: {{order.taxedPrice.totalGross.currencyCode}} {{((order.taxedPrice.totalGross.centAmount - order.taxedPrice.totalNet.centAmount)/100).toFixed(2)}}</p>
-      <p>Grand Total: {{order.taxedPrice.totalGross.currencyCode}} {{(order.taxedPrice.totalGross.centAmount/100).toFixed(2)}}</p>
+    <div class="col-sm-4"></div>
+    <div class="col-sm-8 order-totals text-right">
+      <div class="number-line">
+        <div class="label-number">Subtotal:</div>
+        <div class="number">
+          <span>{{order.taxedPrice.totalNet.currencyCode}} {{(order.taxedPrice.totalNet.centAmount/100).toFixed(2)}}</span>
+        </div>
+      </div>
+      <div class="number-line">
+        <div class="label-number">Shipping:</div>
+        <div class="number">
+          <span ng-if="!order.shippingInfo">EUR 0.00</span><span ng-if="order.shippingInfo">{{order.shippingInfo.shippingRate.price.currencyCode}} {{(order.shippingInfo.shippingRate.price.centAmount/100).toFixed(2)}}</span>
+        </div>
+      </div>
+      <div class="number-line">
+        <div class="label-number">Taxes:</div>
+        <div class="number">
+          <span>{{order.taxedPrice.totalGross.currencyCode}} {{((order.taxedPrice.totalGross.centAmount - order.taxedPrice.totalNet.centAmount)/100).toFixed(2)}}</span>
+        </div>
+      </div>
+      <div class="number-line total-line">
+        <div class="label-number">Grand Total:</div>
+        <div class="number">
+          <span>{{order.taxedPrice.totalGross.currencyCode}} {{(order.taxedPrice.totalGross.centAmount/100).toFixed(2)}}</span>
+        </div>
+      </div>
     </div>
   </div>
 </div>
