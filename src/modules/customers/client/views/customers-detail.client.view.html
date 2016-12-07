@@ -38,12 +38,10 @@
   </div>
   <div class="row loading-component loading-component-hide">
     <div class="col-sm-7"><h3>Purchased Products</h3></div>
-    <div class="col-sm-5" style="padding-top: 15px;">
-      <div class="col-sm-5">
-        Sort products by:
-      </div>
-      <div class="col-sm-7">
-        <select id="sort" name="sort" class="form-control" style="width:155px;" ng-change="sortData(selectedSortMethod);" ng-model="selectedSortMethod">
+    <div class="col-sm-5 text-right customer-filter-products">
+      <div class="btn-group btn-block">
+        <label for="sort">Sort products by:</label>
+        <select id="sort" name="sort" class="form-control" ng-change="sortData(selectedSortMethod);" ng-model="selectedSortMethod">
           <option value="placedOn-desc">Date Descending</option>
           <option value="placedOn-asc">Date Ascending</option>
           <option value="name-desc">Name Descending</option>
@@ -55,11 +53,12 @@
       <p>This customer has no information to show</p>
     </div>
   </div>
+  <br />
   <div class="row loading-component loading-component-hide same-height-row">
     <div ng-repeat="product in customer.products" class="col-sm-3 col-xs-12">
       <img src="{{product.images[0].url}}" class="product-thumbnail-image">
       <div class="product-thumbnail-base">
-        <p>{{product.name}}</p>
+        <p class="name overflow-ellipse-text">{{product.name}}</p>
         <p class="order-purchase-date">Ordered on:<br/>
         {{product.placedOn | date:'MM/dd/yyyy'}}</p>
       </div>

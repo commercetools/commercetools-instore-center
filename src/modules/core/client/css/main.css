@@ -463,6 +463,7 @@ nav.paginator-arrows a:active {
   margin-bottom: 20px;
   box-shadow: 2px 2px 1px #EEEEEE;
 }
+.product-thumbnail-base .name {height: 40px;}
 
 .product-thumbnail-price{
   font-family: Open Sans;
@@ -493,6 +494,7 @@ nav.paginator-arrows a:active {
   vertical-align: middle;
   font-family: Open Sans,sans-serif;
   font-size: 14px;
+  font-weight: bold;
   color: #FFFFFF;
   letter-spacing: 0;
   line-height: 14px;
@@ -592,4 +594,11 @@ nav.paginator-arrows a:active {
   top:10px;
   right:25px;
   max-width: 30px;
+}
+
+/* Customer Page */
+.customer-filter-products {padding-top: 15px;}
+.customer-filter-products #sort {
+  width:155px;
+  display:inline-block;
 }
