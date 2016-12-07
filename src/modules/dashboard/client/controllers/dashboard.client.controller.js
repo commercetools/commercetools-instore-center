@@ -39,8 +39,6 @@ angular.module('dashboard')
       };
 
       $scope.refreshData = (startDate, endDate) => {
-        console.log(startDate);
-        console.log(endDate);
         Orders.totalOrders({
           startDate,
           endDate,
@@ -178,7 +176,7 @@ angular.module('dashboard')
         xaxis: {
           tickLength: 0,
           font: {
-            color: '#fff',
+            color: '#000',
           },
           position: 'bottom',
           ticks: [
@@ -199,7 +197,7 @@ angular.module('dashboard')
         yaxis: {
           tickLength: 0,
           font: {
-            color: '#fff',
+            color: '#000',
           },
         },
         grid: {

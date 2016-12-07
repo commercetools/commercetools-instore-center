@@ -145,6 +145,10 @@ input[type="search"]{-webkit-appearance:none;}
 
 .dashboard-graph .legend .legendLabel {padding: 0px 10px 0px 4px;}
 
+.dashboard-info-boxes {
+  padding-top: 20px;
+}
+
 .dashboard-info-boxes .stats-box{
   background-color: #fff;
   box-shadow: 0 0 3px rgba(0,0,0,.2);
