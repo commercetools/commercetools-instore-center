@@ -6,15 +6,64 @@ angular.module('dashboard')
     'InventoryService',
     '$rootScope',
     'toastr',
-    ($scope, Orders, Customers, InventoryService, $rootScope, toastr) => {
+    '$moment',
+    ($scope, Orders, Customers, InventoryService, $rootScope, toastr, $moment) => {
       $scope.totalOrders = 0;
       $scope.totalCustomers = 0;
+      $scope.totalProducts = 0;
+      $scope.totalSales = 0;
+      $scope.startDate = $moment().subtract(7, 'days').startOf('day')
+                        .toDate();
+      $scope.endDate = $moment().startOf('day').toDate();
 
       $scope.page = {
         title: 'Dashboard',
       };
+
+      $scope.rangeOptions = {
+        ranges: {
+          Today: [$moment(), $moment()],
+          Yesterday: [$moment().subtract(1, 'days'), $moment().subtract(1, 'days')],
+          'Last 7 Days': [$moment().subtract(7, 'days'), $moment()],
+          'Last 30 Days': [$moment().subtract(29, 'days'), $moment()],
+          'This Month': [$moment().startOf('month'), $moment().endOf('month')],
+          'Last Month': [
+            $moment().subtract(1, 'month').startOf('month'),
+            $moment().subtract(1, 'month').endOf('month'),
+          ],
+        },
+        opens: 'left',
+        startDate: $moment().startOf('day').subtract(7, 'days'),
+        endDate: $moment().startOf('day'),
+        parentEl: '#content',
+      };
+
+      $scope.refreshData = (startDate, endDate) => {
+        console.log(startDate);
+        console.log(endDate);
+        Orders.totalOrders({
+          startDate,
+          endDate,
+          selectedChannel: $rootScope.selectedChannel,
+        }).$promise.then((res) => {
+          $scope.totalOrders = res.totalOrders;
+        });
+
+        Orders.totalSales({
+          startDate,
+          endDate,
+          selectedChannel: $rootScope.selectedChannel,
+          getAll: true,
+        }).$promise.then((res) => {
+          $scope.totalSales = res;
+        });
+        // getSales($scope.startDate, $scope.startDate);
+      };
       function setTotalOrders() {
-        Orders.totalOrders({ selectedChannel: $rootScope.selectedChannel },
+        Orders.totalOrders({ selectedChannel: $rootScope.selectedChannel,
+                             startDate: $scope.startDate,
+                             endDate: $scope.endDate,
+                           },
           (res) => {
             $scope.totalOrders = res.totalOrders;
           },
@@ -34,7 +83,11 @@ angular.module('dashboard')
       }
 
       function setTotalSales() {
-        Orders.totalSales({ selectedChannel: $rootScope.selectedChannel, getAll: true },
+        Orders.totalSales({ selectedChannel: $rootScope.selectedChannel,
+                            getAll: true,
+                            startDate: $scope.startDate,
+                            endDate: $scope.endDate,
+                          },
           (res) => {
             $scope.totalSales = res;
           },

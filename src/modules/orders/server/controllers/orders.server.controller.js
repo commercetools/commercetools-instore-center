@@ -39,6 +39,8 @@ module.exports = (app) => {
       page: 1,
       perPage: 1,
       selectedChannel: req.query.selectedChannel,
+      startDate: req.query.startDate,
+      endDate: req.query.endDate,
     })
       .then((queryResponse) => {
         res.json({
@@ -56,6 +58,8 @@ module.exports = (app) => {
     orderService.totalSales({
       getAll: true,
       selectedChannel: req.query.selectedChannel,
+      startDate: req.query.startDate,
+      endDate: req.query.endDate,
     })
       .then((queryResponse) => {
         res.json({

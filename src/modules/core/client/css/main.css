@@ -189,7 +189,7 @@ input[type="search"]{-webkit-appearance:none;}
   padding: 20px;
 }
 
-.page-toolbar i{
+.page-toolbar i, span{
   color: #213e48;
 }
 

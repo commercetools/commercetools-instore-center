@@ -19,6 +19,8 @@ module.exports = (app) => {
   service.query = (params) => {
     const page = parseInt(params.page, 10);
     const perPage = parseInt(params.perPage, 10);
+    const startDate = params.startDate;
+    const endDate = params.endDate;
     const getAll = params.getAll;
     const selectedChannel = params.selectedChannel;
     const ordersQuery = client.orders;
@@ -28,6 +30,14 @@ module.exports = (app) => {
 
     if (!getAll) {
       ordersQuery.where('custom(fields(isReservation=true))');
+    }
+
+    if (startDate) {
+      ordersQuery.where(`createdAt >= "${startDate}"`);
+    }
+
+    if (endDate) {
+      ordersQuery.where(`createdAt <= "${endDate}"`);
     }
 
 
