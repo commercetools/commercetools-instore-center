@@ -10,7 +10,7 @@
   <div class="row loading-component loading-component-hide">
     <div class="col-sm-4 text-center">
       <div class="img-panel">
-        <img src="{{product.images[0].url}}" class="img-responsive">
+        <img check-image src="{{product.images[0].url}}" class="img-responsive">
       </div>
     </div>
     <div class="col-sm-8 product-details">
@@ -24,7 +24,7 @@
       <p ng-if="product.availability.channels[selectedChannel].availableQuantity <= 0"><span class="circle circle-red"></span> Out of Stock!</p>
       <div class="col-xs-2" ng-repeat="image in product.images">
         <div class="img-panel">
-          <img src="{{image.url}}"  class="img-responsive" style="max-width: 50px;"/>
+          <img check-image src="{{image.url}}" class="img-responsive" style="max-width: 50px;"/>
         </div>
       </div>
     </div>

@@ -18,7 +18,6 @@ ENV NODE_ENV production
 
 # Make everything available for start
 ADD . /home/app
-RUN npm install gulp
 RUN npm install
 
 # Port 3000 for server

@@ -32,12 +32,12 @@
       <div class="col-sm-3 col-xs-6">Product</div>
       <div class="col-sm-offset-3 col-sm-2">Qty.</div>
       <div class="col-sm-2">Unit Price</div>
-      <div class="col-sm-2">Price</div>
+      <div class="col-sm-2 text-right">Price</div>
     </div>
     <div class="row" ng-repeat="item in order.lineItems" style="border-bottom: 1px solid #CCCCCC;">
       <div class="col-sm-3">
         <div class="img-panel">
-          <img ng-src="{{item.variant.images[0].url}}" class="img-responsive" style="max-width: 100px;"/>
+          <img check-image ng-src="{{item.variant.images[0].url}}" class="img-responsive" style="max-width: 100px;"/>
         </div>
       </div>
       <div class="col-sm-3 overflow-ellipse-text">
@@ -50,7 +50,7 @@
       <div class="col-sm-2">
         {{item.price.value.currencyCode}} {{(item.price.value.centAmount/100).toFixed(2)}}
       </div>
-      <div class="col-sm-2">
+      <div class="col-sm-2 text-right">
         {{item.totalPrice.currencyCode}} {{(item.totalPrice.centAmount/100).toFixed(2)}}
       </div>
     </div>
