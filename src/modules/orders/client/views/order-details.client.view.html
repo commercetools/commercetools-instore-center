@@ -35,8 +35,10 @@
       <div class="col-sm-2">Price</div>
     </div>
     <div class="row" ng-repeat="item in order.lineItems" style="border-bottom: 1px solid #CCCCCC;">
-      <div class="col-sm-3 img-panel">
-        <img ng-src="{{item.variant.images[0].url}}" class="img-responsive" style="max-width: 100px;"/>
+      <div class="col-sm-3">
+        <div class="img-panel">
+          <img ng-src="{{item.variant.images[0].url}}" class="img-responsive" style="max-width: 100px;"/>
+        </div>
       </div>
       <div class="col-sm-3 overflow-ellipse-text">
         <p><i>{{item.variant.sku}}</i></p>
