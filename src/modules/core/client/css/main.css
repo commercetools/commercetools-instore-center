@@ -189,7 +189,7 @@ input[type="search"]{-webkit-appearance:none;}
   padding: 20px;
 }
 
-.page-toolbar i, span{
+.date-filter i, .date-filter span{
   color: #213e48;
 }
 
@@ -475,7 +475,7 @@ nav.paginator-arrows a:active {
 .confirmation-buttons a{
   border-radius: 4px !important;
 }
-.confirmation-buttons a.ct-button, a.btn.btn-primary{
+.confirmation-buttons a.ct-button, .confirmation-buttons a.btn.btn-primary{
   margin-right: 5px;
 }
 
