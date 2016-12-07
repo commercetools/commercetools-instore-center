@@ -1,24 +1,22 @@
 <div ng-controller="InventoriesCheckStoresController" ng-init="checkStores();">
   <div class="row">
-    <div class="col-sm-11 col-xs-10">
-      <h1>{{stores[0].name}} Store Availability</h1>
+    <div class="col-xs-12 arrow-back">
+      <a href="/inventories"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
     </div>
-    <div class="col-sm-1 col-xs-2">
-      <a href="/inventories"><i class="fa fa-arrow-left arrow-back" aria-hidden="true"></i></a>
+    <div class="col-xs-12">
+      <h1>Store Availability / <span class="ct-subtitle">{{stores[0].name}}</span></h1>
     </div>
   </div>
-  <table class="st-table table table-custom table-component">
-    <thead>
-      <th>Store</th>
-      <th class="text-center">Availability</th>
-      <th>Distance (km)</th>
-    </thead>
-    <tbody>
-      <tr ng-repeat="store in stores">
-        <td><span ng-if="!store.supplyChannel">Unknown Store</span><span ng-if="store.supplyChannel">{{store.supplyChannel.obj.name.en}}</span></td>
-        <td class="text-center"><div ng-class="store.availableQuantity > 0?'circle circle-green':'circle circle-red'" class="circle"></div><div>{{store.availableQuantity}}</div></td>
-        <td>{{store.distance}}</td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="st-table table table-custom table-component container-fluid">
+    <div class="row table-component-head">
+      <div class="col-xs-4">Store</div>
+      <div class="col-xs-4 text-center">Availability</div>
+      <div class="col-xs-4">Distance (km)</div>
+    </div>
+    <div class="row" ng-repeat="store in stores">
+      <div class="col-xs-4 overflow-ellipse-text"><span ng-if="!store.supplyChannel">Unknown Store</span><span ng-if="store.supplyChannel">{{store.supplyChannel.obj.name.en}}</span></div>
+      <div class="col-xs-4 overflow-ellipse-text text-center"><div ng-class="store.availableQuantity > 0?'circle circle-green':'circle circle-red'" class="circle"></div><div>{{store.availableQuantity}}</div></div>
+      <div class="col-xs-4 overflow-ellipse-text">{{store.distance}}</div>
+    </div>
+  </div>
 </div>

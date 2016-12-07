@@ -1,27 +1,24 @@
 <div ng-controller="OrderDetailsController" ng-init="getOrder();">
   <div class="row">
-    <div class="col-sm-11 col-xs-10">
-      <h2>Order Details</h2>
+    <div class="col-xs-12 arrow-back">
+      <a href="/orders"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
     </div>
-    <div class="col-sm-1 col-xs-2">
-      <a href="/orders"><i class="fa fa-arrow-left arrow-back" aria-hidden="true"></i></a>
+    <div class="col-xs-12">
+      <h1>Order / <span class="ct-subtitle">Details</span></h1>
     </div>
   </div>
   <div class="row">
     <div class="col-sm-8 col-xs-12">
-      <p><b>Order Number:</b></p>
-      <p>{{order.orderNumber}}</p>
-      <p><b>Customer:</b></p>
-      <p>{{order.customerEmail}}</p>
-      <p><b>Order Status:</b></p>
-      <p>{{order.orderState}}</p>
+      <p><span class="order-details-label">Order No.</span>&nbsp;&nbsp;{{order.orderNumber}}</p>
+      <p><span class="order-details-label">Customer</span>&nbsp;&nbsp;{{order.customerEmail}}</p>
+      <p><span class="order-details-label">Order Status:</span>&nbsp;&nbsp;{{order.orderState}}</p>
     </div>
     <div class="col-sm-4 col-xs-12" ng-controller="OrdersController" ng-if="order.orderState === 'Open'">
       <div class="col-sm-12 col-xs-12" style="padding: 10px;">
-        <button setup-confirmation-page class="ct-button" data-id="{{order.id}}" data-status="Complete" data-toggle="confirmation" data-placement="bottom">Complete Order</button>
+        <button setup-confirmation-page class="btn ct-button" style="min-width: 140px;min-height:35px;" data-id="{{order.id}}" data-status="Complete" data-toggle="confirmation" data-placement="bottom">Complete Order</button>
       </div>
       <div class="col-sm-12 col-xs-12" style="padding: 10px;">
-        <button setup-confirmation-page class="ct-cancel-button" data-id="{{order.id}}" data-status="Cancelled" data-toggle="confirmation" data-placement="bottom">Cancel Order</button>
+        <button setup-confirmation-page class="btn ct-cancel-button" style="min-width: 140px;min-height:35px;" data-id="{{order.id}}" data-status="Cancelled" data-toggle="confirmation" data-placement="bottom">Cancel Order</button>
       </div>
     </div>
   </div>
@@ -30,59 +27,38 @@
       <h3>Items</h3>
     </div>
   </div>
-  <div class="row visible-xs" ng-repeat="item in order.lineItems">
-    <div class="col-xs-5">
-      <img ng-src="{{item.variant.images[0].url}}" class="img-responsive"/>
+  <div class="st-table table table-custom table-component container-fluid">
+    <div class="row table-component-head">
+      <div class="col-sm-3 col-xs-6">Product</div>
+      <div class="col-sm-offset-3 col-sm-2">Qty.</div>
+      <div class="col-sm-2">Unit Price</div>
+      <div class="col-sm-2">Price</div>
     </div>
-    <div class="col-xs-7">
-      <p>{{item.name.en}} - {{item.variant.sku}}</p>
-      <p><b>Quantity: </b> {{item.quantity}}</p>
-      <p><b>Price: </b> {{item.totalPrice.currencyCode}} {{item.totalPrice.centAmount/100}}</p>
-    </div>
-  </div>
-  <div class="row minicart hidden-xs">
-    <div class="col-sm-12">
-      <div class="col-sm-2 text-center">
-
-      </div>
+    <div class="row" ng-repeat="item in order.lineItems" style="border-bottom: 1px solid #CCCCCC;">
       <div class="col-sm-3">
-        <b>Product Name</b>
+        <img ng-src="{{item.variant.images[0].url}}" class="img-responsive" style="max-width: 100px;"/>
       </div>
-      <div class="col-sm-2 text-right">
-        <b>Unit Price</b>
-      </div>
-      <div class="col-sm-2 text-right">
-        <b>Quantity</b>
-      </div>
-      <div class="col-sm-3 text-right">
-        <b>Price</b>
-      </div>
-    </div>
-    <div class="col-sm-12" ng-repeat="item in order.lineItems" style="padding:10px;">
-      <div class="col-sm-2">
-        <img ng-src="{{item.variant.images[0].url}}" class="img-responsive" style="max-width: 80px;"/>
-      </div>
-      <div class="col-sm-3">
+      <div class="col-sm-3 overflow-ellipse-text">
         <p><i>{{item.variant.sku}}</i></p>
         <p>{{item.name.en}}</p>
       </div>
-      <div class="col-sm-2 text-right">
-        {{item.price.value.currencyCode}} {{item.price.value.centAmount/100}}
-      </div>
-      <div class="col-sm-2 text-right">
+      <div class="col-sm-2 overflow-ellipse-text">
         {{item.quantity}}
       </div>
-      <div class="col-sm-3 text-right">
-        {{item.totalPrice.currencyCode}} {{item.totalPrice.centAmount/100}}
+      <div class="col-sm-2">
+        {{item.price.value.currencyCode}} {{(item.price.value.centAmount/100).toFixed(2)}}
+      </div>
+      <div class="col-sm-2">
+        {{item.totalPrice.currencyCode}} {{(item.totalPrice.centAmount/100).toFixed(2)}}
       </div>
     </div>
   </div>
   <div class="row">
-    <div class="col-sm-12 text-right">
-      <p><b>Subtotal: {{order.taxedPrice.totalNet.currencyCode}} {{order.taxedPrice.totalNet.centAmount/100}}</b></p>
-      <p><b>Shipping: <span ng-if="!order.shippingInfo">EUR 0</span><span ng-if="order.shippingInfo">{{order.shippingInfo.shippingRate.price.currencyCode}} {{order.shippingInfo.shippingRate.price.centAmount/100}}</span></b></p>
-      <p><b>Taxes: {{order.taxedPrice.totalGross.currencyCode}} {{(order.taxedPrice.totalGross.centAmount - order.taxedPrice.totalNet.centAmount)/100}}</b></p>
-      <p><b>Grand Total: {{order.taxedPrice.totalGross.currencyCode}} {{order.taxedPrice.totalGross.centAmount/100}}</  b></p>
+    <div class="col-sm-12 text-right order-totals">
+      <p>Subtotal: {{order.taxedPrice.totalNet.currencyCode}} {{(order.taxedPrice.totalNet.centAmount/100).toFixed(2)}}</p>
+      <p>Shipping: <span ng-if="!order.shippingInfo">EUR 0.00</span><span ng-if="order.shippingInfo">{{order.shippingInfo.shippingRate.price.currencyCode}} {{(order.shippingInfo.shippingRate.price.centAmount/100).toFixed(2)}}</span></p>
+      <p>Taxes: {{order.taxedPrice.totalGross.currencyCode}} {{((order.taxedPrice.totalGross.centAmount - order.taxedPrice.totalNet.centAmount)/100).toFixed(2)}}</p>
+      <p>Grand Total: {{order.taxedPrice.totalGross.currencyCode}} {{(order.taxedPrice.totalGross.centAmount/100).toFixed(2)}}</p>
     </div>
   </div>
 </div>

@@ -144,6 +144,10 @@ input[type="search"]{-webkit-appearance:none;}
   letter-spacing: 0;
 }
 
+.ct-subtitle {
+  color:#969696;
+}
+
 /* Login */
 
 .login-content {
@@ -357,24 +361,50 @@ nav.paginator-arrows a:active {
 
 
 /* Page Detail */
-
-.arrow-back{
-  font-size: x-large;
-  color:#666;
-  bottom:0;
-  padding-top:25px;
+.arrow-back {
+  margin-top: 10px;
+}
+.arrow-back a{
+  font-family: Open Sans;
+  font-size: 14px;
+  color: #00B6A1;
+  margin-top: 5px;
 }
 
-.product-main-image {
-  max-width: 300px;
-  padding:1px;
-  border:1px solid #213e48;
+.product-details {
+  border-top: 2px solid #CCCCCC;
+  width:60%;
+  padding: 10px;
+  margin: 10px;
+}
+
+.product-detail-price {
+  font-family: Open Sans;
+  font-size: 24px;
+  color: #484848;
+  letter-spacing: 0;
 }
 
 .product-thumbnail-image{
   max-width: 150px;
-  padding:1px;
-  border:1px solid #213e48;
+}
+
+.product-thumbnail-base{
+  background-color: #FAFAFA;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+  border: 1px solid #EEEEEE;
+  min-height: 90px;
+  padding: 15px;
+  margin-bottom: 20px;
+  box-shadow: 2px 2px 1px #EEEEEE;
+}
+
+.product-thumbnail-price{
+  font-family: Open Sans;
+  font-size: 18px;
+  color: #484848;
+  letter-spacing: 0;
 }
 
 .confirmation-buttons a{
@@ -412,7 +442,7 @@ nav.paginator-arrows a:active {
   letter-spacing: 0;
   line-height: 14px;
   background: #fff;
-  font-family: OpenSans,sans-serif;
+  font-family: Open Sans,sans-serif;
 }
 
 /* Custom styles */
@@ -464,4 +494,25 @@ nav.paginator-arrows a:active {
 
 .ct-pagination-center {
   color: #848484;
+}
+
+.order-details-label {
+  font-family: Open Sans,sans-serif;
+  font-size: 18px;
+  color: #484848;
+  letter-spacing: 0;
+}
+
+.order-totals {
+  font-family: Open Sans,sans-serif;
+  font-size: 16px;
+  color: #000000;
+  letter-spacing: 0;
+}
+
+.order-purchase-date {
+  font-family: Open Sans;
+  font-size: 13px;
+  color: #000000;
+  letter-spacing: 0;
 }
