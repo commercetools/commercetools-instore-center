@@ -6,21 +6,25 @@ MAINTAINER Devgurus, support@devgurus.io
 RUN apt-get update \
     && apt-get install -y build-essential \
     && apt-get install -y ruby \
-    && rm -rf /var/lib/apt/lists/*
+    && rm -rf /var/lib/apt/lists/* \
+    && gem install sass
 
 WORKDIR /home/app
 
-# Set development environment as default
-ENV NODE_ENV production
+RUN npm install -g gulp
+RUN npm install -g bower
+
+ADD package.json /home/mean/package.json
+RUN npm install
+
+ADD .bowerrc /home/mean/.bowerrc
+ADD bower.json /home/mean/bower.json
+RUN bower install --config.interactive=false --allow-root
 
 ADD . /home/mean
 
-RUN gem install sass \
-    && npm install -g gulp \
-    && npm install -g bower
-
-# Make everything available for start
-RUN npm install
+# Set development environment as default
+ENV NODE_ENV production
 
 # Port 3000 for server
 EXPOSE 3000
