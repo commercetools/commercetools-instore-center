@@ -13,18 +13,17 @@ RUN apt-get update \
     && npm install -g gulp \
     && npm install -g bower
 
-# Set development environment as default
-ENV NODE_ENV production
-
 ADD package.json /home/mean/package.json
-RUN npm install
-
-# Manually trigger bower. Why doesnt this work via npm install?
 ADD .bowerrc /home/mean/.bowerrc
 ADD bower.json /home/mean/bower.json
-RUN bower install --config.interactive=false --allow-root
+
+RUN npm install \
+    && bower install --config.interactive=false --allow-root
 
 ADD . /home/mean
+
+# Set development environment as default
+ENV NODE_ENV production
 
 # Port 3000 for server
 EXPOSE 3000
