@@ -9,7 +9,7 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/* \
     && gem install sass
 
-WORKDIR /home/app
+WORKDIR /home/mean
 
 RUN npm install -g gulp
 RUN npm install -g bower
