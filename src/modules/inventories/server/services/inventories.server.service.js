@@ -15,6 +15,12 @@ module.exports = (app) => {
     })[0];
   };
 
+  const getProductPrice = (variant, selectedChannel) => {
+    return variant.prices.find((p) => {
+      return p.channel && p.channel.id === selectedChannel;
+    }) || variant.prices[0];
+  };
+
   service.query = (params) => {
     const selectedChannel = params.selectedChannel;
     const sku = params.sku;
@@ -62,7 +68,7 @@ module.exports = (app) => {
               const chosenVariant = findVariant(body.results[0], inventory.sku);
               return { ...inventory,
                        name: body.results[0].name.en,
-                       price: chosenVariant.prices[0],
+                       price: getProductPrice(chosenVariant, selectedChannel),
                        image: chosenVariant.images[0],
                        productId: body.results[0].id,
                      };
@@ -87,6 +93,7 @@ module.exports = (app) => {
   service.getProductById = (params) => {
     const productId = params.productId;
     const sku = params.sku;
+    const selectedChannel = params.selectedChannel;
     const productProjectionQuery = client.productProjections;
 
     return productProjectionQuery
@@ -95,8 +102,10 @@ module.exports = (app) => {
       .fetch()
       .then((product) => {
         const chosenVariant = findVariant(product.body, sku);
-        return { ...chosenVariant, name: product.body.name,
+        return { ...chosenVariant,
+                 name: product.body.name,
                  description: product.body.description,
+                 price: getProductPrice(chosenVariant, selectedChannel),
                };
       })
       .catch((err) => {
@@ -178,7 +187,7 @@ module.exports = (app) => {
                    name: product.name.en,
                    image: product.masterVariant.images[0],
                    sku: product.masterVariant.sku,
-                   price: product.masterVariant.prices[0],
+                   price: getProductPrice(product.masterVariant, selectedChannel),
                    availableQuantity: availability.availableQuantity,
                  };
         });

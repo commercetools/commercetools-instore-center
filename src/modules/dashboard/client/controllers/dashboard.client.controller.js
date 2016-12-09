@@ -14,7 +14,7 @@ angular.module('dashboard')
       $scope.totalSales = 0;
       $scope.startDate = $moment().subtract(7, 'days').startOf('day')
                         .toDate();
-      $scope.endDate = $moment().startOf('day').toDate();
+      $scope.endDate = $moment().endOf('day').toDate();
 
       $scope.page = {
         title: 'Dashboard',
@@ -34,7 +34,7 @@ angular.module('dashboard')
         },
         opens: 'left',
         startDate: $moment().startOf('day').subtract(7, 'days'),
-        endDate: $moment().startOf('day'),
+        endDate: $moment().endOf('day'),
         parentEl: '#content',
       };
 
