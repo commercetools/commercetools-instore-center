@@ -6,6 +6,7 @@ branches:
   - master
   - develop
   - /^v.*$/
+  - feature/travis
 env:
   global:
   - COMMIT=${TRAVIS_COMMIT::8}
