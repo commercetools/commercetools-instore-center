@@ -17,7 +17,6 @@ const ApplicationConfiguration = (function applicationConfiguration() {
     'angular-momentjs',
     'toastr',
     'angularBootstrapNavTree',
-    'oc.lazyLoad',
     'ui.select',
     'ui.tree',
     'ui.grid',
