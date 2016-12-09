@@ -48,8 +48,9 @@
 
       <div class="st-table table table-custom table-component container-fluid">
         <div class="row table-component-head">
-          <div st-sort="orderNumber" st-sort-default class="sorting col-sm-2 col-xs-6">Number</div>
-          <div st-sort="customerEmail" class="col-sm-3 col-xs-6">Customer</div>
+          <div class="col-xs-12 visible-xs">Orders</div>
+          <div st-sort="orderNumber" st-sort-default class="sorting col-sm-2 hidden-xs">Number</div>
+          <div st-sort="customerEmail" class="col-sm-3 hidden-xs">Customer</div>
           <div class="col-sm-2 hidden-xs">Address</div>
           <div class="col-sm-1 text-center hidden-xs">Items</div>
           <div class="col-sm-2 hidden-xs">Total</div>
