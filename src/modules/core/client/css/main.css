@@ -67,6 +67,7 @@ input[type="search"]{-webkit-appearance:none;}
 
 .arrow-select select {
   padding-right: 25px!important;
+  -webkit-appearance:none;
 }
 
 .arrow-select:after {
