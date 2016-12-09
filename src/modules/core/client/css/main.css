@@ -253,7 +253,7 @@ h1 {
   font-size: 30px;
   color: #213E48;
   letter-spacing: 0;
-  margin-top: 4px;
+  margin-top: 15px;
 }
 
 h3 {
@@ -482,11 +482,12 @@ nav.paginator-arrows a:active {
 
 /* Page Detail */
 .arrow-back {
-  margin-top: 10px;
   font-family: Open Sans;
   font-size: 14px;
   color: #00B6A1;
   margin-top: 5px;
+  margin-bottom: -10px;
+  z-index: 100;
 }
 
 .product-details {
