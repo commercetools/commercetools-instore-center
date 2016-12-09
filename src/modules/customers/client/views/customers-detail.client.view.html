@@ -11,21 +11,21 @@
         <div class="panel-body">
           <img src="./images/customer.png"/>
           <p><b>Customer Details</b></p>
-          <p>{{customer.firstName}} {{customer.lastName}}</p>
-          <p>{{customer.email}}</p>
+          <p>{{data.firstName}} {{data.lastName}}</p>
+          <p>{{data.email}}</p>
         </div>
       </div>
     </div>
     <div class="col-sm-6">
       <div class="panel panel-default ct-customer-panels">
-        <div class="panel-body" ng-if="customer.addresses.length > 0">
+        <div class="panel-body" ng-if="data.addresses.length > 0">
           <img src="./images/address.png"/>
           <p><b>Address</b></p>
-          <p>{{customer.addresses[0].streetName}}</p>
-          <p>{{customer.addresses[0].postalCode}}</p>
-          <p>{{customer.addresses[0].city}}, {{customer.addresses[0].country}}</p>
+          <p>{{data.addresses[0].streetName}}</p>
+          <p>{{data.addresses[0].postalCode}}</p>
+          <p>{{data.addresses[0].city}}, {{data.addresses[0].country}}</p>
         </div>
-        <div class="panel-body" ng-if="customer.addresses.length === 0">
+        <div class="panel-body" ng-if="data.addresses.length === 0">
           <img src="./images/address.png"/>
           <p><b>Address</b></p>
           <p>The customer has no addresses</p>
@@ -49,13 +49,13 @@
         </span>
       </div>
     </div>
-    <div class="col-sm-12" ng-if="customer.products.length === 0">
+    <div class="col-sm-12" ng-if="data.products.length === 0">
       <p>This customer has no information to show</p>
     </div>
   </div>
   <br />
   <div class="row loading-component loading-component-hide same-height-row">
-    <div ng-repeat="product in customer.products" class="col-sm-3 col-xs-12">
+    <div ng-repeat="product in data.products" class="col-sm-3 col-xs-12">
       <a ng-href="/inventories/product/{{product.productId}}/{{product.sku}}">
         <div class="img-panel img-panel-fix-size">
           <img check-image src="{{product.images[0].url}}" class="product-thumbnail-image">

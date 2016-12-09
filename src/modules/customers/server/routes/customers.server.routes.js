@@ -4,7 +4,7 @@ module.exports = (app) => {
   app.route('/api/customers/totalCustomers')
     .get(customersController.totalCustomers);
 
-  app.route('/api/customers/:id')
+  app.route('/api/customers/:selectedChannel/:id')
     .get(customersController.byId);
 
   app.route('/api/customers')

@@ -2,25 +2,25 @@
   <div class="row">
     <div ng-include="'/views/arrow-back-section.client.view.html'"></div>
     <div class="col-xs-12">
-      <h1>Inventories / <span class="ct-subtitle">{{product.name.en}}</span></h1>
+      <h1>Inventories / <span class="ct-subtitle">{{data.name.en}}</span></h1>
     </div>
   </div>
   <div class="row loading-component loading-component-hide">
     <div class="col-sm-4 text-center">
       <div class="img-panel">
-        <img check-image src="{{product.images[0].url}}" class="img-responsive">
+        <img check-image src="{{data.images[0].url}}" class="img-responsive">
       </div>
     </div>
     <div class="col-sm-8 product-details">
       <p><b>Product Description</b></p>
-      <p>{{product.description.en}}</p>
+      <p>{{data.description.en}}</p>
       <br/>
       <p><b>Details</b></p>
       <p>100% Polyester. Chemische Renigung</p>
-      <p class="product-detail-price"><b>{{product.prices[0].value.currencyCode}} {{(product.prices[0].value.centAmount/100).toFixed(2)}}</b></p>
-      <p ng-if="product.availability.channels[selectedChannel].availableQuantity > 0"><span class="circle circle-green"></span> Available!</p>
-      <p ng-if="product.availability.channels[selectedChannel].availableQuantity <= 0"><span class="circle circle-red"></span> Out of Stock!</p>
-      <div class="col-xs-2" ng-repeat="image in product.images">
+      <p class="product-detail-price"><b>{{data.prices[0].value.currencyCode}} {{(data.prices[0].value.centAmount/100).toFixed(2)}}</b></p>
+      <p ng-if="data.availability.channels[selectedChannel].availableQuantity > 0"><span class="circle circle-green"></span> Available!</p>
+      <p ng-if="data.availability.channels[selectedChannel].availableQuantity <= 0"><span class="circle circle-red"></span> Out of Stock!</p>
+      <div class="col-xs-2" ng-repeat="image in data.images">
         <div class="img-panel">
           <img check-image src="{{image.url}}" class="img-responsive" style="max-width: 50px;"/>
         </div>

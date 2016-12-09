@@ -2,16 +2,27 @@ module.exports = (app) => {
   const controller = {};
   const customersService = require('../services/customers.server.service')(app);
   const ordersService = require('../../../orders/server/services/orders.server.service')(app);
+  const inventoryService =
+  require('../../../inventories/server/services/inventories.server.service')(app);
 
   controller.byId = (req, res) => {
     const customerId = req.params.id;
+    const params = { seed: req.params.id,
+                     selectedChannel: req.params.selectedChannel,
+                   };
 
     if (customerId) {
       return customersService.byId(customerId)
         .then((customer) => {
           return ordersService.getCustomerProductReservations({ customerId })
           .then((products) => {
-            res.json({ ...customer, products });
+            return inventoryService.getRecommendedProducts(params)
+            .then((recommendedProducts) => {
+              res.json({ ...customer,
+                         products,
+                         recommendedProducts,
+                      });
+            });
           });
         })
         .catch(() => {

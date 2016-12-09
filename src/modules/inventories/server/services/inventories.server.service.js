@@ -1,4 +1,5 @@
 import geolib from 'geolib';
+import rand from 'random-seed';
 
 module.exports = (app) => {
   const service = {};
@@ -94,7 +95,9 @@ module.exports = (app) => {
       .fetch()
       .then((product) => {
         const chosenVariant = findVariant(product.body, sku);
-        return { ...chosenVariant, name: product.body.name, description: product.body.description };
+        return { ...chosenVariant, name: product.body.name,
+                 description: product.body.description,
+               };
       })
       .catch((err) => {
         logger.error(`Error getting product info with the params: ${params},
@@ -153,6 +156,36 @@ module.exports = (app) => {
       })
       .catch((err) => {
         logger.error(`Error getting the available products, Error: ${err}`);
+      });
+  };
+
+  service.getRecommendedProducts = (params) => {
+    const seed = params.seed;
+    const selectedChannel = params.selectedChannel;
+    const randomNumber = rand.create(seed)(50);
+    const productProjectionQuery = client.productProjections;
+    return productProjectionQuery
+      .staged(false)
+      .where(`masterVariant(availability(channels(${selectedChannel} is defined)))`)
+      .page(randomNumber)
+      .perPage(4)
+      .fetch()
+      .then((recommendedProducts) => {
+        return recommendedProducts.body.results.map((product) => {
+          const availability = product.masterVariant.availability.channels[selectedChannel]
+          || product.masterVariant.availability;
+          return { id: product.id,
+                   name: product.name.en,
+                   image: product.masterVariant.images[0],
+                   sku: product.masterVariant.sku,
+                   price: product.masterVariant.prices[0],
+                   availableQuantity: availability.availableQuantity,
+                 };
+        });
+      })
+      .catch((err) => {
+        logger.error(`Error getting product info with the params: ${seed},
+          Error: ${err}`);
       });
   };
 

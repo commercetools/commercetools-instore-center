@@ -1,6 +1,6 @@
 angular.module('customers').factory('Customers', ['$resource',
   ($resource) => {
-    return $resource('api/customers/:id', {}, {
+    return $resource('api/customers/:selectedChannel/:id', {}, {
       update: {
         method: 'PUT',
       },

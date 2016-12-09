@@ -4,11 +4,15 @@ angular.module('inventories')
 'InventoryService',
 '$stateParams',
 'toastr',
-  ($scope, InventoryService, $stateParams, toastr) => {
+'$rootScope',
+  ($scope, InventoryService, $stateParams, toastr, $rootScope) => {
     $scope.openProductDetail = () => {
-      const params = { productId: $stateParams.productId, sku: $stateParams.sku };
+      const params = { productId: $stateParams.productId,
+                       sku: $stateParams.sku,
+                       selectedChannel: $rootScope.selectedChannel,
+                     };
       InventoryService.openProductDetail(params).then((result) => {
-        $scope.product = result.data;
+        $scope.data = result.data;
       }, (error) => {
         toastr.error(`Error getting the product details: ${error.data.message}`);
       });

@@ -3,11 +3,14 @@ angular.module('customers').controller('CustomerDetailController',
 'Customers',
 '$stateParams',
 'toastr',
-  ($scope, Customers, $stateParams, toastr) => {
+'$rootScope',
+  ($scope, Customers, $stateParams, toastr, $rootScope) => {
     $scope.selectedSortMethod = 'placedOn-desc';
     $scope.openCustomerDetail = () => {
-      Customers.get({ id: $stateParams.id }, (data) => {
-        $scope.customer = data;
+      Customers.get({ id: $stateParams.id,
+                      selectedChannel: $rootScope.selectedChannel,
+                    }, (data) => {
+        $scope.data = data;
       }, (error) => {
         toastr.error(`Error getting the customer details: ${error.data.message}`);
       });
@@ -16,7 +19,7 @@ angular.module('customers').controller('CustomerDetailController',
     $scope.sortData = (sort) => {
       const sortFilters = sort.split('-');
       const mult = sortFilters[1] === 'asc' ? 1 : -1;
-      $scope.customer.products.sort((a, b) => {
+      $scope.data.products.sort((a, b) => {
         if (a[sortFilters[0]] > b[sortFilters[0]]) {
           return 1 * mult;
         }

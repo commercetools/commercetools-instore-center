@@ -8,6 +8,11 @@ angular.module('customers').config(['$stateProvider',
       .state('customer-detail', {
         url: '/customers/:id',
         templateUrl: 'views/customers-detail.client.view.html',
+        resolve: {
+          channels: ['HeaderService', (HeaderService) => {
+            return HeaderService.promise;
+          }],
+        },
       });
   },
 ]);

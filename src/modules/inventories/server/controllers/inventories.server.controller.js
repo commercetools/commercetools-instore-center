@@ -18,10 +18,15 @@ module.exports = (app) => {
     const params = {};
     params.productId = req.query.productId;
     params.sku = req.query.sku;
+    params.selectedChannel = req.query.selectedChannel;
+    params.seed = req.query.productId;
 
-    inventoriesService.getProductById(params)
+    return inventoriesService.getProductById(params)
       .then((queryResponse) => {
-        res.json(queryResponse);
+        return inventoriesService.getRecommendedProducts(params)
+        .then((recommendedProducts) => {
+          res.json({ ...queryResponse, recommendedProducts });
+        });
       })
       .catch(() => {
         res.status(400).send({
