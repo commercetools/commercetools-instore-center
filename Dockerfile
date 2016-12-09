@@ -9,7 +9,7 @@ RUN apt-get update \
     && apt-get install -y build-essential \
     && apt-get install -y ruby \
     && rm -rf /var/lib/apt/lists/* \
-    && gem install sass
+    && gem install sass \
     && npm install -g gulp \
     && npm install -g bower
 
