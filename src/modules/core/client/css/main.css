@@ -65,6 +65,10 @@ input[type="search"]{-webkit-appearance:none;}
   width: 200px;
 }*/
 
+.arrow-select select {
+  padding-right: 25px!important;
+}
+
 .arrow-select:after {
     content:"";
     position:absolute;
