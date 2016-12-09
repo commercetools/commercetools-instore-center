@@ -1,8 +1,6 @@
 <div ng-controller="OrderDetailsController" ng-init="getOrder();">
   <div class="row">
-    <div class="col-xs-12 arrow-back">
-      <a href="/orders"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
-    </div>
+    <div ng-include="'/views/arrow-back-section.client.view.html'"></div>
     <div class="col-xs-12">
       <h1>Order / <span class="ct-subtitle">Details</span></h1>
     </div>
@@ -10,15 +8,21 @@
   <div class="row loading-component loading-component-hide">
     <div class="col-sm-8 col-xs-12">
       <p><span class="order-details-label">Order No.</span>&nbsp;&nbsp;{{order.orderNumber}}</p>
-      <p><span class="order-details-label">Customer</span>&nbsp;&nbsp;{{order.customerEmail}}</p>
+      <p><span class="order-details-label">Customer</span>&nbsp;&nbsp;{{order.customerEmail}}<a ng-href="/customers/{{order.customerId}}"><img src="./images/customer.png" class="ct-customer-button"/></span></a></p>
       <p><span class="order-details-label">Order Status:</span>&nbsp;&nbsp;{{order.orderState}}</p>
     </div>
     <div class="col-sm-4 col-xs-12" ng-controller="OrdersController" ng-if="order.orderState === 'Open'">
       <div class="col-sm-12 col-xs-12" style="padding: 10px;">
-        <button setup-confirmation-page class="btn ct-button" style="min-width: 140px;min-height:35px;" data-id="{{order.id}}" data-status="Complete" data-toggle="confirmation" data-placement="bottom">Complete Order</button>
+        <button setup-confirmation-page data-popout="true" class="btn ct-button" style="min-width: 140px;min-height:35px;" data-id="{{order.id}}" data-status="Complete" data-toggle="confirmation" data-placement="bottom" data-btn-ok-label="" data-btn-ok-icon="glyphicon glyphicon-share-alt"
+        data-btn-ok-class="ct-button"
+        data-btn-cancel-label="" data-btn-cancel-icon="glyphicon glyphicon-ban-circle"
+        data-btn-cancel-class="ct-cancel-button">Complete Order</button>
       </div>
       <div class="col-sm-12 col-xs-12" style="padding: 10px;">
-        <button setup-confirmation-page class="btn ct-cancel-button" style="min-width: 140px;min-height:35px;" data-id="{{order.id}}" data-status="Cancelled" data-toggle="confirmation" data-placement="bottom">Cancel Order</button>
+        <button setup-confirmation-page data-popout="true" class="btn ct-cancel-button" style="min-width: 140px;min-height:35px;" data-id="{{order.id}}" data-status="Cancelled" data-toggle="confirmation" data-placement="bottom"data-btn-ok-label="" data-btn-ok-icon="glyphicon glyphicon-share-alt"
+        data-btn-ok-class="ct-button"
+        data-btn-cancel-label="" data-btn-cancel-icon="glyphicon glyphicon-ban-circle"
+        data-btn-cancel-class="ct-cancel-button">Cancel Order</button>
       </div>
     </div>
   </div>

@@ -1,8 +1,6 @@
 <div data-ng-controller="InventoryDetailController" data-ng-init="openProductDetail();">
   <div class="row">
-    <div class="col-xs-12 arrow-back">
-      <a href="/inventories"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
-    </div>
+    <div ng-include="'/views/arrow-back-section.client.view.html'"></div>
     <div class="col-xs-12">
       <h1>Inventories / <span class="ct-subtitle">{{product.name.en}}</span></h1>
     </div>

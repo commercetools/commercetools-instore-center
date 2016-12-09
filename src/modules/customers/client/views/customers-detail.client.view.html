@@ -1,8 +1,6 @@
 <div data-ng-controller="CustomerDetailController" data-ng-init="openCustomerDetail();">
   <div class="row">
-    <div class="col-xs-12 arrow-back">
-      <a href="/customers"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</a>
-    </div>
+    <div ng-include="'/views/arrow-back-section.client.view.html'"></div>
     <div class="col-xs-12">
       <h1>Customer / <span class="ct-subtitle">Insights</span></h1>
     </div>
@@ -56,14 +54,16 @@
   <br />
   <div class="row loading-component loading-component-hide same-height-row">
     <div ng-repeat="product in customer.products" class="col-sm-3 col-xs-12">
-      <div class="img-panel img-panel-fix-size">
-        <img check-image src="{{product.images[0].url}}" class="product-thumbnail-image">
-      </div>
-      <div class="product-thumbnail-base">
-        <p class="name overflow-ellipse-text">{{product.name}}</p>
-        <p class="order-purchase-date">Ordered on:<br/>
-        {{product.placedOn | date:'MM/dd/yyyy'}}</p>
-      </div>
+      <a ng-href="/inventories/product/{{product.productId}}/{{product.sku}}">
+        <div class="img-panel img-panel-fix-size">
+          <img check-image src="{{product.images[0].url}}" class="product-thumbnail-image">
+        </div>
+        <div class="product-thumbnail-base">
+          <p class="name overflow-ellipse-text">{{product.name}}</p>
+          <p class="order-purchase-date">Ordered on:<br/>
+          {{product.placedOn | date:'MM/dd/yyyy'}}</p>
+        </div>
+      </a>
     </div>
   </div>
   <div ng-include="'/views/recommend-section.client.view.html'"></div>

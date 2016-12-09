@@ -112,6 +112,7 @@ module.exports = (app) => {
             ...lineItem.variant,
             placedOn: order.createdAt,
             name: lineItem.name.en,
+            productId: lineItem.productId,
           };
         });
       }).reduce((a, b) => {

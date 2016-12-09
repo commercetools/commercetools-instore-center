@@ -8,6 +8,11 @@ body, html {
   font-size: 14px;
 }
 
+a {
+  color: #213e48;
+  text-decoration: none;
+}
+
 input[type="search"]{-webkit-appearance:none;}
 
 #pageloader {
@@ -436,8 +441,6 @@ nav.paginator-arrows a:active {
 /* Page Detail */
 .arrow-back {
   margin-top: 10px;
-}
-.arrow-back a{
   font-family: Open Sans;
   font-size: 14px;
   color: #00B6A1;
@@ -629,6 +632,15 @@ nav.paginator-arrows a:active {
   font-size: 13px;
   color: #000000;
   letter-spacing: 0;
+}
+
+.ct-customer-button {
+  width: 35px;
+  padding: 5px;
+  margin-left: 10px;
+  background-color:#FAFAFA;
+  border: 2px solid #EEEEEE;
+  border-radius: 20px;
 }
 
 .ct-customer-panels {
