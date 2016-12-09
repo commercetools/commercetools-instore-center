@@ -7,14 +7,22 @@
     </div>
     <div class="col-sm-4 hidden-xs"></div>
     <div class="col-sm-3 col-xs-1">
-      <select class="form-control ng-pristine ng-valid ng-not-empty ng-touched" aria-invalid="false">
-        <option label="Sunrise Demo" value="sunrise-demo">Sunrise Demo</option>
-      </select>
+      <div class="btn-group btn-block hidden-xs">
+        <span class="arrow-select">
+          <select class="form-control ng-pristine ng-valid ng-not-empty ng-touched" aria-invalid="false">
+            <option label="Sunrise Demo" value="sunrise-demo">Sunrise Demo</option>
+          </select>
+        </span>
+      </div>
     </div>
     <div class="col-sm-3 col-xs-7">
-      <select class="form-control ng-pristine ng-valid ng-not-empty ng-touched" aria-invalid="false" ng-model="selectedChannel" ng-change="updateChannel();">
-        <option ng-repeat="store in stores" value="{{store.id}}">{{store.name}}</option>
-      </select>
+      <div class="btn-group btn-block">
+        <span class="arrow-select">
+          <select class="form-control ng-pristine ng-valid ng-not-empty ng-touched" aria-invalid="false" ng-model="selectedChannel" ng-change="updateChannel();">
+            <option ng-repeat="store in stores" value="{{store.id}}">{{store.name}}</option>
+          </select>
+        </span>
+      </div>
     </div>
     <div class="col-sm-1 col-xs-2 nav-sign-out">
       <a href="javascript:void(0);" ng-click="signout();">

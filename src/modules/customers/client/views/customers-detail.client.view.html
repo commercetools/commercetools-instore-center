@@ -39,12 +39,14 @@
     <div class="col-sm-5 text-right customer-filter-products">
       <div class="btn-group btn-block">
         <label for="sort">Sort products by:</label>
-        <select id="sort" name="sort" class="form-control" ng-change="sortData(selectedSortMethod);" ng-model="selectedSortMethod">
-          <option value="placedOn-desc">Date Descending</option>
-          <option value="placedOn-asc">Date Ascending</option>
-          <option value="name-desc">Name Descending</option>
-          <option value="name-asc">Name Ascending</option>
-        </select>
+        <span class="arrow-select">
+          <select id="sort" name="sort" class="form-control" ng-change="sortData(selectedSortMethod);" ng-model="selectedSortMethod">
+            <option value="placedOn-desc">Date Descending</option>
+            <option value="placedOn-asc">Date Ascending</option>
+            <option value="name-desc">Name Descending</option>
+            <option value="name-asc">Name Ascending</option>
+          </select>
+        </span>
       </div>
     </div>
     <div class="col-sm-12" ng-if="customer.products.length === 0">

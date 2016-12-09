@@ -58,6 +58,27 @@ input[type="search"]{-webkit-appearance:none;}
   -webkit-appearance:none;
 }
 
+/*.arrow-select {
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  width: 200px;
+}*/
+
+.arrow-select:after {
+    content:"";
+    position:absolute;
+    z-index:2;
+    right: 7px;
+    top:  14px;
+    height:0;
+    width:0;
+    border-top:6px solid #213e48;
+    border-left:6px solid transparent;
+    border-right:6px solid transparent;
+    pointer-events:none;
+}
+
 .header-container #header .brand {
   margin-left: 6px;
 }
@@ -94,7 +115,7 @@ input[type="search"]{-webkit-appearance:none;}
 /*  Container */
 .content-container {
   top: 56px;
-  padding-left: 85px;
+  padding-left: 78px;
 }
 
 /* Loading Spiner */
@@ -151,6 +172,22 @@ input[type="search"]{-webkit-appearance:none;}
 }
 
 /* Dashboard */
+
+.dashboard-graph .flot-text .flot-x-axis div {
+  margin-left: 4.8%;
+}
+
+@media (max-width: 767px) {
+  .dashboard-graph .flot-text .flot-x-axis div {
+    margin-left: 5%;
+  }
+}
+
+@media (max-width: 540px) {
+  .dashboard-graph .flot-text .flot-x-axis div {
+    margin-left: 6%;
+  }
+}
 
 .dashboard-graph .legend .legendLabel {padding: 0px 10px 0px 4px;}
 
