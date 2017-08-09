@@ -15,7 +15,7 @@ module.exports = (app) => {
       .fetch()
       .then((res) => {
         return res.body.results.map((store) => {
-          return { id: store.id, name: store.name.en };
+          return { id: store.id, name: store.name ? store.name.en : store.key };
         });
       })
       .catch((err) => {

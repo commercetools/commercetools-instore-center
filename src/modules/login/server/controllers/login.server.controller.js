@@ -28,7 +28,8 @@ module.exports = (app) => {
   controller.login = (req, res, next) => {
     return loginService.login(req.body)
       .then((queryResponse) => {
-        return loginService.getUserInfo(queryResponse)
+        const tokenData = jwt.decode(queryResponse.token);
+        return loginService.getUserInfo({ userId: tokenData.sub, token: queryResponse.token })
         .then((userInfo) => {
           const userData = { ...queryResponse, name: userInfo.firstName };
           login(userData, (err, token) => {

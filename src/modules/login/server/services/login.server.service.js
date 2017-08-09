@@ -38,14 +38,14 @@ module.exports = (app) => {
     ).then(processResponse);
   };
 
-  service.getUserInfo = (params) => {
+  service.getUserInfo = ({ userId, token }) => {
     return fetch(
-      `${userUrl}/${params.user}`,
+      `${userUrl}/${userId}`,
       {
         method: 'GET',
         headers: {
           ...defaultHeaders,
-          Authorization: params.token,
+          Authorization: token,
         },
       }
     ).then(processResponse);
