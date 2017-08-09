@@ -6,7 +6,7 @@ WORKDIR /home/mean
 
 # Install extra libraries and prerequisites
 RUN apt-get update \
-    && apt-get install ruby-dev \
+    && apt-get install -y ruby-dev \
     && apt-get install -y build-essential \
     && apt-get install -y ruby \
     && rm -rf /var/lib/apt/lists/* \
