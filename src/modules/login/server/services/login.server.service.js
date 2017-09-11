@@ -7,7 +7,7 @@ module.exports = (app) => {
     'Content-Type': 'application/json',
     //'User-Agent': `${pkg.name}/${pkg.version} ${Platform.OS}/${Platform.Version}`,
   };
-  const apiHost = 'https://mc.commercetools.com';
+  const apiHost = 'https://mc-api.commercetools.com';
   const loginUrl = `${apiHost}/tokens`;
   const projectsByUserUrl = `${apiHost}/projects`;
   const userUrl = `${apiHost}/users`
