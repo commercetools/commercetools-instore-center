@@ -58,9 +58,6 @@ The following image shows how the customer details page looks like:
 
 --------
 
-## Demo
-https://instore-stage.ct-app.com/
-
 
 ## Installation
 ```
