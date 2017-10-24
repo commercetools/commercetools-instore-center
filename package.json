@@ -4,8 +4,9 @@
   "description": "Commercetools In Store Center",
   "main": "index.js",
   "scripts": {
+    "gulp": "gulp default",
     "test": "gulp test",
-    "start": "gulp set-production-node-env run_server",
+    "start": "gulp production",
     "postinstall": "bower cache clean && bower install --force && gulp set-production-node-env build"
   },
   "devDependencies": {
