@@ -85,9 +85,11 @@ input[type="search"]{-webkit-appearance:none;}
 }
 
 .header-container #header .brand {
-  margin-left: 6px;
+    margin-left: 6px;
 }
-
+.header-container #header .brand img {
+    height: 40px;
+}
 /*  Sidebar  */
 .siderbar-container {
   position: fixed;
@@ -343,7 +345,7 @@ h3 {
     font-family: Open Sans,sans-serif!important;
     padding: 7.5px 10px;
     outline: none;
-    box-shadow: none
+    box-shadow: none;
 
     -webkit-transition: all .2s ease;
     transition: all .2s ease;
