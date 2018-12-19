@@ -6,10 +6,10 @@
     "SECRET": "test",
     "MAX_AGE_SECONDS": 604800
   },
-  "COMMERCE_TOOLS": {
-    "PROJECT_KEY": "",
-    "CLIENT_ID": "",
-    "CLIENT_SECRET": ""
+"COMMERCE_TOOLS": {
+    "PROJECT_KEY": "measty-3",
+    "CLIENT_ID": "nA6iLp7lusESyzgOSZppHpJ8",
+    "CLIENT_SECRET": "ttb_KiqKZyireii6K3AN6zIGO3LDSSBd"
   },
   "ENTITIES": {
     "DATATABLES": {
