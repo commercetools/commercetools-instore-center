@@ -1,4 +1,5 @@
 const fetch = require('node-fetch');
+const cookie = require('cookie-parse');
 
 module.exports = (app) => {
   const service = {};
@@ -9,46 +10,54 @@ module.exports = (app) => {
   };
   const apiHost = 'https://mc-api.commercetools.com';
   const loginUrl = `${apiHost}/tokens`;
-  const projectsByUserUrl = `${apiHost}/projects`;
-  const userUrl = `${apiHost}/users`
+  const graphqlUrl = `${apiHost}/graphql`;
 
-  function processResponse(response) {
-    let isOk = response.ok;
-    return response.text()
-    .then((text) => {
-      let parsed;
-      try { parsed = JSON.parse(text); } catch (error) { isOk = false; }
-      if (isOk) return parsed;
-      const error = new Error(parsed ? parsed.message : text);
-      if (parsed) error.body = parsed;
-      throw error;
-    });
+  function processLogin(response) {
+    return {
+      token: cookie.parse(response.headers.get('set-cookie')).mcAccessToken,
+    };
   }
 
-  service.getUserProjects = (params) => {
-    return fetch(
-      `${projectsByUserUrl}?userId=${params.user}`,
-      {
-        method: 'GET',
-        headers: {
-          ...defaultHeaders,
-          Authorization: params.token,
-        },
-      }
-    ).then(processResponse);
-  };
-
-  service.getUserInfo = ({ userId, token }) => {
-    return fetch(
-      `${userUrl}/${userId}`,
-      {
-        method: 'GET',
-        headers: {
-          ...defaultHeaders,
-          Authorization: token,
-        },
-      }
-    ).then(processResponse);
+  service.getUserInfo = ({ token }) => {
+    return fetch(graphqlUrl, {
+      method: 'POST',
+      headers: {
+        ...defaultHeaders,
+        Cookie: `mcAccessToken=${token}`,
+        'X-Graphql-Target': 'mc', // either "mc" (for user, project) or "ctp" (for the CTP API)
+      },
+      body: JSON.stringify({
+        operationName: 'LoggedInUserQuery',
+        query: `
+          query LoggedInUserQuery {
+            user: me {
+              id
+              createdAt
+              version
+              email
+              firstName
+              lastName
+              language
+              numberFormat
+              timeZone
+              availableProjects {
+                key
+                name
+                suspended
+                expired
+                __typename
+              }
+              availableOrganizations {
+                name
+                __typename
+              }
+              __typename
+            }
+          }`,
+      }),
+    })
+      .then(res => res.json())
+      .then(loggedInUser => loggedInUser.data.user);
   };
 
   service.login = (params) => {
@@ -62,7 +71,7 @@ module.exports = (app) => {
           password: params.password,
         }),
       }
-    ).then(processResponse);
+    ).then(processLogin);
   };
 
   return service;
