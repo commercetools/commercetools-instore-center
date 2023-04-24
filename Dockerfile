@@ -1,4 +1,4 @@
-FROM node:4
+FROM node:20
 
 MAINTAINER Devgurus, support@devgurus.io
 
